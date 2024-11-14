@@ -3,6 +3,9 @@ layout: page
 title: How to
 permalink: /howto/
 ---
+Just duplicate the how to markdown file and edit.
+save and push the project. 
+
 
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
