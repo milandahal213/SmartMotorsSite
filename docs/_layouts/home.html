@@ -1,4 +1,3 @@
-<!-- _layouts/home.html -->
 ---
 layout: default
 ---
@@ -23,7 +22,7 @@ layout: default
         <h3>Feature 1 - Screen free</h3>
         <p>{{ site.data.features.feature1_description }}</p>
       </div>
-      
+
       <div class="feature-item">
         <div class="feature-image">
           <img src="{{ '/assets/images/feature-2.jpg' | relative_url }}" alt="Hands on learning">
@@ -31,7 +30,7 @@ layout: default
         <h3>Feature 2 - Hands on</h3>
         <p>{{ site.data.features.feature2_description }}</p>
       </div>
-      
+
       <div class="feature-item">
         <div class="feature-image">
           <img src="{{ '/assets/images/feature-3.jpg' | relative_url }}" alt="Trainable system">
@@ -39,7 +38,7 @@ layout: default
         <h3>Feature 3 - Trainable system</h3>
         <p>{{ site.data.features.feature3_description }}</p>
       </div>
-      
+
       <div class="feature-item">
         <div class="feature-image">
           <img src="{{ '/assets/images/feature-4.jpg' | relative_url }}" alt="Low barrier high ceiling">
@@ -69,31 +68,31 @@ layout: default
         <div class="step-image">
           <img src="{{ '/assets/images/step-1.gif' | relative_url }}" alt="Step 1 demonstration">
         </div>
-        <h3>Step 1</h3>
+        <h3>Step 1 - Image or GIF</h3>
         <p>{{ site.data.steps.step1_description }}</p>
       </div>
-      
+
       <div class="step-item">
         <div class="step-image">
           <img src="{{ '/assets/images/step-2.gif' | relative_url }}" alt="Step 2 demonstration">
         </div>
-        <h3>Step 2</h3>
+        <h3>STEP 2 - GIF</h3>
         <p>{{ site.data.steps.step2_description }}</p>
       </div>
-      
+
       <div class="step-item">
         <div class="step-image">
           <img src="{{ '/assets/images/step-3.gif' | relative_url }}" alt="Step 3 demonstration">
         </div>
-        <h3>Step 3</h3>
+        <h3>STEP 3 - GIF</h3>
         <p>{{ site.data.steps.step3_description }}</p>
       </div>
-      
+
       <div class="step-item">
         <div class="step-image">
           <img src="{{ '/assets/images/step-4.gif' | relative_url }}" alt="Step 4 demonstration">
         </div>
-        <h3>Step 4</h3>
+        <h3>STEP 4 - GIF</h3>
         <p>{{ site.data.steps.step4_description }}</p>
       </div>
     </div>
@@ -105,12 +104,12 @@ layout: default
   <div class="container">
     <h2>Gallery</h2>
     <div class="gallery-grid">
-      {% for item in site.data.gallery.items %}
+      {% for item in site.data.gallery.items limit:8 %}
         <div class="gallery-item">
           <div class="gallery-image">
             <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
           </div>
-          <p>{{ item.description }}</p>
+          <p>{{ item.description | truncate: 80 }}</p>
         </div>
       {% endfor %}
     </div>
