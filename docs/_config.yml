@@ -1,1 +1,62 @@
-# Insert updated _config.yml content here
+# Site settings
+title: Smart Motors
+email: milan.dahal@tufts.edu
+description: >-
+  Welcome to Smart Motors. Find how you can use Smart Motors to bring robotics in your classroom.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://smart-motors.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Social media profiles
+twitter_username: smartmotors
+github_username:  smart-motors
+instagram_username: smartmotors
+linkedin_username: smartmotors
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Collections
+collections:
+  tutorials:
+    output: true
+    permalink: /resources/tutorials/:path/
+  lesson_plans:
+    output: true
+    permalink: /resources/lesson-plans/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "tutorials"
+    values:
+      layout: "tutorial"
+  - scope:
+      path: ""
+      type: "lesson_plans"
+    values:
+      layout: "lesson_plan"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

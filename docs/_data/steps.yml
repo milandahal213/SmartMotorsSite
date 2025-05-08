@@ -1,1 +1,17 @@
-# Insert steps.yml content here
+# _data/steps.yml
+
+step1_description: >-
+  Connect the Smart Motor to your project base. Ensure the connectors are properly aligned
+  and securely fastened.
+
+step2_description: >-
+  Program the Smart Motor using the intuitive gesture interface. Demonstrate the movement
+  patterns you want the motor to learn.
+
+step3_description: >-
+  Save your programmed sequence by pressing the save button. The motor will store the
+  pattern in its memory for future use.
+
+step4_description: >-
+  Deploy your Smart Motor in your project. The motor will execute the saved sequences
+  when activated by the corresponding triggers.
