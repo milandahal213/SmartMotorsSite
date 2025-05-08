@@ -3,8 +3,8 @@ title: Smart Motors
 email: milan.dahal@tufts.edu
 description: >-
   Welcome to Smart Motors. Find how you can use Smart Motors to bring robotics in your classroom.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://smart-motors.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/SmartMotorsSite" # the subpath of your site, e.g. /blog
+url: "https://milandahal213.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Social media profiles
 twitter_username: smartmotors
