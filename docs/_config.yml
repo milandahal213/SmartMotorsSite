@@ -2,10 +2,12 @@
 title: Smart Motors
 baseurl: "/SmartMotorsSite"
 url: "https://milandahal213.github.io"
+include:
+  - _pages
 
 # Build settings
 markdown: kramdown
 exclude:
-  - docs/
   - Gemfile
   - Gemfile.lock
+  - node_modules

@@ -302,3 +302,23 @@ body {
     height: 180px;
   }
 }
+
+/* Logo styling */
+.site-logo {
+  max-height: 100px; /* Adjust this value to match your logo height */
+  width: auto;
+  display: block;
+}
+
+/* If you want a bit more space around the logo */
+.logo a {
+  display: inline-block;
+  padding: 5px 0;
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+  .site-logo {
+    max-height: 80px; /* Slightly smaller on mobile */
+  }
+}
