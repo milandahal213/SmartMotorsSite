@@ -1,1 +1,118 @@
-<!-- Insert home.html content here -->
+<!-- _layouts/home.html -->
+---
+layout: default
+---
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-image">
+      <img src="{{ '/assets/images/hero-image.jpg' | relative_url }}" alt="Image of people interacting with Smart Motors">
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-image">
+          <img src="{{ '/assets/images/feature-1.jpg' | relative_url }}" alt="Screen free image">
+        </div>
+        <h3>Feature 1 - Screen free</h3>
+        <p>{{ site.data.features.feature1_description }}</p>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-image">
+          <img src="{{ '/assets/images/feature-2.jpg' | relative_url }}" alt="Hands on learning">
+        </div>
+        <h3>Feature 2 - Hands on</h3>
+        <p>{{ site.data.features.feature2_description }}</p>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-image">
+          <img src="{{ '/assets/images/feature-3.jpg' | relative_url }}" alt="Trainable system">
+        </div>
+        <h3>Feature 3 - Trainable system</h3>
+        <p>{{ site.data.features.feature3_description }}</p>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-image">
+          <img src="{{ '/assets/images/feature-4.jpg' | relative_url }}" alt="Low barrier high ceiling">
+        </div>
+        <h3>Feature 4 - Low barrier high ceiling</h3>
+        <p>{{ site.data.features.feature4_description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product Showcase Section -->
+<section class="product-showcase">
+  <div class="container">
+    <h2>Smart Motor V3</h2>
+    <div class="product-image">
+      <img src="{{ '/assets/images/smart-motor-v3.jpg' | relative_url }}" alt="Smart Motor V3 product image">
+    </div>
+  </div>
+</section>
+
+<!-- How To Use Section -->
+<section class="how-to-use">
+  <div class="container">
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step-image">
+          <img src="{{ '/assets/images/step-1.gif' | relative_url }}" alt="Step 1 demonstration">
+        </div>
+        <h3>Step 1</h3>
+        <p>{{ site.data.steps.step1_description }}</p>
+      </div>
+      
+      <div class="step-item">
+        <div class="step-image">
+          <img src="{{ '/assets/images/step-2.gif' | relative_url }}" alt="Step 2 demonstration">
+        </div>
+        <h3>Step 2</h3>
+        <p>{{ site.data.steps.step2_description }}</p>
+      </div>
+      
+      <div class="step-item">
+        <div class="step-image">
+          <img src="{{ '/assets/images/step-3.gif' | relative_url }}" alt="Step 3 demonstration">
+        </div>
+        <h3>Step 3</h3>
+        <p>{{ site.data.steps.step3_description }}</p>
+      </div>
+      
+      <div class="step-item">
+        <div class="step-image">
+          <img src="{{ '/assets/images/step-4.gif' | relative_url }}" alt="Step 4 demonstration">
+        </div>
+        <h3>Step 4</h3>
+        <p>{{ site.data.steps.step4_description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery Section -->
+<section class="gallery">
+  <div class="container">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      {% for item in site.data.gallery.items %}
+        <div class="gallery-item">
+          <div class="gallery-image">
+            <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
+          </div>
+          <p>{{ item.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
