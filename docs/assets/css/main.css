@@ -167,10 +167,10 @@ body {
 }
 
 .product-image {
-  width: 200px;
-  height: 150px;
+  width: 600px;
+  height: 100%;
   margin: 0 auto;
-  background-color: #f0f0f0;
+  -webkit-box-reflect: below -80px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.2));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -368,5 +368,72 @@ body {
 @media (max-width: 768px) {
   .site-logo {
     max-height: 80px; /* Slightly smaller on mobile */
+  }
+}
+
+/* Simplified 3D Model Viewer Styles (No Buttons) */
+
+/* Container for the model viewer */
+.model-container {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  margin: 0 auto 30px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* The model-viewer element */
+model-viewer {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  --poster-color: transparent;
+  --progress-bar-height: 5px;
+  --progress-bar-color: #007bff;
+}
+
+/* Progress bar for loading */
+.progress-bar {
+  display: block;
+  width: 33%;
+  height: 100%;
+  max-height: 4px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 25px;
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar.hide {
+  visibility: hidden;
+  transition: visibility 0.3s;
+}
+
+.update-bar {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 0%;
+  height: 100%;
+  border-radius: 25px;
+  float: left;
+  transition: width 0.3s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .model-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .model-container {
+    height: 250px;
   }
 }

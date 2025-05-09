@@ -78,3 +78,37 @@ document.addEventListener('DOMContentLoaded', function() {
     resizeTimer = setTimeout(handleImageFit, 250);
   });
 });
+
+// Add this to your main.js file or create a new script file
+
+// Import the model-viewer script in your default.html layout
+// Add this line in the head section of your _layouts/default.html file:
+// <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+// Simplified JavaScript for model-viewer (no buttons)
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if model-viewer exists on the page
+  const modelViewer = document.querySelector('model-viewer');
+
+  if (modelViewer) {
+    // Handle loading state
+    modelViewer.addEventListener('progress', function(event) {
+      const progressBar = document.querySelector('.progress-bar');
+      const updatingBar = document.querySelector('.update-bar');
+
+      if (progressBar && updatingBar) {
+        progressBar.classList.remove('hide');
+        updatingBar.style.width = `${event.detail.totalProgress * 100}%`;
+
+        if (event.detail.totalProgress === 1) {
+          progressBar.classList.add('hide');
+        }
+      }
+    });
+
+    // Optional: Set initial camera position for optimal view
+    modelViewer.cameraOrbit = '0deg 75deg 105%';
+    modelViewer.fieldOfView = '30deg';
+  }
+});
