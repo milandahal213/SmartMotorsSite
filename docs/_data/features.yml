@@ -1,14 +1,13 @@
 # _data/features.yml
 
 feature1_description: >-
-  Smart Motors are standalone systems that do not require computers to program.
+  Smart Motors are standalone systems that do not require computers to program thereby making it easy to setup and use.
 
 feature2_description: >-
-  Smart Motors allows hands-on approach fostering deeper understanding through tactile experiences.
+  Smart Motors allows hands-on experimentation fostering deeper understanding through tactile experiences.
 
 feature3_description: >-
-  Our trainable system adapts to different learning styles and can be customized for various
-  educational activities and objectives.
+  Smart Motors uses training as a method of programming so its behavior is determined by the user data.
 
 feature4_description: >-
   Smart Motors are designed with a low barrier to entry but high ceiling for complexity,
