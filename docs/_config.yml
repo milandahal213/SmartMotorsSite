@@ -1,7 +1,11 @@
-# Basic configuration
+# Site settings
 title: Smart Motors
-baseurl: ""
-url: "www.smartmotors.ai"
+email: milan.dahal@tufts.edu
+description: >-
+  Welcome to Smart Motors. Find how you can use Smart Motors to bring robotics in your classroom.
+baseurl: "" # Empty for custom domain
+url: "https://smartmotors.ai" # Your .ai domain
+
 include:
   - _pages
 
