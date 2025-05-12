@@ -112,3 +112,102 @@ document.addEventListener('DOMContentLoaded', function() {
     modelViewer.fieldOfView = '30deg';
   }
 });
+
+
+// Interactive Steps Section JavaScript
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Get step elements
+  const prevBtn = document.getElementById('prev-step');
+  const nextBtn = document.getElementById('next-step');
+  const stepItems = document.querySelectorAll('.step-item');
+  const stepDots = document.querySelectorAll('.step-dot');
+
+  // Skip if elements don't exist on the page
+  if (!prevBtn || !nextBtn || stepItems.length === 0) return;
+
+  let currentStep = 1;
+  const totalSteps = stepItems.length;
+
+  // Initialize button state
+  updateButtonStates();
+
+  // Add event listeners to navigation buttons
+  prevBtn.addEventListener('click', goToPrevStep);
+  nextBtn.addEventListener('click', goToNextStep);
+
+  // Add event listeners to step indicators
+  stepDots.forEach(dot => {
+    dot.addEventListener('click', function() {
+      const stepNumber = parseInt(this.getAttribute('data-step'));
+      goToStep(stepNumber);
+    });
+  });
+
+  // Function to go to the previous step
+  function goToPrevStep() {
+    if (currentStep > 1) {
+      goToStep(currentStep - 1);
+    }
+  }
+
+  // Function to go to the next step
+  function goToNextStep() {
+    if (currentStep < totalSteps) {
+      goToStep(currentStep + 1);
+    }
+  }
+
+  // Function to go to a specific step
+  function goToStep(stepNumber) {
+    // Update active step
+    stepItems.forEach(item => {
+      item.classList.remove('active');
+      if (parseInt(item.getAttribute('data-step')) === stepNumber) {
+        item.classList.add('active');
+      }
+    });
+
+    // Update step indicators
+    stepDots.forEach(dot => {
+      dot.classList.remove('active');
+      if (parseInt(dot.getAttribute('data-step')) === stepNumber) {
+        dot.classList.add('active');
+      }
+    });
+
+    // Update current step
+    currentStep = stepNumber;
+
+    // Update button states
+    updateButtonStates();
+  }
+
+  // Function to update button states
+  function updateButtonStates() {
+    prevBtn.disabled = currentStep === 1;
+    nextBtn.disabled = currentStep === totalSteps;
+
+    // Visual indication of disabled state
+    prevBtn.style.opacity = currentStep === 1 ? '0.5' : '1';
+    nextBtn.style.opacity = currentStep === totalSteps ? '0.5' : '1';
+  }
+
+  // Optional: Auto-advance steps every 5 seconds (remove if not wanted)
+  /*
+  const autoAdvanceInterval = setInterval(function() {
+    if (currentStep < totalSteps) {
+      goToNextStep();
+    } else {
+      goToStep(1); // Loop back to first step
+    }
+  }, 5000);
+
+  // Clear interval when user interacts
+  [prevBtn, nextBtn, ...stepDots].forEach(el => {
+    el.addEventListener('click', function() {
+      clearInterval(autoAdvanceInterval);
+    });
+  });
+  */
+});

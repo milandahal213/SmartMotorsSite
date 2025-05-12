@@ -84,38 +84,85 @@ layout: default
 <!-- How To Use Section -->
 <section class="how-to-use">
   <div class="container">
-    <div class="steps-grid">
-      <div class="step-item">
-        <div class="step-image">
-          <img src="{{ '/assets/images/step-1.gif' | relative_url }}" alt="Step 1 demonstration">
+    <h2>How It Works</h2>
+
+    <div class="steps-carousel">
+      <!-- Step navigation buttons -->
+      <button id="prev-step" class="step-nav-btn" aria-label="Previous step">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <!-- Steps container -->
+      <div class="steps-container">
+        <!-- Step 1 -->
+        <div class="step-item active" data-step="1">
+          <div class="step-content">
+            <div class="step-image">
+              <img src="{{ '/assets/images/step-1.gif' | relative_url }}" alt="Step 1 demonstration">
+            </div>
+            <div class="step-text">
+              <h3>Step 1</h3>
+              <p>{{ site.data.steps.step1_description }}</p>
+            </div>
+          </div>
         </div>
-        <h3>Step 1 - Image or GIF</h3>
-        <p>{{ site.data.steps.step1_description }}</p>
+
+        <!-- Step 2 -->
+        <div class="step-item" data-step="2">
+          <div class="step-content">
+            <div class="step-image">
+              <img src="{{ '/assets/images/step-2.gif' | relative_url }}" alt="Step 2 demonstration">
+            </div>
+            <div class="step-text">
+              <h3>Step 2</h3>
+              <p>{{ site.data.steps.step2_description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-item" data-step="3">
+          <div class="step-content">
+            <div class="step-image">
+              <img src="{{ '/assets/images/step-3.gif' | relative_url }}" alt="Step 3 demonstration">
+            </div>
+            <div class="step-text">
+              <h3>Step 3</h3>
+              <p>{{ site.data.steps.step3_description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-item" data-step="4">
+          <div class="step-content">
+            <div class="step-image">
+              <img src="{{ '/assets/images/step-4.gif' | relative_url }}" alt="Step 4 demonstration">
+            </div>
+            <div class="step-text">
+              <h3>Step 4</h3>
+              <p>{{ site.data.steps.step4_description }}</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="step-item">
-        <div class="step-image">
-          <img src="{{ '/assets/images/step-2.gif' | relative_url }}" alt="Step 2 demonstration">
-        </div>
-        <h3>STEP 2 - GIF</h3>
-        <p>{{ site.data.steps.step2_description }}</p>
-      </div>
+      <!-- Step navigation buttons -->
+      <button id="next-step" class="step-nav-btn" aria-label="Next step">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
 
-      <div class="step-item">
-        <div class="step-image">
-          <img src="{{ '/assets/images/step-3.gif' | relative_url }}" alt="Step 3 demonstration">
-        </div>
-        <h3>STEP 3 - GIF</h3>
-        <p>{{ site.data.steps.step3_description }}</p>
-      </div>
-
-      <div class="step-item">
-        <div class="step-image">
-          <img src="{{ '/assets/images/step-4.gif' | relative_url }}" alt="Step 4 demonstration">
-        </div>
-        <h3>STEP 4 - GIF</h3>
-        <p>{{ site.data.steps.step4_description }}</p>
-      </div>
+    <!-- Step indicators -->
+    <div class="step-indicators">
+      <span class="step-dot active" data-step="1"></span>
+      <span class="step-dot" data-step="2"></span>
+      <span class="step-dot" data-step="3"></span>
+      <span class="step-dot" data-step="4"></span>
     </div>
   </div>
 </section>

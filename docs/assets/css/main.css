@@ -183,73 +183,206 @@ body {
 }
 
 /* How To Use section */
+
+
 .how-to-use {
-  padding: 30px 0;
+  padding: 50px 0;
+  background-color: #f8f8f8;
 }
 
 .how-to-use h2 {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  font-size: 32px;
 }
 
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+/* Steps carousel layout */
+.steps-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
+/* Navigation buttons */
+.step-nav-btn {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  color: #333;
+}
+
+.step-nav-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.step-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Steps container */
+.steps-container {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 15px;
+  background-color: white;
+  height: 480px; /* Increased to accommodate the GIF height + padding */
+}
+
+/* Individual step */
 .step-item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.step-item.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Step content layout */
+.step-content {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border-radius: 5px;
-  overflow: hidden;
+  height: 100%;
 }
 
 .step-image {
   width: 100%;
-  position: relative;
-  padding-top: 120px; /* Fixed height */
-  background-color: #f5f5f5;
-  overflow: hidden;
-  margin-bottom: 15px;
+  height: auto; /* Changed from fixed height to auto */
   display: flex;
+  justify-content: center; /* Center the GIF horizontally */
   align-items: center;
-  justify-content: center;
+  padding: 15px;
+  background-color: #ffffff;
 }
 
-.step-image .icon-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Step image */
 .step-image img {
   max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+  max-height: 360px; /* Match your GIF height */
+  width: auto; /* Allow natural width */
+  height: auto; /* Allow natural height */
+  object-fit: contain; /* Changed from cover to contain to prevent cropping */
+  display: block;
 }
 
+/* Step text content */
+.step-text {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.step-text h3 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #333;
+}
 
-.step-item h3 {
-  font-size: 16px;
-  padding: 10px;
+.step-text p {
   margin: 0;
+  color: #666;
+  line-height: 1.5;
 }
 
-.step-item p {
-  padding: 0 10px 10px;
-  font-size: 14px;
-  flex-grow: 1;
+/* Step indicators */
+.step-indicators {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.step-dot.active {
+  background-color: #007bff;
+  transform: scale(1.2);
+}
+
+
+@media (max-width: 576px) {
+  .steps-container {
+    height: 400px;
+  }
+
+  .step-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .step-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+
+/* For the desktop layout, adjust these values */
+@media (min-width: 768px) {
+  .steps-container {
+    height: 400px; /* Adjusted for side-by-side layout */
+  }
+
+  .step-content {
+    flex-direction: row;
+  }
+
+  .step-image {
+    width: 480px; /* Match your GIF width */
+    height: 100%;
+    flex-shrink: 0; /* Prevent image from shrinking */
+  }
+
+  .step-text {
+    flex: 1; /* Take remaining space */
+    padding: 25px;
+  }
+}
+
+/* For smaller screens */
+@media (max-width: 767px) {
+  .steps-container {
+    height: 500px; /* Taller on mobile to fit stacked content */
+  }
+
+  .step-content {
+    flex-direction: column;
+  }
+
+  .step-image {
+    height: 360px; /* Match your GIF height */
+  }
 }
 
 /* Gallery section */

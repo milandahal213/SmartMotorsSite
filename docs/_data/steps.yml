@@ -1,17 +1,13 @@
 # _data/steps.yml
 
 step1_description: >-
-  Connect the Smart Motor to your project base. Ensure the connectors are properly aligned
-  and securely fastened.
+  Connect your preferred sensor to the sensor port. If you wish to use the built-in accelerometer, leave the sensor port empty. Then, turn the Smart Motor ON!
 
 step2_description: >-
-  Program the Smart Motor using the intuitive gesture interface. Demonstrate the movement
-  patterns you want the motor to learn.
+  Navigate to + mode using the side buttons. Add motor position and sensor reading pairings to create data for the Smart Motor.
 
 step3_description: >-
-  Save your programmed sequence by pressing the save button. The motor will store the
-  pattern in its memory for future use.
+  Enter play mode and observe how the motor moves according your sensor inputs.
 
 step4_description: >-
-  Deploy your Smart Motor in your project. The motor will execute the saved sequences
-  when activated by the corresponding triggers.
+  Build something and Have Fun!!
