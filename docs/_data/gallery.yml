@@ -1,50 +1,42 @@
 # _data/gallery.yml
 
 items:
-  - title: Classroom Implementation
+  - title: Sample
     image: /assets/images/gallery/gallery-1.gif
     description: >-
-      Students engaging with Smart Motors in a classroom environment, learning 
-      through hands-on experimentation.
+      Sample text
 
-  - title: Engineering Project
-    image: /assets/images/gallery/gallery-2.gif
+  - title: Sample
+    image: /assets/images/gallery/gallery-1.gif
     description: >-
-      A complex engineering project powered by Smart Motors, demonstrating the 
-      versatility and adaptability of our system.
+      Sample text
 
-  - title: Art Installation
-    image: /assets/images/gallery/gallery-3.gif
+  - title: Sample
+    image: /assets/images/gallery/gallery-1.gif
     description: >-
-      Creative art installation using Smart Motors to create interactive and 
-      dynamic visual experiences.
+      Sample text
 
-  - title: Science Experiment
-    image: /assets/images/gallery/gallery-4.gif
+  - title: Sample
+    image: /assets/images/gallery/gallery-1.gif
     description: >-
-      Science experiment utilizing Smart Motors to demonstrate principles of 
-      physics and motion.
+      Sample text
 
-  - title: Robotics Competition
-    image: /assets/images/gallery/gallery-5.gif
+  - title: Sample
+    image: /assets/images/gallery/gallery-1.gif
     description: >-
-      Team using Smart Motors in a robotics competition, showcasing the precision 
-      and reliability of our technology.
+      Sample text
 
-  - title: Maker Workshop
-    image: /assets/images/gallery/gallery-6.gif
+  - title: Sample
+    image: /assets/images/gallery/gallery-1.gif
     description: >-
-      Participants in a maker workshop learning to integrate Smart Motors into 
-      their DIY projects.
+      Sample text
 
-  - title: Educational Kit
-    image: /assets/images/gallery/gallery-7.gif
+  - title: Sample
+    image: /assets/images/gallery/gallery-1.gif
     description: >-
-      The Smart Motors educational kit being used to teach fundamental concepts 
-      of robotics and programming.
+      Sample text
 
-  - title: Interactive Exhibit
-    image: /assets/images/gallery/gallery-8.gif
+  - title: Sample
+    image: /assets/images/gallery/gallery-1.gif
     description: >-
-      Interactive museum exhibit powered by Smart Motors, allowing visitors to 
-      engage with educational content in a dynamic way.
+      Sample text
