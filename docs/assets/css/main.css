@@ -851,3 +851,322 @@ model-viewer {
     font-size: 14px;
   }
 }
+
+
+/* Under Construction Page Styles with Animations */
+
+.under-construction-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.construction-title {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 30px;
+  animation: bounce 2s ease infinite;
+}
+
+.construction-message {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.construction-details {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 30px;
+}
+
+/* Animation container */
+.animation-container {
+  height: 280px;
+  position: relative;
+  margin: 30px auto;
+}
+
+/* Robot styling */
+.robot {
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  transform: translateX(-50%);
+  animation: float 3s ease-in-out infinite;
+}
+
+.robot-body {
+  position: relative;
+  width: 100px;
+  height: 180px;
+}
+
+.robot-head {
+  width: 60px;
+  height: 60px;
+  background-color: #007bff;
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+}
+
+.robot-eyes {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 20px;
+  width: 100%;
+}
+
+.eye {
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 5px;
+  animation: blink 3s linear infinite;
+}
+
+.robot-antenna {
+  width: 6px;
+  height: 15px;
+  background-color: #555;
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.robot-torso {
+  width: 80px;
+  height: 80px;
+  background-color: #0056b3;
+  border-radius: 5px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 65px;
+}
+
+.robot-badge {
+  width: 20px;
+  height: 20px;
+  background-color: #ff9800;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+  animation: pulse 2s ease infinite;
+}
+
+.robot-arms {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.arm {
+  width: 12px;
+  height: 60px;
+  background-color: #007bff;
+  border-radius: 6px;
+}
+
+.arm.left {
+  transform-origin: top center;
+  animation: waveLeft 2s ease-in-out infinite;
+  margin-left: -5px;
+}
+
+.arm.right {
+  transform-origin: top center;
+  animation: waveRight 2s ease-in-out infinite;
+  margin-right: -5px;
+}
+
+.robot-legs {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.leg {
+  width: 15px;
+  height: 40px;
+  background-color: #007bff;
+  border-radius: 6px;
+  margin: 0 10px;
+}
+
+/* Building blocks */
+.blocks-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 60px;
+}
+
+.block {
+  position: absolute;
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+.block-1 {
+  width: 60px;
+  height: 50px;
+  bottom: 0;
+  left: 20px;
+  animation: blockPulse 3s ease infinite;
+}
+
+.block-2 {
+  width: 70px;
+  height: 40px;
+  bottom: 0;
+  right: 20px;
+  animation: blockPulse 3s ease infinite 0.5s;
+}
+
+.block-3 {
+  width: 50px;
+  height: 30px;
+  bottom: 40px;
+  left: 70px;
+  animation: blockPulse 3s ease infinite 1s;
+}
+
+.gear {
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ff9800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotate 8s linear infinite;
+}
+
+.gear:after {
+  content: '';
+  width: 40%;
+  height: 40%;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+}
+
+.gear-1 {
+  width: 40px;
+  height: 40px;
+  bottom: 60px;
+  left: 10px;
+}
+
+.gear-2 {
+  width: 30px;
+  height: 30px;
+  bottom: 80px;
+  right: 30px;
+  animation-direction: reverse;
+  animation-duration: 5s;
+}
+
+.notification {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.notification p {
+  margin: 0 0 15px 0;
+  color: #555;
+}
+
+.notify-button {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.notify-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-15px); }
+}
+
+@keyframes blink {
+  0%, 45%, 55%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@keyframes waveLeft {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(20deg); }
+}
+
+@keyframes waveRight {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-20deg); }
+}
+
+@keyframes blockPulse {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .construction-title {
+    font-size: 28px;
+  }
+
+  .construction-message {
+    font-size: 18px;
+  }
+
+  .animation-container {
+    height: 250px;
+  }
+
+  .robot-body {
+    transform: scale(0.9);
+  }
+}
