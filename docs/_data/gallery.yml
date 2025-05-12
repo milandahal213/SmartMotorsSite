@@ -1,17 +1,17 @@
 # _data/gallery.yml
 
 items:
-  - title: Sample
+  - title: Scanning camera
     image: /assets/images/gallery/gallery-1.gif
     description: >-
-      Sample text
+      A student demonstrates how he would install cameras to check where the bunnies are, as a solution for a Novel Engineering activity with Muncha Muncha Muncha!
 
-  - title: Sample
+  - title: Jump the fence
     image: /assets/images/gallery/gallery-2.gif
     description: >-
-      Sample text
+      A student demonstrates how he would help the bunnies jump the fence to much on vegetables, as a solution for a Novel Engineering activity with Muncha Muncha Muncha!
 
-  - title: Sample
+  - title: Weed remover
     image: /assets/images/gallery/gallery-3.gif
     description: >-
       Sample text
