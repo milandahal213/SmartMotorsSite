@@ -1,6 +1,6 @@
 # Basic configuration
 title: Smart Motors
-baseurl: "/SmartMotorsSite"
+baseurl: ""
 url: "https://milandahal213.github.io"
 include:
   - _pages
