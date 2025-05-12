@@ -1,0 +1,60 @@
+{
+  "categories": [
+    {
+      "name": "Conference Papers",
+      "items": [
+        {
+          "title": "Introductory Activities for Teaching Robotics with SmartMotors",
+          "authors": "Dahal, M., Kresin, L., & Rogers, C.",
+          "year": "2023, April",
+          "venue": "International Conference on Robotics in Education (RiE)",
+          "pages": "229-241",
+          "publisher": "Cham: Springer Nature Switzerland",
+          "url": "https://link.springer.com/chapter/10.1007/978-3-031-38454-7_20"
+        },
+        {
+          "title": "International Collaboration to Increase Access to Educational Robotics for Students",
+          "authors": "Dahal, M., Kresin, L., Peres, A., Pereira, E. B., & Rogers, C.",
+          "year": "2023, October",
+          "venue": "IEEE Frontiers in Education Conference (FIE)",
+          "pages": "1-5",
+          "publisher": "IEEE",
+          "url": "https://ieeexplore.ieee.org/abstract/document/10343494/"
+        },
+        {
+          "title": "Playful Learning in Robotics: A Case Study with Smart Motors Workshops",
+          "authors": "Dahal, M., Church, W., & Rogers, C.",
+          "year": "2024, October",
+          "venue": "IEEE Frontiers in Education Conference (FIE)",
+          "pages": "1-9",
+          "publisher": "IEEE",
+          "url": "https://ieeexplore.ieee.org/abstract/document/10892854"
+        },
+        {
+          "title": "Smart Motor: A Low-Cost Hardware and Software Toolkit for Introducing Supervised Machine Learning to Elementary School Students",
+          "authors": "Burman, Tanushree, Milan Dahal, Geling Xu, Chris Rogers, Jennifer Cross, and Jivko Sinapov",
+          "year": "2025",
+          "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+          "volume": "39",
+          "issue": "28",
+          "pages": "29128-29136",
+          "url": "https://www.example-journal.com/screen-free-robotics"
+        }
+      ]
+    },
+    {
+      "name": "Posters",
+      "items": [
+        {
+          "title": "Using Onshape to design Smart Motors",
+          "authors": "Milan Dahal",
+          "year": "",
+          "venue": "International Symposium on Educational Technology",
+          "location": "Tokyo, Japan",
+          "url": "https://www.onshape.com/academic/edu-web-content/research-symposium-posters/2023/Dahal,_M._-_Using_Onshape_to_design_Smart_Motors.pdf",
+          "pdfUrl": "/assets/papers/onshape.pdf"
+        }
+      ]
+    }
+  ]
+}

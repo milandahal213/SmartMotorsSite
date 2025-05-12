@@ -1170,3 +1170,32 @@ model-viewer {
     transform: scale(0.9);
   }
 }
+
+.pdf-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  background-color: #e74c3c; /* Red color for PDF */
+  color: #fff;
+  border: none;
+}
+
+.pdf-link:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-link svg {
+  transition: transform 0.2s;
+}
+
+.pdf-link:hover svg {
+  transform: translateY(2px);
+}
