@@ -53,6 +53,13 @@
           "year": "2024",
           "venue": "2024 ASEE Annual Conference & Exposition",
           "url": "https://peer.asee.org/47419"
+        },
+        {
+          "title": "Balancing Act: Mastering Beam-and-Ball Control with Reinforcement Learning",
+          "authors": "Tanushree Burman, Jevon Coney, Chris Rogers, Jennifer Cross and Jivko Sinapov",
+          "year": "2025",
+          "venue": "International Conference on Robotics in Education (RiE)",
+          "url": ""
         }
       ]
     },
