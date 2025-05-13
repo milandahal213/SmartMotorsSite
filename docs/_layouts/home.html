@@ -171,9 +171,12 @@ layout: default
 <section class="gallery">
   <div class="container">
     <h2>Gallery</h2>
-    <div class="gallery-grid">
-      {% for item in site.data.gallery.items limit:8 %}
-        <div class="gallery-item">
+    <div class="gallery-grid" id="gallery-container">
+      {% for item in site.data.gallery.items %}
+        <div class="gallery-item{% if forloop.index > 6 %} hidden{% endif %}"
+             data-index="{{ forloop.index }}"
+             data-title="{{ item.title }}"
+             data-full-description="{{ item.description }}">
           <div class="gallery-image">
             <img src="{{ item.image | relative_url }}" alt="{{ item.title }}">
           </div>
@@ -181,5 +184,42 @@ layout: default
         </div>
       {% endfor %}
     </div>
+
+    <!-- Pagination controls -->
+    <div class="gallery-pagination">
+      <button id="prev-gallery-page" class="gallery-nav-btn" disabled>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>Previous</span>
+      </button>
+
+      <div class="gallery-page-indicators" id="gallery-indicators"></div>
+
+      <button id="next-gallery-page" class="gallery-nav-btn">
+        <span>Next</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
   </div>
 </section>
+
+<!-- Gallery Modal/Lightbox -->
+<div id="gallery-modal" class="gallery-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-navigation">
+      <button id="prev-modal-item" class="modal-nav-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="modal-media-container">
+        <img id="modal-image" src="" alt="">
+      </div>
+      <button id="next-modal-item" class="modal-nav-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+    <div class="modal-description">
+      <h3 id="modal-title"></h3>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+</div>

@@ -211,3 +211,224 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   */
 });
+
+// Gallery Pagination JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Skip if we're not on a page with gallery
+  const galleryContainer = document.getElementById('gallery-container');
+  if (!galleryContainer) return;
+
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const prevButton = document.getElementById('prev-gallery-page');
+  const nextButton = document.getElementById('next-gallery-page');
+  const indicatorsContainer = document.getElementById('gallery-indicators');
+
+  // Constants
+  const ITEMS_PER_PAGE = 6;
+
+  // Calculate total pages
+  const totalItems = galleryItems.length;
+  const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+  let currentPage = 1;
+
+  // Create page indicators
+  for (let i = 1; i <= totalPages; i++) {
+    const indicator = document.createElement('div');
+    indicator.classList.add('gallery-page-dot');
+    if (i === 1) indicator.classList.add('active');
+    indicator.dataset.page = i;
+
+    indicator.addEventListener('click', function() {
+      goToPage(parseInt(this.dataset.page));
+    });
+
+    indicatorsContainer.appendChild(indicator);
+  }
+
+  // Only show pagination if we have more than one page
+  if (totalPages <= 1) {
+    document.querySelector('.gallery-pagination').style.display = 'none';
+  }
+
+  // Navigation functions
+  function updateDisplay() {
+    // Hide all items
+    galleryItems.forEach(item => item.classList.add('hidden'));
+
+    // Show items for current page
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalItems);
+
+    for (let i = startIndex; i < endIndex; i++) {
+      galleryItems[i].classList.remove('hidden');
+    }
+
+    // Update button states
+    prevButton.disabled = currentPage === 1;
+    nextButton.disabled = currentPage === totalPages;
+
+    // Update indicators
+    document.querySelectorAll('.gallery-page-dot').forEach(dot => {
+      dot.classList.remove('active');
+      if (parseInt(dot.dataset.page) === currentPage) {
+        dot.classList.add('active');
+      }
+    });
+  }
+
+  function goToPage(pageNumber) {
+    currentPage = pageNumber;
+    updateDisplay();
+
+    // Scroll to top of gallery
+    galleryContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Add event listeners to buttons
+  prevButton.addEventListener('click', function() {
+    if (currentPage > 1) {
+      goToPage(currentPage - 1);
+    }
+  });
+
+  nextButton.addEventListener('click', function() {
+    if (currentPage < totalPages) {
+      goToPage(currentPage + 1);
+    }
+  });
+
+  // Initialize display
+  updateDisplay();
+});
+
+// Gallery Modal/Lightbox JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Skip if we're not on a page with gallery
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  if (galleryItems.length === 0) return;
+
+  const modal = document.getElementById('gallery-modal');
+  const modalImage = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDescription = document.getElementById('modal-description');
+  const closeButton = document.querySelector('.close-modal');
+  const prevButton = document.getElementById('prev-modal-item');
+  const nextButton = document.getElementById('next-modal-item');
+
+  let currentItemIndex = 0;
+  const visibleItems = []; // For pagination-aware navigation
+
+  // Make gallery images clickable
+  galleryItems.forEach((item, index) => {
+    const imageContainer = item.querySelector('.gallery-image');
+
+    if (imageContainer) {
+      imageContainer.addEventListener('click', function() {
+        // Update array of visible items (for pagination-aware navigation)
+        updateVisibleItems();
+
+        // Find the position in visible items if using pagination
+        // Otherwise just use the original index
+        let targetIndex = index;
+        if (document.querySelector('.gallery-pagination')) {
+          const visibleIndex = visibleItems.indexOf(item);
+          if (visibleIndex !== -1) {
+            targetIndex = visibleIndex;
+          }
+        }
+
+        currentItemIndex = targetIndex;
+        openModal(item);
+      });
+    }
+  });
+
+  // Update the array of currently visible items
+  function updateVisibleItems() {
+    visibleItems.length = 0; // Clear the array
+    galleryItems.forEach(item => {
+      if (!item.classList.contains('hidden')) {
+        visibleItems.push(item);
+      }
+    });
+  }
+
+  // Open the modal with the given item
+  function openModal(item) {
+    const itemImage = item.querySelector('.gallery-image img');
+    const itemTitle = item.dataset.title || (itemImage ? itemImage.alt : '') || 'Project';
+
+    // Use full description from data attribute if available, otherwise use paragraph text
+    const fullDescription = item.dataset.fullDescription || item.querySelector('p').textContent;
+
+    modalImage.src = itemImage.src;
+    modalTitle.textContent = itemTitle;
+    modalDescription.textContent = fullDescription;
+
+    modal.style.display = 'block';
+    document.body.classList.add('modal-open');
+
+    // Update navigation button states
+    updateNavButtons();
+  }
+
+  // Close the modal
+  function closeModal() {
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
+
+  // Navigate to previous item
+  function goToPrevItem() {
+    if (currentItemIndex > 0) {
+      currentItemIndex--;
+      const itemsToUse = visibleItems.length > 0 ? visibleItems : galleryItems;
+      openModal(itemsToUse[currentItemIndex]);
+    }
+  }
+
+  // Navigate to next item
+  function goToNextItem() {
+    const itemsToUse = visibleItems.length > 0 ? visibleItems : galleryItems;
+    if (currentItemIndex < itemsToUse.length - 1) {
+      currentItemIndex++;
+      openModal(itemsToUse[currentItemIndex]);
+    }
+  }
+
+  // Update navigation button states
+  function updateNavButtons() {
+    const itemsToUse = visibleItems.length > 0 ? visibleItems : galleryItems;
+    prevButton.disabled = currentItemIndex === 0;
+    nextButton.disabled = currentItemIndex === itemsToUse.length - 1;
+
+    // Visual indication of disabled state
+    prevButton.style.opacity = currentItemIndex === 0 ? '0.5' : '1';
+    nextButton.style.opacity = currentItemIndex === itemsToUse.length - 1 ? '0.5' : '1';
+  }
+
+  // Add event listeners
+  closeButton.addEventListener('click', closeModal);
+  prevButton.addEventListener('click', goToPrevItem);
+  nextButton.addEventListener('click', goToNextItem);
+
+  // Close when clicking outside modal content
+  modal.addEventListener('click', function(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Handle keyboard navigation
+  document.addEventListener('keydown', function(event) {
+    if (modal.style.display !== 'block') return;
+
+    if (event.key === 'Escape') {
+      closeModal();
+    } else if (event.key === 'ArrowLeft') {
+      goToPrevItem();
+    } else if (event.key === 'ArrowRight') {
+      goToNextItem();
+    }
+  });
+});

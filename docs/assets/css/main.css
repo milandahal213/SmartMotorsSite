@@ -385,49 +385,8 @@ body {
   }
 }
 
-/* Gallery section */
-.gallery {
-  padding: 30px 0;
-}
 
-.gallery h2 {
-  text-align: center;
-  margin-bottom: 30px;
-}
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.gallery-item {
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 0;
-}
-
-.gallery-image {
-  width: 100%;
-  height: 120px;
-  background-color: #f0f0f0;
-  overflow: hidden;
-}
-
-.gallery-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.gallery-item p {
-  padding: 10px;
-  font-size: 14px;
-  flex-grow: 1;
-}
 
 /* Footer styles */
 .site-footer {
@@ -1198,4 +1157,253 @@ model-viewer {
 
 .pdf-link:hover svg {
   transform: translateY(2px);
+}
+
+/* Gallery section */
+.gallery {
+  padding: 30px 0;
+}
+
+.gallery h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Gallery Image Fit */
+.gallery-image {
+  width: 100%;
+  height: 240px; /* Keep the doubled height */
+  background-color: #f0f0f0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; /* Indicate it's clickable */
+  transition: transform 0.3s;
+}
+
+.gallery-image:hover {
+  transform: scale(1.03); /* Subtle zoom effect on hover */
+}
+
+.gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Change from 'cover' to 'contain' to show full image */
+}
+
+/* Gallery Modal/Lightbox */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  height: 90%;
+  margin: 2% auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.close-modal {
+  color: white;
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1010;
+}
+
+.modal-navigation {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.modal-nav-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 1005;
+}
+
+.modal-nav-btn:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.modal-media-container {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+#modal-image {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.modal-description {
+  color: white;
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+.modal-description h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.modal-description p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Make sure body doesn't scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow for better definition */
+}
+
+.gallery-item p {
+  padding: 15px; /* Increased from 10px for better spacing */
+  font-size: 14px;
+  flex-grow: 1;
+  line-height: 1.5; /* Improved readability */
+}
+
+/* Update responsive height as well */
+@media (max-width: 576px) {
+  .gallery-image {
+    height: 360px; /* Doubled from original 180px for mobile */
+  }
+}
+
+/* Gallery section - Update grid to 3 columns */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Hide items for pagination */
+.gallery-item.hidden {
+  display: none;
+}
+
+/* Gallery pagination controls */
+.gallery-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.gallery-nav-btn {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.gallery-nav-btn:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gallery-page-indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.gallery-page-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.gallery-page-dot.active {
+  background-color: #007bff;
+  transform: scale(1.2);
+}
+
+/* Responsive styles - Make sure gallery still looks good on all screens */
+@media (max-width: 992px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-nav-btn span {
+    display: none;
+  }
 }
