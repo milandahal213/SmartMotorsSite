@@ -11,32 +11,32 @@ items:
     description: >-
       A student demonstrates catapult for bunnies to jump over the fence, as a solution for a Novel Engineering activity with Muncha Muncha Muncha!
 
-  - title: Weed remover
+  - title: Weed or Bunny remover
     image: /assets/images/gallery/gallery-3.gif
     description: >-
-      Sample text
+      A student demonstrates his solution with a DC motor attached to Smart Motor for removing unwanted things from his garden.
 
-  - title: Sample
+  - title: Slide over
     image: /assets/images/gallery/gallery-4.gif
     description: >-
-      Sample text
+      A contraption to help move the farmer from one side of the garden to the other with the tall fences.
 
-  - title: Sample
+  - title: Hello world
     image: /assets/images/gallery/gallery-5.gif
     description: >-
-      Sample text
+      A waving mechanism that uses gears and belts wave hello to you as you approach the light sensor.
 
-  - title: Sample
+  - title: Hello again
     image: /assets/images/gallery/gallery-6.gif
     description: >-
-      Sample text
+      A waving mechanism that uses a rack and pinion mechanism to wave at you in an interesting way.
 
-  - title: Sample
+  - title: Stack'em
     image: /assets/images/gallery/gallery-7.gif
     description: >-
-      Sample text
+      Demonstration of how you can use two Smart Motors to build a 2 DOF arm.
 
-  - title: Sample
+  - title: What's the score?
     image: /assets/images/gallery/gallery-8.gif
     description: >-
-      Sample text
+      Demonstration of how you can build games using Smart Motors and sensors.
