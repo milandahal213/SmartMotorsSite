@@ -75,6 +75,18 @@
           "pdfUrl": "/assets/papers/onshape.pdf"
         }
       ]
+    },
+    {
+      "name": "Dissertation",
+      "items": [
+        {
+          "title": "Designing and Evaluating Smart Motors: Trainable Educational Robotics System for STEM Classrooms",
+          "authors": "Milan Dahal",
+          "year": "2024",
+          "venue": "Tufts University Department of Mechanical Engineering",
+          "url": "https://www.proquest.com/docview/3104983984",
+        }
+      ]
     }
   ]
 }
