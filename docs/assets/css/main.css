@@ -1601,6 +1601,28 @@ body.modal-open {
     border-top: 1px solid #eee;
   }
 
+  .build-instructions .image-single{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .build-instructions .image-single img {
+    flex: 0 1 45%;
+    max-width: 45%;
+    object-fit: contain;
+  }
+
+  @media (max-width: 768px) {
+    .build-instructions .image-single img {
+      flex: 0 1 100%;
+      max-width: 100%;
+    }
+  }
+
+
   .build-instructions .image-row {
     display: flex;
     flex-wrap: wrap;

@@ -10,8 +10,7 @@ permalink: /resources/build-instructions/
   <h2 id="table-of-contents">Table of Contents</h2>
   <ol>
     <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#parts-and-materials">Parts and Materials</a></li>
-    <li><a href="#3d-printing-requirements">3D Printing Requirements</a></li>
+    <li><a href="#preparing">Preparing the parts</a></li>
     <li><a href="#assembly-instructions">Assembly Instructions</a></li>
     <li><a href="#time-estimates">Time Estimates</a></li>
     <li><a href="#programming-your-smart-motor">Programming Your Smart Motor</a></li>
@@ -28,6 +27,10 @@ permalink: /resources/build-instructions/
   <div class="note">
     <strong>Note:</strong> PCB fabrication takes approximately one month from ordering to delivery.
   </div>
+
+
+  <h2 id="preparing">Preparing the parts</h2>
+  Smart Motors V3 has a printed circuit board (PCB), a servo motor and a battery inside the 3D printed case. The case is held together with bolts and threaded nuts. Below are the instructions on where to find all the materials.
 
   <h3>Ordering Smart Motors PCBs.</h3>
   <p>In order to order the PCBs from Seeed Studio:</p>
@@ -132,16 +135,18 @@ Order the following components to complete the assembly.
   <h2 id="assembly-instructions">Assembly Instructions</h2>
 
   <div class="note">
-    <strong>Note:</strong> You can follow along with the <a href="https://www.youtube.com/watch?v=ogWbSUROjmE&t=31s" target="_blank">video tutorial</a> for visual assembly guidance. Please note, the instructions in the video are for using the motor without the battery. 
+    <strong>Note:</strong> You can follow along with the <a href="https://www.youtube.com/watch?v=ogWbSUROjmE&t=31s" target="_blank">video tutorial</a> for visual assembly guidance. Please note, the instructions in the video are for assembling Smart Motor without a battery.
   </div>
-
-  <img src="/assets/build_instructions/all_parts.png" alt="All Required Parts">
-
+  <div class ="image-single">
+    <img src="/assets/build_instructions/all_parts.png" alt="All Required Parts">
+  </div>
   <h3>Step 1: Prepare the Electronics</h3>
   <ol>
     <li>
-      <span class="step">Solder the OLED screen</span> to the Smart Motor board.
+      <span class="step"> Solder the OLED screen</span> to the Smart Motor board. Solder them in the second row of headers as shown in the image. (Skip this step if your board already has OLED screen.)
+      <div class ="image-single">
       <img src="/assets/build_instructions/oled_soldering.png" alt="OLED Screen Soldering">
+      </div>
     </li>
     <li>
       <span class="step">Attach the antenna</span> to the Smart Motor board.
@@ -149,20 +154,23 @@ Order the following components to complete the assembly.
         <li>Angle the side opposite to the wire more downward to help with insertion</li>
         <li>Press firmly until it snaps into place</li>
       </ul>
+      <div class ="image-single">
+        <img src="/assets/build_instructions/antenna_wire.png" alt="Antenna wire">
+      </div>
     </li>
     <li>
       <span class="step">Connect the servo motor</span> to the motor pins on the Smart Motor board.
       <ul>
         <li>Ensure the wires are inserted in the row labeled "BATT" (if using battery)</li>
         <li>The brown wire should be on the inside</li>
-        <li>There should be one unused row on the outside</li>
+        <li>There should be one unused header on the outside</li>
       </ul>
+      <div class ="image-single">
+        <img src="/assets/build_instructions/motor_wire.png" alt="Motor connection">
+      </div>
     </li>
     <li>
       <span class="step">Attach the LiPo battery</span> to the battery port on the Smart Motor board.
-      <ul>
-        <li>Make sure the wires are correctly oriented for proper connection</li>
-      </ul>
     </li>
   </ol>
 
@@ -176,12 +184,25 @@ Order the following components to complete the assembly.
         <li>Use a screwdriver to fully tighten the bolt until the nut is secure</li>
         <li>Remove the bolt when the nut is in place</li>
       </ul>
+      <div class ="image-row-4">
+        <a><img src="/assets/build_instructions/nut_1.png" alt="Step 1" title="Step 1" ></a>
+        <a><img src="/assets/build_instructions/nut_2.png" alt="Step 2" title="Step 2"></a>
+        <a><img src="/assets/build_instructions/nut_3.png" alt="Step 3" title="Step 3"></a>
+        <a><img src="/assets/build_instructions/nut_4.png" alt="Step 4" title="Step 4"></a>
+      </div>
     </li>
     <li>
       <span class="step">Insert the motor</span> into the box.
+      <div class="image-row">
+        <img src="/assets/build_instructions/motor_insert_1.png" alt="Insert motor view 1">
+        <img src="/assets/build_instructions/motor_insert_2.png" alt="Insert motor view 2">
+      </div>
     </li>
     <li>
-      <span class="step">Position the motor mount</span> into the box and attach it with the 12mm bolt.
+      <span class="step">Position the motor mount</span> into the box and attach it with the 10mm bolt.
+      <div class ="image-single">
+        <img src="/assets/build_instructions/motor_mount_view.png" alt="Motor mount connection">
+      </div>
     </li>
     <li>
       <span class="step">Attach the wheel</span> to the servo motor:
@@ -191,6 +212,9 @@ Order the following components to complete the assembly.
         <li>This may require some force to attach</li>
         <li>Secure it with the bolt from the servo motor packet (not the screw)</li>
       </ul>
+      <div class ="image-single">
+        <img src="/assets/build_instructions/servo_horn_view.png" alt="Servo Horn connection">
+      </div>
     </li>
   </ol>
 
@@ -198,22 +222,31 @@ Order the following components to complete the assembly.
   <ol start="9">
     <li>
       <span class="step">Insert the battery</span> into the box.
+      <div class ="image-single">
+        <img src="/assets/build_instructions/battery_view.png" alt="Battery connection">
+      </div>
     </li>
     <li>
       <span class="step">Arrange the electronics</span>:
       <ul>
         <li>Stuff the wire and antenna into the box</li>
         <li>Secure the Smart Motor board so it sits flush</li>
+        <div class="image-row">
+          <img src="/assets/build_instructions/stuff_electronics_1.png" alt="Stuff electronics 1">
+          <img src="/assets/build_instructions/stuff_electronics_2.png" alt="Stuff electronics 2">
+        </div>
       </ul>
     </li>
     <li>
       <span class="step">Set the sensor switch</span> to analog by flipping the switch toward the right.
-      <img src="/assets/build_instructions/sensor_switch.png" alt="Sensor Switch Location">
+      <div class ="image-single">
+        <img src="/assets/build_instructions/sensor_switch.png" alt="Sensor Switch Location">
+      </div>
     </li>
     <li>
       <span class="step">Install the threaded inserts</span>:
       <ul>
-        <li>Use a soldering iron to insert the threaded inserts into the two holes on the TOP 3D printed part</li>
+        <li>Use a soldering iron to insert the threaded inserts into the two holes on the TOP 3D printed part (watch video for demonstration)</li>
       </ul>
       <div class="image-row">
         <img src="/assets/build_instructions/threaded_insert1.png" alt="Threaded Insert Installation - 1">
@@ -227,9 +260,16 @@ Order the following components to complete the assembly.
         <li>Place the TOP cover on the system</li>
         <li>Use the two 4mm screws to secure it in place</li>
       </ul>
+      <div class="image-row">
+        <img src="/assets/build_instructions/final_front.png" alt="Assembled SM front view">
+        <img src="/assets/build_instructions/final_side.png" alt="Assembled SM side view">
+      </div>
     </li>
     <li>
       <span class="step">Install the button cover</span> by pressing it into place.
+      <div class ="image-single">
+        <img src="/assets/build_instructions/final_final_v3.png" alt="Final assembly">
+      </div>
     </li>
   </ol>
 
@@ -260,14 +300,10 @@ Order the following components to complete the assembly.
     </li>
     <li>
       <span class="step">Upload the code</span> to the ESP32C3 using a USB-C cable:
-      <ul>
-        <li>Use the <a href="https://mdahal01.pyscriptapps.com/smart-motor-update-portal/latest/" target="_blank">Smart Motor Update Portal</a> to upload the code</li>
-        <li>Alternatively, get the source code from our <a href="https://github.com/tuftsceeo/SmartMotors" target="_blank">GitHub repository</a></li>
-      </ul>
-    </li>
+      Use the <a href="https://mdahal01.pyscriptapps.com/smart-motor-update-portal-working/latest/" target="_blank">Smart Motor Update Portal</a> to upload the code</li>
   </ol>
 
   <hr>
 
-  <p><small>This guide is maintained by the Smart Motors team. For questions or support, please visit our <a href="https://github.com/tuftsceeo/SmartMotors" target="_blank">GitHub repository</a>.</small></p>
+  <p><small>This guide is maintained by the Smart Motors team. For questions or support, please email us. Find our contact info in our <a href="/contact/" target="self">Contact Us</a> page.</small></p>
 </div>
