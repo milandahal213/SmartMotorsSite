@@ -177,7 +177,7 @@ Order the following components to complete the assembly.
   <h3>Step 2: Prepare the 3D Printed Parts</h3>
   <ol start="5">
     <li>
-      <span class="step">(Optional) Insert the nut in the nut pocket</span> (may not be required if your 3D prints have good tolerance):
+      <span class="step">Insert the nut in the nut pocket</span> (may not be required if your 3D prints have good tolerance):
       <ul>
         <li>Place a 20mm bolt inside the bottom of the box</li>
         <li>Place the M2 nut and finger-tighten as much as possible</li>
