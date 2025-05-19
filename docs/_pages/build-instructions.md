@@ -268,7 +268,7 @@ Order the following components to complete the assembly.
     <li>
       <span class="step">Install the button cover</span> by pressing it into place.
       <div class ="image-single">
-        <img src="/assets/build_instructions/final_final_v3.png" alt="Final assembly">
+        <img src="/assets/build_instructions/final_final_V3.png" alt="Final assembly">
       </div>
     </li>
   </ol>
