@@ -1621,3 +1621,26 @@ body.modal-open {
       max-width: 100%;
     }
   }
+
+  .build-instructions .image-row-4 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+    align-items: center;
+  }
+
+  .build-instructions .image-row-4 figure {
+    flex: 0 1 22%;
+    max-width: 22%;
+    object-fit: contain;
+  }
+
+
+  @media (max-width: 768px) {
+    .build-instructions .image-row-4 figure{
+      flex: 0 1 100%;
+      max-width: 100%;
+    }
+  }

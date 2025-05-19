@@ -29,9 +29,54 @@ permalink: /resources/build-instructions/
     <strong>Note:</strong> PCB fabrication takes approximately one month from ordering to delivery.
   </div>
 
-  <h2 id="parts-and-materials">Parts and Materials</h2>
+  <h3>Ordering Smart Motors PCBs.</h3>
+  <p>In order to order the PCBs from Seeed Studio:</p>
+  <ol>
+    <li>Go to <a href="https://www.seeedstudio.com/fusion_pcb.html" target="_blank">Seeed Studio Fusion PCB</a> (sign up/login required)</li>
+    <li>Upload the gerber files: <a href="/assets/build_instructions/JulySM.zip">GerberFiles.zip</a></li>
+    <li>Upload the instructions: <a href="/assets/build_instructions/Instructions.zip">Instructions.zip</a></li>
+    <li>Upload the bill of materials: <a href="/assets/build_instructions/BOM.xlsx">BOM.xlsx</a></li>
+  </ol>
 
-  <h3>Required Components</h3>
+  <h3>3D printing Smart Motor parts.</h3>
+  <div>
+    <div>
+        <p>Print the following STL files with PLA filament:</p>
+        <ol>
+          <li><a href="/assets/build_instructions/Top.stl">Top.stl</a></li>
+          <li><a href="/assets/build_instructions/Box.stl">Box.stl</a></li>
+          <li><a href="/assets/build_instructions/Motor_Mount.stl">Motor Mount.stl</a></li>
+          <li><a href="/assets/build_instructions/Servo_Horn.stl">Servo Horn.stl</a></li>
+        </ol>
+      </div>
+
+      <div class="image-row-4">
+        <figure>
+          <img src="/assets/build_instructions/Top.png" alt="Top" href="/assets/build_instructions/Top.stl">
+          <figcaption>Top</figcaption>
+        </figure>
+        <figure>
+        <img src="/assets/build_instructions/Box.png" alt="Box" href="/assets/build_instructions/Box.stl">
+
+        <figcaption>Box</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/build_instructions/Motor_Mount.png" alt="Motor Mount" href="/assets/build_instructions/Motor_Mount.stl">
+
+        <figcaption>Motor Mount</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/build_instructions/Servo_Horn.png" alt="Servo Horn" href="/assets/build_instructions/Servo_Horn.stl">
+
+        <figcaption>Servo Horn</figcaption>
+      </figure>
+
+      </div>
+
+    </div>
+
+  <h3 id="parts-and-materials">Ordering parts and materials.</h3>
+Order the following components to complete the assembly.
   <table>
     <thead>
       <tr>
@@ -98,27 +143,9 @@ permalink: /resources/build-instructions/
   <strong>Note:</strong> Seeedstudio may email you saying they cannot find the OLED screens. You should ask them to try to find the part OLED with part number ZJY096I0400BG01. If they cannot find the OLED, you will need to oder the OLED screens (link above) and solder them on your own (instructions below).  
   </div>
 
-  <h3>PCB Ordering Information</h3>
-  <p>In order to order the PCBs from Seeed Studio:</p>
-  <ol>
-    <li>Go to <a href="https://www.seeedstudio.com/fusion_pcb.html" target="_blank">Seeed Studio Fusion PCB</a> (sign up/login required)</li>
-    <li>Upload the gerber files: <a href="/assets/build_instructions/JulySM.zip">GerberFiles.zip</a></li>
-    <li>Upload the instructions: <a href="/assets/build_instructions/Instructions.zip">Instructions.zip</a></li>
-    <li>Upload the bill of materials: <a href="/assets/build_instructions/BOM.xlsx">BOM.xlsx</a></li>
-  </ol>
 
   <h2 id="3d-printing-requirements">3D Printing Requirements</h2>
 
-  <h3>Required 3D Printed Parts</h3>
-  <img src="/assets/build_instructions/3d_parts_rendering.png" width="250" alt="3D Printed Components Rendering">
-
-  <p>Print the following STL files with PLA filament:</p>
-  <ul>
-    <li><a href="/assets/build_instructions/Top.stl">Top.stl</a></li>
-    <li><a href="/assets/build_instructions/Box.stl">Box.stl</a></li>
-    <li><a href="/assets/build_instructions/Motor_Mount.stl">Motor Mount.stl</a></li>
-    <li><a href="/assets/build_instructions/Servo_Horn.stl">Servo Horn.stl</a></li>
-  </ul>
 
   <h2 id="assembly-instructions">Assembly Instructions</h2>
 
