@@ -1631,7 +1631,7 @@ body.modal-open {
     align-items: center;
   }
 
-  .build-instructions .image-row-4 figure {
+  .build-instructions .image-row-4  img {
     flex: 0 1 22%;
     max-width: 22%;
     object-fit: contain;
@@ -1639,7 +1639,7 @@ body.modal-open {
 
 
   @media (max-width: 768px) {
-    .build-instructions .image-row-4 figure{
+    .build-instructions .image-row-4  img{
       flex: 0 1 100%;
       max-width: 100%;
     }

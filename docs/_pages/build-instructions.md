@@ -51,25 +51,13 @@ permalink: /resources/build-instructions/
       </div>
 
       <div class="image-row-4">
-        <figure>
+
           <img src="/assets/build_instructions/Top.png" alt="Top" href="/assets/build_instructions/Top.stl">
-          <figcaption>Top</figcaption>
-        </figure>
-        <figure>
         <img src="/assets/build_instructions/Box.png" alt="Box" href="/assets/build_instructions/Box.stl">
 
-        <figcaption>Box</figcaption>
-      </figure>
-      <figure>
         <img src="/assets/build_instructions/Motor_Mount.png" alt="Motor Mount" href="/assets/build_instructions/Motor_Mount.stl">
 
-        <figcaption>Motor Mount</figcaption>
-      </figure>
-      <figure>
         <img src="/assets/build_instructions/Servo_Horn.png" alt="Servo Horn" href="/assets/build_instructions/Servo_Horn.stl">
-
-        <figcaption>Servo Horn</figcaption>
-      </figure>
 
       </div>
 
