@@ -41,7 +41,7 @@ permalink: /resources/build-instructions/
   <h3>3D printing Smart Motor parts.</h3>
   <div>
     <div>
-        <p>Print the following STL files with PLA filament:</p>
+        <p>Print the following STL files. Make sure you print the Top with PLA filament as we need to put heated inserts.</p>
         <ol>
           <li><a href="/assets/build_instructions/Top.stl">Top.stl</a></li>
           <li><a href="/assets/build_instructions/Box.stl">Box.stl</a></li>
@@ -51,13 +51,10 @@ permalink: /resources/build-instructions/
       </div>
 
       <div class="image-row-4">
-
-          <img src="/assets/build_instructions/Top.png" alt="Top" href="/assets/build_instructions/Top.stl">
-        <img src="/assets/build_instructions/Box.png" alt="Box" href="/assets/build_instructions/Box.stl">
-
-        <img src="/assets/build_instructions/Motor_Mount.png" alt="Motor Mount" href="/assets/build_instructions/Motor_Mount.stl">
-
-        <img src="/assets/build_instructions/Servo_Horn.png" alt="Servo Horn" href="/assets/build_instructions/Servo_Horn.stl">
+        <a href="/assets/build_instructions/Top.stl"><img src="/assets/build_instructions/Top.png" alt="Top" title="Top" ></a>
+        <a href="/assets/build_instructions/Box.stl"><img src="/assets/build_instructions/Box.png" alt="Box" title="Box"></a>
+        <a href="/assets/build_instructions/Motor_Mount.stl"><img src="/assets/build_instructions/Motor_Mount.png" alt="Motor Mount" title="Motor_Mount"></a>
+        <a href="/assets/build_instructions/Servo_Horn.stl"><img src="/assets/build_instructions/Servo_Horn.png" alt="Servo Horn" title="Servo_Horn"></a>
 
       </div>
 
@@ -132,13 +129,10 @@ Order the following components to complete the assembly.
   </div>
 
 
-  <h2 id="3d-printing-requirements">3D Printing Requirements</h2>
-
-
   <h2 id="assembly-instructions">Assembly Instructions</h2>
 
   <div class="note">
-    <strong>Note:</strong> You can follow along with the <a href="https://www.youtube.com/watch?v=ogWbSUROjmE&t=31s" target="_blank">video tutorial</a> for visual assembly guidance. The instructions below are for assembly without a battery. If you're using a battery, connect it to the battery port and connect the motor to the BATT section.
+    <strong>Note:</strong> You can follow along with the <a href="https://www.youtube.com/watch?v=ogWbSUROjmE&t=31s" target="_blank">video tutorial</a> for visual assembly guidance. Please note, the instructions in the video are for using the motor without the battery. 
   </div>
 
   <img src="/assets/build_instructions/all_parts.png" alt="All Required Parts">
