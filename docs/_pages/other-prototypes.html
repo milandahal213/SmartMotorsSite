@@ -1,0 +1,44 @@
+---
+layout: page
+title: Other Prototypes
+permalink: /resources/other-prototypes/
+---
+
+<div class="prototypes-section">
+  <div class="container">
+    <div class="prototypes-header">
+      <h1>Smart Motors Prototypes</h1>
+      <p class="prototypes-intro">
+        The concept of Smart Motor, a trainable motor, can be implemented on a wide array of platforms.
+        And, that's what we have done. We have demonstrated that Smart Motors can be implemented on platfroms
+         that are already available in classrooms around the world.
+      </p>
+    </div>
+
+    <div class="prototypes-grid">
+      {% for prototype in site.data.prototypes.prototypes %}
+        <div class="prototype-item" data-prototype-id="{{ prototype.id }}">
+          <a href="{{ prototype.permalink }}">
+            <div class="prototype-image">
+              <img src="{{ prototype.images.icon | relative_url }}" alt="{{ prototype.title }}">
+              <div class="prototype-title">
+                <h3>{{ prototype.title }}</h3>
+              </div>
+            </div>
+            <div class="prototype-description">
+              <p>{{ prototype.subtitle }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="prototypes-footer">
+      <div class="prototype-note">
+        <h3>Ready to Build Your Own?</h3>
+        <p>Start with our latest Smart Motor V3 - the culmination of all our prototype learnings. It combines the best features from each prototype into a refined, classroom-ready robotics platform.</p>
+        <p><a href="{{ site.baseurl }}/resources/build-instructions/">View Build Instructions</a> | <a href="{{ site.baseurl }}/">Learn About Smart Motor V3</a></p>
+      </div>
+    </div>
+  </div>
+</div>

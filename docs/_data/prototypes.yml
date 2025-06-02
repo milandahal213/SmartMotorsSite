@@ -1,0 +1,385 @@
+prototypes:
+  - id: "prototype-1"
+    title: "Smart SPIKE"
+    subtitle: "The Foundation Prototype"
+    short_description: "The original concept featuring basic motor control and simple sensor integration. This prototype established the foundation for tactile programming."
+    permalink: "/resources/other-prototypes/smart-spike/"
+
+    images:
+      icon: "/assets/images/prototypes/prototype-1-icon.png"
+      hero: "/assets/images/prototypes/prototype-1-main.jpg"
+      gallery:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-main.png"
+          description: Smart WIO aka Smart Motor V2.1's arrangement. The screen shows the Home screen with Train and Play buttons as well as a preview window showing motor and sensor positions.
+        - title:
+          src: "/assets/images/prototypes/prototype-2-sensor-select-screen.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-train-screen.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-play-screen.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-model-selection-screen.png"
+          description:
+
+    # Required parts with thumbnails and store links
+    parts_needed:
+      - name: "LEGO SPIKE Prime Hub"
+        image: "/assets/images/parts/spike-hub.jpg"
+        link: "https://www.lego.com/en-us/product/lego-education-spike-prime-set-45678"
+        description: "Main processing unit with built-in sensors"
+      - name: "Medium Servo Motor"
+        image: "/assets/images/parts/medium-motor.jpg"
+        link: "https://education.lego.com/en-us/products/lego-education-spike-prime-expansion-set/45680"
+        description: "Precise motor control for movements"
+        quantity: 2
+      - name: "Color Sensor"
+        image: "/assets/images/parts/color-sensor.jpg"
+        link: "https://education.lego.com/en-us/products/lego-education-spike-prime-expansion-set/45680"
+        description: "Detects colors and light intensity"
+      - name: "Force Sensor"
+        image: "/assets/images/parts/force-sensor.jpg"
+        link: "https://education.lego.com/en-us/products/lego-education-spike-prime-expansion-set/45680"
+        description: "Measures pressure and touch"
+      - name: "Connecting Cables"
+        image: "/assets/images/parts/cables.jpg"
+        link: "https://education.lego.com/en-us/products/lego-education-spike-prime-set/45678"
+        description: "Various lengths for connections"
+      - name: "LEGO Building Elements"
+        image: "/assets/images/parts/lego-elements.jpg"
+        link: "https://education.lego.com/en-us/products/lego-education-spike-prime-set/45678"
+        description: "Structural components and connectors"
+
+    # GitHub repository link
+    github:
+      url: "https://github.com/smartmotors/smart-spike"
+      description: "Complete code, documentation, and examples for the Smart SPIKE prototype"
+      branch: "main"
+
+    # Instructions/Lesson Plans section
+    instructions:
+      title: "Build Instructions & Lesson Plans"
+      content: |
+        ## Getting Started with Smart SPIKE
+
+        The Smart SPIKE prototype introduces students to robotics through hands-on, tactile programming. Instead of writing code, students physically guide the motors to create behaviors that the system learns and remembers.
+
+        ### What You'll Learn
+        - Basic robotics concepts and motor control
+        - Sensor integration and feedback systems
+        - Programming fundamentals through physical interaction
+        - Problem-solving skills and creative thinking
+
+        ### Educational Applications
+        - **Elementary (Ages 8-11)**: Simple cause-and-effect relationships, basic motor movements
+        - **Middle School (Ages 12-14)**: Sensor integration, complex movement patterns
+        - **High School (Ages 15-18)**: Advanced programming concepts, research projects
+
+        ### Key Features
+        - **Tactile Programming**: Train motors by physically guiding them
+        - **Sensor Integration**: Color and force sensors provide rich input data
+        - **Visual Feedback**: LED indicators show system status and responses
+        - **Modular Design**: Easy to modify and extend with additional LEGO elements
+
+        *More detailed instructions and additional lesson plans are available in the downloadable PDF guide.*
+      pdf_link: "/assets/instructions/smart-spike-instructions.pdf"
+
+    # Video demonstration
+    video:
+      title: "Smart SPIKE in Action"
+      url: "https://www.youtube.com/watch?v=example1"
+      description: "Watch how the Smart SPIKE prototype responds to different colored objects and demonstrates basic tactile programming concepts."
+
+  - id: "prototype-2"
+    title: "Smart WIO"
+    subtitle: "A Wio Terminal based Smart Motor"
+    short_description: "Smart WIO uses Seeedstudio's Wio Terminal, Grove servo and Grove encoder to implement the Smart Motor concept. The on-board light sensor and accelerometer as well as color display make this version of Smart Motor compact.
+    This prototype was developed to explore the use of color display to communicate information about data, training, states to the user. "
+    permalink: "/resources/other-prototypes/smart-wio/"
+
+    images:
+      icon: "/assets/images/prototypes/prototype-2-icon.png"
+      hero: "/assets/images/prototypes/prototype-2-main.png"
+      gallery:
+        - title: Home Screen
+          src: "/assets/images/prototypes/prototype-2-main.png"
+          description: The screen shows the Home screen with Train and Play buttons as well as a preview window showing motor and sensor positions.
+        - title: Sensor Select Screen
+          src: "/assets/images/prototypes/prototype-2-sensor-select-screen.png"
+          description: The screen shows the sensor select page with an option to select a light sensor, accelerometer or a digital encoder as the sensor. User makes the selection by pressing the buttons on the top.
+        - title: Train Screen
+          src: "/assets/images/prototypes/prototype-2-train-screen.png"
+          description: The screen shows the training screen. The Y-axis is the sensor value and X-axis is the motor position. Motor can be moved using the button in bottom right (left and right). Colors of the dots represent live sensor-motor pairings as well as previous data points. User has option to cancel, delete previous data point or to go to Play Screen.
+        - title: Play Screen
+          src: "/assets/images/prototypes/prototype-2-play-screen.png"
+          description: The screen shows the previous training data as well as the live sensor-motor pairing. The users have option to cancel, edit the dataset as well as choose the training model.
+        - title: Model Selection Screen
+          src: "/assets/images/prototypes/prototype-2-model-selection-screen.png"
+          description: The screen shows two available training models for the dataset. The left is K-nearest neighbors and right is the linear regression.
+
+    parts_needed:
+      - name: "Wio Terminal"
+        image: "/assets/images/parts/wio-terminal.jpg"
+        link: "https://www.seeedstudio.com/Wio-Terminal-p-4509.html"
+        description: "All-in-one development board with display and that's all"
+      - name: "Grove - Servo"
+        image: "/assets/images/parts/grove-servo.jpg"
+        link: "https://www.seeedstudio.com/Grove-Servo.html"
+        description: "Grove-compatible servo motor"
+      - name: "Grove - Encoder"
+        image: "/assets/images/parts/grove-encoder.jpg"
+        link: "https://www.seeedstudio.com/Grove-Encoder.html"
+        description: "Grove-compatible incremental rotary encoder"
+
+
+    github:
+      url: "https://github.com/smartmotors/smart-wio"
+      description: "Arduino C++ code for Wio Terminal with WiFi connectivity and multi-motor coordination"
+      branch: "main"
+
+    instructions:
+      title: "Advanced Programming Guide"
+      content: |
+        ## Smart WIO Build Guide
+
+        This prototype introduces wireless connectivity and advanced sensor integration using the Wio Terminal platform.
+
+        ### Prerequisites
+        - Basic Arduino programming knowledge
+        - Understanding of Grove ecosystem
+        - WiFi network access
+
+        ### Learning Objectives
+        - Wireless communication protocols
+        - Multi-device coordination
+        - Real-time data processing
+        - User interface design
+
+        ### Key Features
+        - **Wireless Connectivity**: WiFi-enabled for multi-device coordination
+        - **Enhanced Display**: Built-in LCD for real-time feedback
+        - **Grove Ecosystem**: Easy sensor/actuator expansion
+        - **Multi-Motor Coordination**: Synchronized movement capabilities
+
+        *Detailed assembly and programming instructions will be added here.*
+      pdf_link: "/assets/instructions/smart-wio-guide.pdf"
+
+    video:
+      title: "Smart WIO Multi-Motor Coordination"
+      url: "https://www.youtube.com/watch?v=example2"
+      description: "Demonstration of wireless connectivity and coordinated motor control with real-time sensor feedback."
+
+  - id: "prototype-3"
+    title: "Smart micro:bit"
+    subtitle: "Alternative Form Factor"
+    short_description: "Alternative form factor exploration focusing on different interaction modalities and programming approaches for educational settings."
+    permalink: "/resources/other-prototypes/smart-microbit/"
+
+    images:
+      icon: "/assets/images/prototypes/prototype-3-icon.png"
+      hero: "/assets/images/prototypes/prototype-3-main.jpg"
+      gallery:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-main.png"
+          description: Smart WIO aka Smart Motor V2.1's arrangement. The screen shows the Home screen with Train and Play buttons as well as a preview window showing motor and sensor positions.
+        - title:
+          src: "/assets/images/prototypes/prototype-2-gallery-1.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-gallery-2.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-gallery-3.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-gallery-4.png"
+          description:
+
+
+    parts_needed:
+      - name: "Arduino Uno R3"
+        image: "/assets/images/parts/arduino-uno.jpg"
+        link: "https://store.arduino.cc/products/arduino-uno-rev3"
+        description: "Classic Arduino development board"
+      - name: "SG90 Servo Motor"
+        image: "/assets/images/parts/sg90-servo.jpg"
+        link: "https://www.amazon.com/dp/B0744JHBMM"
+        description: "Micro servo motor"
+      - name: "HC-SR04 Ultrasonic Sensor"
+        image: "/assets/images/parts/ultrasonic-sensor.jpg"
+        link: "https://www.amazon.com/dp/B01JG09DCK"
+        description: "Distance measurement sensor"
+      - name: "16x2 LCD Display"
+        image: "/assets/images/parts/lcd-display.jpg"
+        link: "https://www.amazon.com/dp/B01GPUMP9C"
+        description: "Character display with I2C backpack"
+      - name: "Breadboard"
+        image: "/assets/images/parts/breadboard.jpg"
+        link: "https://www.amazon.com/dp/B082VYXDF1"
+        description: "Solderless prototyping board"
+      - name: "Jumper Wires"
+        image: "/assets/images/parts/jumper-wires.jpg"
+        link: "https://www.amazon.com/dp/B08151TQHG"
+        description: "Male-to-male connecting wires"
+      - name: "9V Battery Pack"
+        image: "/assets/images/parts/battery-pack.jpg"
+        link: "https://www.amazon.com/dp/B01AXIEDX8"
+        description: "External power supply"
+      - name: "Push Buttons"
+        image: "/assets/images/parts/push-buttons.jpg"
+        link: "https://www.amazon.com/dp/B07VSQMQKK"
+        description: "Tactile push button switches"
+        quantity: 3
+
+    github:
+      url: "https://github.com/smartmotors/smart-arduino"
+      description: "Simple Arduino sketches exploring different interaction modalities and form factors"
+      branch: "experimental"
+
+    instructions:
+      title: "Experimental Design Guide"
+      content: |
+        ## Form Factor Exploration
+
+        This prototype is designed for experimentation with different physical designs and interaction methods.
+
+        ### Design Philosophy
+        - User-centered design approach
+        - Accessibility considerations
+        - Age-appropriate interfaces
+        - Durability testing
+
+        ### Key Research Areas
+        - **Ergonomics**: How different shapes and sizes affect user comfort
+        - **Accessibility**: Features for users with different abilities
+        - **Age Appropriateness**: Designs suitable for various age groups
+        - **Durability**: Materials and construction for classroom use
+
+        ### Experiments to Try
+        1. Different enclosure shapes and sizes
+        2. Alternative input methods (buttons, dials, gestures)
+        3. Various feedback mechanisms (visual, audio, tactile)
+        4. Size variations for different age groups
+
+        *Complete experimental protocols and lesson plans coming soon.*
+      pdf_link: "/assets/instructions/experimental-design-guide.pdf"
+
+    video:
+      title: "Smart Arduino Form Factor Testing"
+      url: "https://www.youtube.com/watch?v=example3"
+      description: "Exploring different physical designs and interaction methods for optimal educational robotics experience."
+
+  - id: "prototype-4"
+    title: "Smart Arduino"
+    subtitle: "Data Collection Platform"
+    short_description: "Specialized version designed for educational research studies, featuring enhanced data collection and analysis capabilities."
+    permalink: "/resources/other-prototypes/smart-arduino/"
+
+    images:
+      icon: "/assets/images/prototypes/prototype-4-icon.png"
+      hero: "/assets/images/prototypes/prototype-4-main.jpg"
+      gallery:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-main.png"
+          description: Smart WIO aka Smart Motor V2.1's arrangement. The screen shows the Home screen with Train and Play buttons as well as a preview window showing motor and sensor positions.
+        - title:
+          src: "/assets/images/prototypes/prototype-2-gallery-1.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-gallery-2.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-gallery-3.png"
+          description:
+        - title:
+          src: "/assets/images/prototypes/prototype-2-gallery-4.png"
+          description:
+
+
+    parts_needed:
+      - name: "Seeed XIAO ESP32C3"
+        image: "/assets/images/parts/xiao-esp32c3.jpg"
+        link: "https://www.seeedstudio.com/Seeed-XIAO-ESP32C3-p-5431.html"
+        description: "Compact WiFi/Bluetooth development board"
+      - name: "Micro Servo Motor"
+        image: "/assets/images/parts/micro-servo.jpg"
+        link: "https://www.amazon.com/dp/B072V529YD"
+        description: "Ultra-compact servo motor"
+      - name: "Grove Light Sensor V1.2"
+        image: "/assets/images/parts/grove-light-v2.jpg"
+        link: "https://www.seeedstudio.com/Grove-Light-Sensor-v1-2-LS06-S-phototransistor.html"
+        description: "High-precision light sensor"
+      - name: "Grove 3-Axis Accelerometer"
+        image: "/assets/images/parts/grove-accelerometer.jpg"
+        link: "https://www.seeedstudio.com/Grove-3-Axis-Digital-Accelerometer-2g-to-16g-LIS3DHTR.html"
+        description: "Motion and orientation sensor"
+      - name: "MicroSD Card Module"
+        image: "/assets/images/parts/microsd-module.jpg"
+        link: "https://www.amazon.com/dp/B01JYNEX56"
+        description: "Data logging storage"
+      - name: "LiPo Battery 500mAh"
+        image: "/assets/images/parts/lipo-500mah.jpg"
+        link: "https://www.adafruit.com/product/1578"
+        description: "Compact rechargeable battery"
+      - name: "Custom PCB"
+        image: "/assets/images/parts/custom-pcb.jpg"
+        link: "/resources/build-instructions/"
+        description: "Research-specific circuit board"
+      - name: "Compact Enclosure"
+        image: "/assets/images/parts/compact-enclosure.jpg"
+        link: "/resources/build-instructions/"
+        description: "Miniaturized 3D printed case"
+
+    github:
+      url: "https://github.com/smartmotors/smart-xiao-research"
+      description: "ESP32 code with comprehensive data logging, WiFi connectivity, and research analytics"
+      branch: "research"
+
+    instructions:
+      title: "Research Platform Setup"
+      content: |
+        ## Educational Research Platform
+
+        This prototype is specifically designed for collecting detailed data on student interactions and learning patterns.
+
+        ### Research Applications
+        - Learning behavior analysis and pattern recognition
+        - Student engagement measurement and tracking
+        - Skill progression monitoring over time
+        - Comparative studies between different teaching methods
+
+        ### Data Collection Features
+        - **Real-time Logging**: Captures all user interactions with timestamps
+        - **Privacy Compliance**: Anonymized data collection following educational guidelines
+        - **Automated Sync**: WiFi-based data synchronization to research servers
+        - **Statistical Tools**: Built-in analysis for immediate insights
+
+        ### Research Metrics Collected
+        - Interaction frequency and duration
+        - Error patterns and recovery strategies
+        - Learning progression indicators
+        - Engagement and attention metrics
+
+        ### Ethics & Privacy
+        All data collection follows educational research guidelines and requires appropriate consent from participants and institutions.
+
+        *Detailed research protocols and IRB documentation available upon request.*
+      pdf_link: "/assets/instructions/research-platform-guide.pdf"
+
+    video:
+      title: "Smart XIAO Research Data Collection"
+      url: "https://www.youtube.com/watch?v=example4"
+      description: "See how the Smart XIAO prototype collects detailed interaction data for educational research studies."
+
+# Configuration for prototype display
+display_settings:
+  items_per_row: 4
+  show_all_items: true
+  enable_modal_details: true
+
+# Navigation settings
+navigation:
+  back_to_prototypes_text: "← Back to All Prototypes"

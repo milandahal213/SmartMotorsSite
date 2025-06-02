@@ -432,3 +432,303 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// Prototype Gallery Carousel JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Skip if we're not on a prototype detail page
+  const carousel = document.querySelector('.prototype-carousel');
+  if (!carousel) return;
+
+  const slides = document.querySelectorAll('.carousel-slide');
+  const indicators = document.querySelectorAll('.carousel-indicator');
+  const prevButton = document.querySelector('.carousel-prev');
+  const nextButton = document.querySelector('.carousel-next');
+
+  if (slides.length === 0) return;
+
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+
+  // Function to show a specific slide
+  function showSlide(index) {
+    // Hide all slides
+    slides.forEach(slide => {
+      slide.classList.remove('active');
+    });
+
+    // Remove active state from all indicators
+    indicators.forEach(indicator => {
+      indicator.classList.remove('active');
+    });
+
+    // Show the current slide
+    slides[index].classList.add('active');
+
+    // Update indicator if it exists
+    if (indicators[index]) {
+      indicators[index].classList.add('active');
+    }
+
+    // Update button states
+    updateButtonStates();
+  }
+
+  // Function to go to the next slide
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+  }
+
+  // Function to go to the previous slide
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    showSlide(currentSlide);
+  }
+
+  // Function to go to a specific slide
+  function goToSlide(index) {
+    currentSlide = index;
+    showSlide(currentSlide);
+  }
+
+  // Function to update button states
+  function updateButtonStates() {
+    // For a looping carousel, buttons are always enabled
+    // If you want to disable buttons at ends, uncomment below:
+    /*
+    prevButton.disabled = currentSlide === 0;
+    nextButton.disabled = currentSlide === totalSlides - 1;
+    prevButton.style.opacity = currentSlide === 0 ? '0.5' : '1';
+    nextButton.style.opacity = currentSlide === totalSlides - 1 ? '0.5' : '1';
+    */
+  }
+
+  // Add event listeners to navigation buttons
+  if (prevButton) {
+    prevButton.addEventListener('click', prevSlide);
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', nextSlide);
+  }
+
+  // Add event listeners to indicators
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', function() {
+      goToSlide(index);
+    });
+  });
+
+  // Add keyboard navigation
+  document.addEventListener('keydown', function(event) {
+    // Only work if the carousel is in view and focused
+    const carouselRect = carousel.getBoundingClientRect();
+    const isInView = carouselRect.top >= 0 && carouselRect.bottom <= window.innerHeight;
+
+    if (!isInView) return;
+
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      prevSlide();
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      nextSlide();
+    }
+  });
+
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carousel.addEventListener('touchstart', function(event) {
+    touchStartX = event.changedTouches[0].screenX;
+  });
+
+  carousel.addEventListener('touchend', function(event) {
+    touchEndX = event.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const swipeThreshold = 50; // Minimum distance for a swipe
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+      if (swipeDistance > 0) {
+        // Swipe right - go to previous slide
+        prevSlide();
+      } else {
+        // Swipe left - go to next slide
+        nextSlide();
+      }
+    }
+  }
+
+  // Optional: Auto-play functionality (uncomment if desired)
+  /*
+  const autoPlayInterval = 5000; // 5 seconds
+  let autoPlayTimer;
+
+  function startAutoPlay() {
+    autoPlayTimer = setInterval(nextSlide, autoPlayInterval);
+  }
+
+  function stopAutoPlay() {
+    clearInterval(autoPlayTimer);
+  }
+
+  // Start auto-play
+  startAutoPlay();
+
+  // Pause auto-play on hover
+  carousel.addEventListener('mouseenter', stopAutoPlay);
+  carousel.addEventListener('mouseleave', startAutoPlay);
+
+  // Pause auto-play when user interacts
+  [prevButton, nextButton, ...indicators].forEach(element => {
+    if (element) {
+      element.addEventListener('click', function() {
+        stopAutoPlay();
+        // Restart auto-play after 10 seconds of inactivity
+        setTimeout(startAutoPlay, 10000);
+      });
+    }
+  });
+  */
+
+  // Initialize the carousel
+  showSlide(0);
+
+  // Handle window resize for responsive behavior
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      // Recalculate positions if needed
+      showSlide(currentSlide);
+    }, 250);
+  });
+});
+
+// Prototype Cards Interaction (for the overview page)
+document.addEventListener('DOMContentLoaded', function() {
+  const prototypeCards = document.querySelectorAll('.prototype-card');
+
+  prototypeCards.forEach(card => {
+    // Add smooth scrolling to prototype links
+    const links = card.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Add hover effect analytics (optional)
+    card.addEventListener('mouseenter', function() {
+      const prototypeId = this.dataset.prototypeId;
+      // You can add analytics tracking here if needed
+      console.log(`Hovered over prototype: ${prototypeId}`);
+    });
+  });
+});
+
+// Timeline Animation (for the overview page)
+document.addEventListener('DOMContentLoaded', function() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+
+  if (timelineItems.length === 0) return;
+
+  // Intersection Observer for timeline animations
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, observerOptions);
+
+  // Set initial state and observe timeline items
+  timelineItems.forEach((item, index) => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(30px)';
+    item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    observer.observe(item);
+  });
+});
+
+// Smooth scrolling for all internal links
+document.addEventListener('DOMContentLoaded', function() {
+  const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+  internalLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+
+      if (targetElement) {
+        e.preventDefault();
+
+        const headerOffset = 80; // Account for fixed header if you have one
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+});
+
+// Image lazy loading for prototype pages
+document.addEventListener('DOMContentLoaded', function() {
+  const images = document.querySelectorAll('img[data-src]');
+
+  if ('IntersectionObserver' in window && images.length > 0) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          const dataSrc = img.getAttribute('data-src');
+
+          if (dataSrc) {
+            img.src = dataSrc;
+            img.removeAttribute('data-src');
+            img.classList.add('loaded');
+          }
+
+          imageObserver.unobserve(img);
+        }
+      });
+    });
+
+    images.forEach(img => {
+      imageObserver.observe(img);
+    });
+  } else {
+    // Fallback for browsers without IntersectionObserver
+    images.forEach(img => {
+      const dataSrc = img.getAttribute('data-src');
+      if (dataSrc) {
+        img.src = dataSrc;
+        img.removeAttribute('data-src');
+      }
+    });
+  }
+});
