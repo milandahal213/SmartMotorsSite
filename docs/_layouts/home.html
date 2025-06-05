@@ -167,7 +167,7 @@ layout: default
   </div>
 </section>
 
-<!-- Gallery Section -->
+<!-- Gallery Section with Improved Navigation -->
 <section class="gallery">
   <div class="container">
     <h2>Gallery</h2>
@@ -202,21 +202,45 @@ layout: default
   </div>
 </section>
 
-<!-- Gallery Modal/Lightbox -->
+<!-- Gallery Modal/Lightbox with Improved Navigation -->
 <div id="gallery-modal" class="gallery-modal">
   <div class="modal-content">
     <span class="close-modal">&times;</span>
     <div class="modal-navigation">
-      <button id="prev-modal-item" class="modal-nav-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <!-- Navigation buttons positioned outside content area -->
+      <button id="prev-modal-item" class="modal-nav-btn nav-button-outside nav-button-large nav-hidden-mobile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
       </button>
+
       <div class="modal-media-container">
         <img id="modal-image" src="" alt="">
       </div>
-      <button id="next-modal-item" class="modal-nav-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+
+      <button id="next-modal-item" class="modal-nav-btn nav-button-outside nav-button-large nav-hidden-mobile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
       </button>
     </div>
+
+    <!-- Mobile-friendly navigation -->
+    <div class="mobile-nav-controls">
+      <button class="mobile-nav-btn" onclick="document.getElementById('prev-modal-item').click()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Previous
+      </button>
+      <button class="mobile-nav-btn" onclick="document.getElementById('next-modal-item').click()">
+        Next
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+
     <div class="modal-description">
       <h3 id="modal-title"></h3>
       <p id="modal-description"></p>

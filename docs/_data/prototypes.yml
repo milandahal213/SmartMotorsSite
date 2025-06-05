@@ -1,7 +1,7 @@
 prototypes:
   - id: "prototype-1"
     title: "Smart SPIKE"
-    subtitle: "The Foundation Prototype"
+    subtitle: "LEGO SPIKE Prime based Smart Motor"
     short_description: "The original concept featuring basic motor control and simple sensor integration. This prototype established the foundation for tactile programming."
     permalink: "/resources/other-prototypes/smart-spike/"
 
@@ -95,7 +95,7 @@ prototypes:
 
   - id: "prototype-2"
     title: "Smart WIO"
-    subtitle: "A Wio Terminal based Smart Motor"
+    subtitle: "Wio Terminal based Smart Motor"
     short_description: "Smart WIO uses Seeedstudio's Wio Terminal, Grove servo and Grove encoder to implement the Smart Motor concept. The on-board light sensor and accelerometer as well as color display make this version of Smart Motor compact.
     This prototype was developed to explore the use of color display to communicate information about data, training, states to the user. "
     permalink: "/resources/other-prototypes/smart-wio/"
@@ -103,6 +103,13 @@ prototypes:
     images:
       icon: "/assets/images/prototypes/prototype-2-icon.png"
       hero: "/assets/images/prototypes/prototype-2-main.png"
+      description: 
+        - title: Implementation
+          content: Smart Wio uses Seeed Studio's Wio Terminal microcontroller and integrates a servo motor with a Grove rotary encoder. The system utilizes the Wio Terminal's 2.4-inch color LCD screen (320 x 240 pixels) for the user interface, while the 3 configurable buttons and 5-way switch provide user input controls. The servo motor occupies one Grove-compatible sensor port, with the rotary encoder using the second available port. Beyond the rotary encoder, Smart Wio incorporates the onboard light sensor and Inertial Measurement Unit (IMU) for additional sensor input.
+        - title: Navigation
+          content: The system defaults to tilt sensor upon startup. From the Home Screen users can access two main functions- navigate to the Sensor Select Screen or proceed directly to the Train Screen. The Sensor Select Screen allows users to choose from three available sensors - light, tilt, or rotary encoder. The Home Screen provides visual feedback through a sensor icon in the top-right corner and an interactive graph displaying real-time sensor readings alongside motor position. Users can manually control the motor by pressing the 5-way switch left (counterclockwise) or right (clockwise).
+        - title: Training and Operation
+          content:  In the Train Screen, user creates sensor-motor associations by positioning the motor at desired locations and pressing the 5-way switch while the sensor registered specific readings. Each successful pairing generates a dot on the grid interface, confirming data storage. Pressing the C button (marked with a play icon) activates Play Mode, where the motor responds automatically based on trained sensor-motor relationships. The Play Screen offers additional functionality- users can edit existing data via the C button or select between two algorithms — nearest neighbor or linear regression—for processing the training data in Model Selection Screen.
       gallery:
         - title: Home Screen
           src: "/assets/images/prototypes/prototype-2-main.png"
@@ -135,46 +142,41 @@ prototypes:
         description: "Grove-compatible incremental rotary encoder"
 
 
-    github:
-      url: "https://github.com/smartmotors/smart-wio"
-      description: "Arduino C++ code for Wio Terminal with WiFi connectivity and multi-motor coordination"
-      branch: "main"
+
 
     instructions:
-      title: "Advanced Programming Guide"
+      title: "Flashing Wio Terminal with Smart Motors code"
       content: |
         ## Smart WIO Build Guide
 
-        This prototype introduces wireless connectivity and advanced sensor integration using the Wio Terminal platform.
-
-        ### Prerequisites
-        - Basic Arduino programming knowledge
-        - Understanding of Grove ecosystem
-        - WiFi network access
-
-        ### Learning Objectives
-        - Wireless communication protocols
-        - Multi-device coordination
-        - Real-time data processing
-        - User interface design
-
-        ### Key Features
-        - **Wireless Connectivity**: WiFi-enabled for multi-device coordination
-        - **Enhanced Display**: Built-in LCD for real-time feedback
-        - **Grove Ecosystem**: Easy sensor/actuator expansion
-        - **Multi-Motor Coordination**: Synchronized movement capabilities
-
-        *Detailed assembly and programming instructions will be added here.*
-      pdf_link: "/assets/instructions/smart-wio-guide.pdf"
+        - Download the firmware by clicking the button below
+        - Connect Wio Terminal to your computer
+        - Put Wio Terminal in bootloader mode - follow video below
+        - Drag and drop the downloaded firmware.uf2 file in the Arduino Drive
+      firmware: "/assets/instructions/firmware.uf2"
+      note: The wiring on hobby servos and Grove servos are slightly different. If you happen to have one of the M5Stack Servos or a generic servo then use the firmware below
+      firmware2: "/assets/instructions/firmware_general.uf2"
 
     video:
-      title: "Smart WIO Multi-Motor Coordination"
-      url: "https://www.youtube.com/watch?v=example2"
-      description: "Demonstration of wireless connectivity and coordinated motor control with real-time sensor feedback."
+      - title: "Setting up Smart Wio"
+        thumbnail: "/assets/images/prototypes/setting_wio.jpg"
+        url: "https://youtu.be/goRLviDwvdA"
+        description: "Video demonstration of how to set up Smart Wio."
+      - title: "Using Smart Wio"
+        thumbnail: "/assets/images/prototypes/using_wio.jpg"
+        url: "https://youtu.be/iqT2T89iBuA"
+        description: "Video demonstration of how to use Smart Wio."
+
+    previous:
+      url: "/resources/other-prototypes/"
+      name: "Back"
+    next: 
+      url: /resources/other-prototypes/smart-microbit/
+      name: "Smart micro:bit"
 
   - id: "prototype-3"
     title: "Smart micro:bit"
-    subtitle: "Alternative Form Factor"
+    subtitle: "Micro:bit based Smart Motor"
     short_description: "Alternative form factor exploration focusing on different interaction modalities and programming approaches for educational settings."
     permalink: "/resources/other-prototypes/smart-microbit/"
 
@@ -274,7 +276,7 @@ prototypes:
 
   - id: "prototype-4"
     title: "Smart Arduino"
-    subtitle: "Data Collection Platform"
+    subtitle: "Arduino Uno based Smart Motor"
     short_description: "Specialized version designed for educational research studies, featuring enhanced data collection and analysis capabilities."
     permalink: "/resources/other-prototypes/smart-arduino/"
 
@@ -383,3 +385,4 @@ display_settings:
 # Navigation settings
 navigation:
   back_to_prototypes_text: "← Back to All Prototypes"
+

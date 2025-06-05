@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
   updateDisplay();
 });
 
-// Gallery Modal/Lightbox JavaScript
+// IMPROVED Gallery Modal/Lightbox JavaScript
 document.addEventListener('DOMContentLoaded', function() {
   // Skip if we're not on a page with gallery
   const galleryItems = document.querySelectorAll('.gallery-item');
@@ -370,6 +370,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update navigation button states
     updateNavButtons();
+
+    // Check if buttons would overlap with content and adjust positioning
+    adjustButtonPositioning();
+  }
+
+  // NEW: Adjust button positioning based on screen size and content
+  function adjustButtonPositioning() {
+    const modalContent = document.querySelector('.modal-content');
+    const modalNavigation = document.querySelector('.modal-navigation');
+
+    if (window.innerWidth <= 992) {
+      // On smaller screens, ensure buttons don't overlap
+      prevButton.style.left = '20px';
+      nextButton.style.right = '20px';
+
+      // Add more padding to the media container
+      const mediaContainer = document.querySelector('.modal-media-container');
+      if (mediaContainer) {
+        mediaContainer.style.margin = '0 60px';
+      }
+    } else {
+      // On larger screens, position buttons outside
+      prevButton.style.left = '-80px';
+      nextButton.style.right = '-80px';
+
+      const mediaContainer = document.querySelector('.modal-media-container');
+      if (mediaContainer) {
+        mediaContainer.style.margin = '0 40px';
+      }
+    }
   }
 
   // Close the modal
@@ -403,8 +433,8 @@ document.addEventListener('DOMContentLoaded', function() {
     nextButton.disabled = currentItemIndex === itemsToUse.length - 1;
 
     // Visual indication of disabled state
-    prevButton.style.opacity = currentItemIndex === 0 ? '0.5' : '1';
-    nextButton.style.opacity = currentItemIndex === itemsToUse.length - 1 ? '0.5' : '1';
+    prevButton.style.opacity = currentItemIndex === 0 ? '0.3' : '1';
+    nextButton.style.opacity = currentItemIndex === itemsToUse.length - 1 ? '0.3' : '1';
   }
 
   // Add event listeners
@@ -431,9 +461,16 @@ document.addEventListener('DOMContentLoaded', function() {
       goToNextItem();
     }
   });
+
+  // Handle window resize for responsive button positioning
+  window.addEventListener('resize', function() {
+    if (modal.style.display === 'block') {
+      adjustButtonPositioning();
+    }
+  });
 });
 
-// Prototype Gallery Carousel JavaScript
+// IMPROVED Prototype Gallery Carousel JavaScript
 document.addEventListener('DOMContentLoaded', function() {
   // Skip if we're not on a prototype detail page
   const carousel = document.querySelector('.prototype-carousel');
@@ -501,6 +538,27 @@ document.addEventListener('DOMContentLoaded', function() {
     prevButton.style.opacity = currentSlide === 0 ? '0.5' : '1';
     nextButton.style.opacity = currentSlide === totalSlides - 1 ? '0.5' : '1';
     */
+  }
+
+  // NEW: Adjust carousel button positioning based on screen size
+  function adjustCarouselButtonPositioning() {
+    if (window.innerWidth <= 992) {
+      // On medium and small screens, position buttons inside
+      if (prevButton) {
+        prevButton.style.left = '20px';
+      }
+      if (nextButton) {
+        nextButton.style.right = '20px';
+      }
+    } else {
+      // On larger screens, position buttons outside
+      if (prevButton) {
+        prevButton.style.left = '-80px';
+      }
+      if (nextButton) {
+        nextButton.style.right = '-80px';
+      }
+    }
   }
 
   // Add event listeners to navigation buttons
@@ -598,6 +656,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Initialize the carousel
   showSlide(0);
+  adjustCarouselButtonPositioning();
 
   // Handle window resize for responsive behavior
   let resizeTimer;
@@ -606,6 +665,7 @@ document.addEventListener('DOMContentLoaded', function() {
     resizeTimer = setTimeout(function() {
       // Recalculate positions if needed
       showSlide(currentSlide);
+      adjustCarouselButtonPositioning();
     }, 250);
   });
 });
@@ -730,5 +790,100 @@ document.addEventListener('DOMContentLoaded', function() {
         img.removeAttribute('data-src');
       }
     });
+  }
+});
+
+// NEW: Smart button visibility based on content overlap
+document.addEventListener('DOMContentLoaded', function() {
+  function checkButtonOverlap() {
+    // Check modal buttons
+    const modalImage = document.getElementById('modal-image');
+    const prevModalBtn = document.getElementById('prev-modal-item');
+    const nextModalBtn = document.getElementById('next-modal-item');
+
+    if (modalImage && prevModalBtn && nextModalBtn) {
+      const imageRect = modalImage.getBoundingClientRect();
+      const prevBtnRect = prevModalBtn.getBoundingClientRect();
+      const nextBtnRect = nextModalBtn.getBoundingClientRect();
+
+      // Check if buttons overlap with image
+      const prevOverlaps = prevBtnRect.right > imageRect.left;
+      const nextOverlaps = nextBtnRect.left < imageRect.right;
+
+      if (prevOverlaps) {
+        prevModalBtn.style.left = '20px';
+      }
+      if (nextOverlaps) {
+        nextModalBtn.style.right = '20px';
+      }
+    }
+
+    // Check carousel buttons
+    const carouselContainer = document.querySelector('.prototype-carousel');
+    const carouselPrev = document.querySelector('.carousel-prev');
+    const carouselNext = document.querySelector('.carousel-next');
+
+    if (carouselContainer && carouselPrev && carouselNext) {
+      const containerRect = carouselContainer.getBoundingClientRect();
+      const prevBtnRect = carouselPrev.getBoundingClientRect();
+      const nextBtnRect = carouselNext.getBoundingClientRect();
+
+      // Ensure buttons don't go outside viewport
+      if (prevBtnRect.left < 0) {
+        carouselPrev.style.left = '20px';
+      }
+      if (nextBtnRect.right > window.innerWidth) {
+        carouselNext.style.right = '20px';
+      }
+    }
+  }
+
+  // Run check on load and resize
+  window.addEventListener('load', checkButtonOverlap);
+  window.addEventListener('resize', checkButtonOverlap);
+});
+
+// NEW: Add visual feedback for button interactions
+document.addEventListener('DOMContentLoaded', function() {
+  const navButtons = document.querySelectorAll('.modal-nav-btn, .carousel-nav, .step-nav-btn');
+
+  navButtons.forEach(button => {
+    // Add ripple effect on click
+    button.addEventListener('click', function(e) {
+      const ripple = document.createElement('div');
+      ripple.style.position = 'absolute';
+      ripple.style.borderRadius = '50%';
+      ripple.style.background = 'rgba(255, 255, 255, 0.6)';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.transform = 'scale(0)';
+      ripple.style.animation = 'ripple 0.6s linear';
+      ripple.style.left = '50%';
+      ripple.style.top = '50%';
+      ripple.style.width = '20px';
+      ripple.style.height = '20px';
+      ripple.style.marginLeft = '-10px';
+      ripple.style.marginTop = '-10px';
+
+      this.appendChild(ripple);
+
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+    });
+  });
+
+  // Add ripple animation to CSS if not already present
+  if (!document.querySelector('#ripple-animation')) {
+    const style = document.createElement('style');
+    style.id = 'ripple-animation';
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   }
 });

@@ -2,8 +2,9 @@
 layout: default
 title: Smart SPIKE Prototype
 permalink: /resources/other-prototypes/smart-microbit/
-prototype_id: prototype-3
+prototype_id: prototype-2
 ---
+
 {% assign prototype = site.data.prototypes.prototypes | where: "id", page.prototype_id | first %}
 
 <div class="page-header">
@@ -15,201 +16,209 @@ prototype_id: prototype-3
 <div class="page-content">
   <div class="container">
     {% if prototype %}
-      <div class="prototype-detail">
-        <div class="prototype-hero">
-          <div class="prototype-hero-content">
-            <h1>{{ prototype.title }}</h1>
-            <p class="prototype-subtitle">{{ prototype.subtitle }}</p>
-          </div>
-          <div class="prototype-hero-image">
-            <img src="{{ prototype.images.hero | relative_url }}" alt="{{ prototype.title }}">
-          </div>
+    <div class="prototype-detail">
+      <div class="prototype-hero">
+        <div class="prototype-hero-content">
+          <h1>{{ prototype.title }}</h1>
+          <p class="prototype-subtitle">{{ prototype.subtitle }}</p>
+          <p>{{ prototype.short_description }}</p>
         </div>
-
+        <div class="prototype-hero-image">
+          <img src="{{ prototype.images.hero | relative_url }}" alt="{{ prototype.title }}">
+        </div>
+      </div>
+      <!--
         <div class="prototype-content">
-          <!-- Overview -->
+          <!-- Overview
           <div class="prototype-overview">
             <h2>Overview</h2>
             <p>{{ prototype.short_description }}</p>
           </div>
+-->
+      {% if prototype.images.gallery %}
+      <div class="prototype-gallery-carousel">
+        <h2>Gallery</h2>
 
-          <!-- Gallery Carousel -->
-          {% if prototype.images.gallery %}
-          <div class="prototype-gallery-carousel">
-            <h2>Gallery</h2>
-            <div class="prototype-carousel-container">
-              <div class="prototype-carousel">
-                <button class="carousel-nav carousel-prev" aria-label="Previous image">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
+        <div class="prototype-carousel-container">
+          <!-- Fixed: Changed class name to match the next button -->
+          <button class="carousel-nav carousel-prev" aria-label="Previous image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
 
-                <div class="carousel-content">
-                  {% for gallery_image in prototype.images.gallery %}
-                    <div class="carousel-slide{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}">
-                      <div class="carousel-image">
-                        <img src="{{ gallery_image | relative_url }}" alt="{{ prototype.title }} - Image {{ forloop.index }}">
-                      </div>
-                      <div class="carousel-description">
-                        <h3>{{ prototype.title }} - View {{ forloop.index }}</h3>
-                        <p>Detailed view of the {{ prototype.title }} prototype showing its design and functionality.</p>
-                      </div>
-                    </div>
-                  {% endfor %}
+          <div class="prototype-carousel">
+            <div class="carousel-content">
+              {% for gallery_image in prototype.images.gallery %}
+              <div class="carousel-slide{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}">
+                <div class="carousel-image">
+                  <img src="{{ gallery_image.src | relative_url }}"
+                    alt="{{ prototype.title }} - Image {{ forloop.index }}">
                 </div>
-
-                <button class="carousel-nav carousel-next" aria-label="Next image">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
-              </div>
-
-              <div class="carousel-indicators">
-                {% for gallery_image in prototype.images.gallery %}
-                  <button class="carousel-indicator{% if forloop.first %} active{% endif %}"
-                          data-slide="{{ forloop.index0 }}"
-                          aria-label="Go to slide {{ forloop.index }}">
-                    <img src="{{ gallery_image | relative_url }}" alt="Thumbnail {{ forloop.index }}">
-                  </button>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-          {% endif %}
-
-          <!-- Parts Needed -->
-          {% if prototype.parts_needed %}
-          <div class="prototype-parts">
-            <h2>Parts Needed</h2>
-            <div class="parts-grid">
-              {% for part in prototype.parts_needed %}
-              <div class="part-item">
-                <a href="{{ part.link }}" class="part-link" target="_blank" rel="noopener noreferrer">
-                  <div class="part-image">
-                    <img src="{{ part.image | relative_url }}" alt="{{ part.name }}" loading="lazy">
-                    {% if part.quantity %}
-                    <div class="part-quantity">{{ part.quantity }}x</div>
-                    {% endif %}
-                  </div>
-                  <div class="part-info">
-                    <h4 class="part-name">{{ part.name }}</h4>
-                    <p class="part-description">{{ part.description }}</p>
-                    <div class="part-action">
-                      <span class="buy-button">View Product</span>
-                    </div>
-                  </div>
-                </a>
+                <div class="carousel-description">
+                  <h3>{{ prototype.title }} - {{gallery_image.title}}</h3>
+                  <p>{{gallery_image.description}}</p>
+                </div>
               </div>
               {% endfor %}
             </div>
           </div>
-          {% endif %}
 
-          <!-- GitHub Repository -->
-          {% if prototype.github %}
-          <div class="prototype-github">
-            <h2>Code Repository</h2>
-            <div class="github-container">
-              <div class="github-icon">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                </svg>
-              </div>
-              <div class="github-content">
-                <h3>{{ prototype.title }} Repository</h3>
-                <p class="github-description">{{ prototype.github.description }}</p>
-                <div class="github-details">
-                  <span class="github-branch">Branch: {{ prototype.github.branch }}</span>
-                </div>
-                <a href="{{ prototype.github.url }}" class="github-button" target="_blank" rel="noopener noreferrer">
-                  <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                  </svg>
-                  View on GitHub
-                </a>
-              </div>
-            </div>
-          </div>
-          {% endif %}
+          <!-- Fixed: Changed to consistent carousel-nav class and proper ID -->
+          <button class="carousel-nav carousel-next" id="carousel-next" aria-label="Next image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
 
-          <!-- Instructions -->
-          {% if prototype.instructions %}
-          <div class="prototype-instructions">
-            <h2>{{ prototype.instructions.title }}</h2>
-            <div class="instructions-content">
-              {{ prototype.instructions.content | markdownify }}
-            </div>
-            {% if prototype.instructions.pdf_link %}
-            <div class="instructions-download">
-              <a href="{{ prototype.instructions.pdf_link | relative_url }}" class="pdf-download-btn" target="_blank">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
-                  <line x1="12" y1="18" x2="12" y2="12"/>
-                  <line x1="9" y1="15" x2="15" y2="15"/>
-                </svg>
-                Download PDF Instructions
-              </a>
-            </div>
-            {% endif %}
-          </div>
-          {% endif %}
-
-          <!-- Video -->
-          {% if prototype.video %}
-          <div class="prototype-video">
-            <h2>Video Demonstration</h2>
-            {% if prototype.video.title %}
-            <h3>{{ prototype.video.title }}</h3>
-            {% endif %}
-            {% if prototype.video.description %}
-            <p class="video-description">{{ prototype.video.description }}</p>
-            {% endif %}
-            <div class="video-container">
-              <a href="{{ prototype.video.url }}" target="_blank" class="video-link">
-                <div class="video-thumbnail">
-                  <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"/>
-                  </svg>
-                  <span>Watch Video</span>
-                </div>
-              </a>
-            </div>
-          </div>
-          {% endif %}
-
-          <div class="prototype-navigation">
-            <a href="{{ '/resources/other-prototypes/' | relative_url }}" class="btn-back">
-              ← Back to All Prototypes
-            </a>
-            <a href="{{ '/resources/other-prototypes/smart-wio/' | relative_url }}" class="btn-next">
-              Next: Smart WIO →
-            </a>
+          <div class="carousel-indicators">
+            {% for gallery_image in prototype.images.gallery %}
+            <button class="carousel-indicator{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}"
+              aria-label="Go to slide {{ forloop.index }}">
+              <img src="{{ gallery_image.src | relative_url }}" alt="Thumbnail {{ forloop.index }}">
+            </button>
+            {% endfor %}
           </div>
         </div>
       </div>
-    {% else %}
-      <div style="text-align: center; padding: 50px;">
-        <h2>Prototype data not found</h2>
-        <p>Could not load data for prototype ID: {{ page.prototype_id }}</p>
-        <p><a href="{{ '/resources/other-prototypes/' | relative_url }}">← Back to All Prototypes</a></p>
-
-        <!-- Debug info -->
-        <details>
-          <summary>Debug Information</summary>
-          <p>Looking for prototype with ID: <code>{{ page.prototype_id }}</code></p>
-          <p>Available prototypes:</p>
-          <ul>
-            {% for p in site.data.prototypes.prototypes %}
-              <li>{{ p.id }} - {{ p.title }}</li>
-            {% endfor %}
-          </ul>
-        </details>
-      </div>
+    </div>
     {% endif %}
+
+    <!-- Parts Needed -->
+    {% if prototype.parts_needed %}
+    <div class="prototype-parts">
+      <h2>Parts Needed</h2>
+      <div class="parts-grid">
+        {% for part in prototype.parts_needed %}
+        <div class="part-item">
+          <a href="{{ part.link }}" class="part-link" target="_blank" rel="noopener noreferrer">
+            <div class="part-image">
+              <img src="{{ part.image | relative_url }}" alt="{{ part.name }}" loading="lazy">
+              {% if part.quantity %}
+              <div class="part-quantity">{{ part.quantity }}x</div>
+              {% endif %}
+            </div>
+            <div class="part-info">
+              <h4 class="part-name">{{ part.name }}</h4>
+              <p class="part-description">{{ part.description }}</p>
+              <div class="part-action">
+                <span class="buy-button">View Product</span>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- GitHub Repository -->
+    {% if prototype.github %}
+    <div class="prototype-github">
+      <h2>Code Repository</h2>
+      <div class="github-container">
+        <div class="github-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+        </div>
+        <div class="github-content">
+          <h3>{{ prototype.title }} Repository</h3>
+          <p class="github-description">{{ prototype.github.description }}</p>
+          <div class="github-details">
+            <span class="github-branch">Branch: {{ prototype.github.branch }}</span>
+          </div>
+          <a href="{{ prototype.github.url }}" class="github-button" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+            </svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Instructions -->
+    {% if prototype.instructions %}
+    <div class="prototype-instructions">
+      <h2>{{ prototype.instructions.title }}</h2>
+      <div class="instructions-content">
+        {{ prototype.instructions.content | markdownify }}
+      </div>
+      {% if prototype.instructions.pdf_link %}
+      <div class="instructions-download">
+        <a href="{{ prototype.instructions.pdf_link | relative_url }}" class="pdf-download-btn" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="12" y1="18" x2="12" y2="12" />
+            <line x1="9" y1="15" x2="15" y2="15" />
+          </svg>
+          Download PDF Instructions
+        </a>
+      </div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Video -->
+    {% if prototype.video %}
+    <div class="prototype-video">
+      <h2>Video Demonstration</h2>
+      {% if prototype.video.title %}
+      <h3>{{ prototype.video.title }}</h3>
+      {% endif %}
+      {% if prototype.video.description %}
+      <p class="video-description">{{ prototype.video.description }}</p>
+      {% endif %}
+      <div class="video-container">
+        <a href="{{ prototype.video.url }}" target="_blank" class="video-link">
+          <div class="video-thumbnail">
+            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>Watch Video</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="prototype-navigation">
+      <a href="{{ '/resources/other-prototypes/' | relative_url }}" class="btn-back">
+        ← Back to All Prototypes
+      </a>
+      <a href="{{ '/resources/other-prototypes/smart-wio/' | relative_url }}" class="btn-next">
+        Next: Smart WIO →
+      </a>
+    </div>
   </div>
+</div>
+{% else %}
+<div style="text-align: center; padding: 50px;">
+  <h2>Prototype data not found</h2>
+  <p>Could not load data for prototype ID: {{ page.prototype_id }}</p>
+  <p><a href="{{ '/resources/other-prototypes/' | relative_url }}">← Back to All Prototypes</a></p>
+
+  <!-- Debug info -->
+  <details>
+    <summary>Debug Information</summary>
+    <p>Looking for prototype with ID: <code>{{ page.prototype_id }}</code></p>
+    <p>Available prototypes:</p>
+    <ul>
+      {% for p in site.data.prototypes.prototypes %}
+      <li>{{ p.id }} - {{ p.title }}</li>
+      {% endfor %}
+    </ul>
+  </details>
+</div>
+{% endif %}
+</div>
 </div>
 
 <script>
