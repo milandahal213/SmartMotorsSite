@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Smart SPIKE Prototype
-permalink: /resources/other-prototypes/smart-spike/
-prototype_id: prototype-2
+permalink: /resources/other-prototypes/smart-arduino/
+prototype_id: prototype-4
 ---
 
 {% assign prototype = site.data.prototypes.prototypes | where: "id", page.prototype_id | first %}
@@ -35,9 +35,43 @@ prototype_id: prototype-2
             <p>{{ prototype.short_description }}</p>
           </div>
 -->
+
+      <!-- Parts Needed -->
+      {% if prototype.parts_needed %}
+      <div class="prototype-parts">
+        <h2>Parts Needed</h2>
+        <div class="parts-grid">
+          {% for part in prototype.parts_needed %}
+          <div class="part-item">
+            <a href="{{ part.link }}" class="part-link" target="_blank" rel="noopener noreferrer">
+              <div class="part-image">
+                <img src="{{ part.image | relative_url }}" alt="{{ part.name }}" loading="lazy">
+                {% if part.quantity %}
+                <div class="part-quantity">{{ part.quantity }}x</div>
+                {% endif %}
+              </div>
+              <div class="part-info">
+                <h4 class="part-name">{{ part.name }}</h4>
+                <p class="part-description">{{ part.description }}</p>
+                <div class="part-action">
+                  <span class="buy-button">View Product</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
       {% if prototype.images.gallery %}
       <div class="prototype-gallery-carousel">
-        <h2>Gallery</h2>
+        <h2>Description</h2>
+
+        {% for description in prototype.images.description %}
+        <h3>{{description.title}}</h3>
+        <p>{{description.content}}</p>
+        {% endfor %}
+
 
         <div class="prototype-carousel-container">
           <!-- Fixed: Changed class name to match the next button -->
@@ -57,7 +91,7 @@ prototype_id: prototype-2
                     alt="{{ prototype.title }} - Image {{ forloop.index }}">
                 </div>
                 <div class="carousel-description">
-                  <h3>{{ prototype.title }} - {{gallery_image.title}}</h3>
+                  <h3>{{gallery_image.title}}</h3>
                   <p>{{gallery_image.description}}</p>
                 </div>
               </div>
@@ -86,33 +120,7 @@ prototype_id: prototype-2
     </div>
     {% endif %}
 
-    <!-- Parts Needed -->
-    {% if prototype.parts_needed %}
-    <div class="prototype-parts">
-      <h2>Parts Needed</h2>
-      <div class="parts-grid">
-        {% for part in prototype.parts_needed %}
-        <div class="part-item">
-          <a href="{{ part.link }}" class="part-link" target="_blank" rel="noopener noreferrer">
-            <div class="part-image">
-              <img src="{{ part.image | relative_url }}" alt="{{ part.name }}" loading="lazy">
-              {% if part.quantity %}
-              <div class="part-quantity">{{ part.quantity }}x</div>
-              {% endif %}
-            </div>
-            <div class="part-info">
-              <h4 class="part-name">{{ part.name }}</h4>
-              <p class="part-description">{{ part.description }}</p>
-              <div class="part-action">
-                <span class="buy-button">View Product</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    {% endif %}
+
 
     <!-- GitHub Repository -->
     {% if prototype.github %}
@@ -150,52 +158,85 @@ prototype_id: prototype-2
       <div class="instructions-content">
         {{ prototype.instructions.content | markdownify }}
       </div>
-      {% if prototype.instructions.pdf_link %}
+      {% if prototype.instructions.firmware %}
       <div class="instructions-download">
-        <a href="{{ prototype.instructions.pdf_link | relative_url }}" class="pdf-download-btn" target="_blank">
+        <a href="{{ prototype.instructions.firmware | relative_url }}" class="pdf-download-btn" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
             <polyline points="14 2 14 8 20 8" />
             <line x1="12" y1="18" x2="12" y2="12" />
             <line x1="9" y1="15" x2="15" y2="15" />
           </svg>
-          Download PDF Instructions
+          Download Smart Wio firmware
         </a>
       </div>
+
+      {% if prototype.instructions.note %}
+      <p class="video-description"> {{ prototype.instructions.note }}</p>
+      {% if prototype.instructions.firmware2 %}
+      <div class="instructions-download"></div>
+
+      <a href="{{ prototype.instructions.firmware2 | relative_url }}" class="pdf-download-btn" target="_blank">
+        <svg viewBox="0 0 24 24" fill=#AAAAAA>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        </svg>
+        Smart Wio with a M5Stack Servo
+      </a>
+      {% endif %}
+      {% endif %}
       {% endif %}
     </div>
     {% endif %}
+
 
     <!-- Video -->
+
     {% if prototype.video %}
-    <div class="prototype-video">
-      <h2>Video Demonstration</h2>
-      {% if prototype.video.title %}
-      <h3>{{ prototype.video.title }}</h3>
-      {% endif %}
-      {% if prototype.video.description %}
-      <p class="video-description">{{ prototype.video.description }}</p>
-      {% endif %}
-      <div class="video-container">
-        <a href="{{ prototype.video.url }}" target="_blank" class="video-link">
-          <div class="video-thumbnail">
-            <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            <span>Watch Video</span>
-          </div>
-        </a>
+    <div class="prototype-parts">
+      <h2>Videos</h2>
+      <div class="parts-grid">
+        {% for video in prototype.video %}
+        <div class="part-item">
+          <a href="{{ video.url }}" class="part-link" target="_blank" rel="noopener noreferrer">
+            <div class="part-image">
+              <img src="{{ video.thumbnail | relative_url }}" alt="{{ part.name }}" loading="lazy">
+            </div>
+            <div class="part-info">
+              <h4 class="part-name">{{ video.title }}</h4>
+              <p class="part-description">{{ video.description }}</p>
+              <div class="part-action">
+                <div class="video-thumbnail">
+                  <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>Watch Video</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
       </div>
     </div>
     {% endif %}
 
+
+
+
+
+   
+
     <div class="prototype-navigation">
-      <a href="{{ '/resources/other-prototypes/' | relative_url }}" class="btn-back">
-        ← Back to All Prototypes
+      {% if prototype.previous %}
+      <a href="{{ prototype.previous.url | relative_url }}" class="btn-back">
+        ← {{ prototype.previous.name }}
       </a>
-      <a href="{{ '/resources/other-prototypes/smart-wio/' | relative_url }}" class="btn-next">
-        Next: Smart WIO →
+      {% endif %}
+      {% if prototype.next %}
+      <a href="{{ prototype.next.url | relative_url }}" class="btn-next">
+        {{ prototype.next.name }} →
       </a>
+      {% endif %}
     </div>
   </div>
 </div>
