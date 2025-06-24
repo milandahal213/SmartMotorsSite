@@ -162,12 +162,31 @@ prototype_id: prototype-1
       <div class="instructions-download">
         <a href="{{ prototype.instructions.firmware | relative_url }}" class="pdf-download-btn" target="_blank">
           <svg viewBox="0 0 24 24" fill="currentColor">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="12" y1="18" x2="12" y2="12" />
-            <line x1="9" y1="15" x2="15" y2="15" />
+            <!-- Browser window frame -->
+            <rect x="2" y="3" width="20" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            
+            <!-- Browser top bar -->
+            <rect x="2" y="3" width="20" height="4" rx="2" ry="2" fill="currentColor"/>
+            
+            <!-- Browser dots/controls -->
+            <circle cx="5" cy="5" r="0.5" fill="white" opacity="0.8"/>
+            <circle cx="7" cy="5" r="0.5" fill="white" opacity="0.8"/>
+            <circle cx="9" cy="5" r="0.5" fill="white" opacity="0.8"/>
+            
+            <!-- Address bar -->
+            <rect x="12" y="4" width="8" height="2" rx="1" fill="white" opacity="0.3"/>
+            
+            <!-- Website content area with grid pattern -->
+            <rect x="4" y="9" width="16" height="2" fill="currentColor" opacity="0.3"/>
+            <rect x="4" y="12" width="12" height="1" fill="currentColor" opacity="0.3"/>
+            <rect x="4" y="14" width="14" height="1" fill="currentColor" opacity="0.3"/>
+            <rect x="4" y="16" width="10" height="1" fill="currentColor" opacity="0.3"/>
+            
+            <!-- Small squares representing images/content blocks -->
+            <rect x="17" y="12" width="2" height="2" fill="currentColor" opacity="0.4"/>
+            <rect x="17" y="15" width="2" height="2" fill="currentColor" opacity="0.4"/>
           </svg>
-          Download Smart Wio firmware
+          Smart Motors update portal
         </a>
       </div>
 

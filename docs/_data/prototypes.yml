@@ -1,6 +1,6 @@
 prototypes:
   - id: "prototype-1"
-    title: "Smart SPIKE (Work in Progress)"
+    title: "Smart SPIKE"
     subtitle: "LEGO® Education SPIKE™ Prime based Smart Motor"
     short_description: "Smart SPIKE uses LEGO® Education SPIKE™ Prime hub, sensors and motors to implement the Smart Motors concept. Once set up the Smart SPIKE code can be run from the hub directly. It supports single sensor - single motor, single sensor - multi motor as well as multi sensor - multi motor setup. "
     permalink: "/resources/other-prototypes/smart-spike/"
@@ -10,27 +10,21 @@ prototypes:
       hero: "/assets/images/prototypes/prototype-1-main.png"
       description: 
         - title: Implementation
-          content: Smart Wio uses LEGO® Education SPIKE™ Prime and integrates a servo motor with a Grove rotary encoder. The system utilizes the Wio Terminal's 2.4-inch color LCD screen (320 x 240 pixels) for the user interface, while the 3 configurable buttons and 5-way switch provide user input controls. The servo motor occupies one Grove-compatible sensor port, with the rotary encoder using the second available port. Beyond the rotary encoder, Smart Wio incorporates the onboard light sensor and Inertial Measurement Unit (IMU) for additional sensor input.
+          content: Smart SPIKE uses LEGO® Education SPIKE™ Prime set to implement the Smart Motor concept. It uses ports on the left (A,C,E) for sensors (Force, Distance and Color) and ports on the right (B, D, F) for motors (both medium and large). There can be a single sensor to single motor (1 to 3 pairs at a time) configuration or single to multi motor pairing configuration. The LED matrix shows the configuration of the input and output. Users use the left and right buttons to navigate.
         - title: Navigation
-          content: The system defaults to tilt sensor upon startup. From the Home Screen users can access two main functions- navigate to the Sensor Select Screen or proceed directly to the Train Screen. The Sensor Select Screen allows users to choose from three available sensors - light, tilt, or rotary encoder. The Home Screen provides visual feedback through a sensor icon in the top-right corner and an interactive graph displaying real-time sensor readings alongside motor position. Users can manually control the motor by pressing the 5-way switch left (counterclockwise) or right (clockwise).
+          content: The system starts up in configuration mode. In this mode, the users can plug in the sensors and motors. The lines on the LED matrix show how the sensors and motors are related. Pressing the right button locks the configration. Now for each configuration the user takes data using the left button. Right button press takes the system to play mode. 
         - title: Training and Operation
-          content:  In the Train Screen, user creates sensor-motor associations by positioning the motor at desired locations and pressing the 5-way switch while the sensor registered specific readings. Each successful pairing generates a dot on the grid interface, confirming data storage. Pressing the C button (marked with a play icon) activates Play Mode, where the motor responds automatically based on trained sensor-motor relationships. The Play Screen offers additional functionality- users can edit existing data via the C button or select between two algorithms — nearest neighbor or linear regression—for processing the training data in Model Selection Screen.
+          content:  In the train mode, user creates sensor-motor associations by positioning the motor at desired locations and pressing the left button while the sensor registered specific readings like holding the distance sensor at a certain distance for that motor position. Each successful pairing is indicated by a beep, confirming data storage. After taking data for the confuration, pressing the right button either goes to training mode for another configuration (if there are multiple sensor- motor pairs) or goes to Play Mode, where the motor responds automatically based on trained sensor-motor relationships. Right button press will exit the play mode. 
       gallery:
-        - title: Home Screen
-          src: "/assets/images/prototypes/prototype-2-main.png"
-          description: The screen shows the Home screen with Train and Play buttons as well as a preview window showing motor and sensor positions.
-        - title: Sensor Select Screen
-          src: "/assets/images/prototypes/prototype-2-sensor-select-screen.png"
-          description: The screen shows the sensor select page with an option to select a light sensor, accelerometer or a digital encoder as the sensor. User makes the selection by pressing the buttons on the top.
-        - title: Train Screen
-          src: "/assets/images/prototypes/prototype-2-train-screen.png"
-          description: The screen shows the training screen. The Y-axis is the sensor value and X-axis is the motor position. Motor can be moved using the button in bottom right (left and right). Colors of the dots represent live sensor-motor pairings as well as previous data points. User has option to cancel, delete previous data point or to go to Play Screen.
-        - title: Play Screen
-          src: "/assets/images/prototypes/prototype-2-play-screen.png"
-          description: The screen shows the previous training data as well as the live sensor-motor pairing. The users have option to cancel, edit the dataset as well as choose the training model.
-        - title: Model Selection Screen
-          src: "/assets/images/prototypes/prototype-2-model-selection-screen.png"
-          description: The screen shows two available training models for the dataset. The left is K-nearest neighbors and right is the linear regression.
+        - title: Single sensor - single motor
+          src: "/assets/images/prototypes/prototype-1-main.png"
+          description: This is a typical configuration with a single sensor on port A and motor on port B. The sensor can be plugged in any one of the three ports on the left (A,C,E) and the motor can be plugged into any of the ports in the right (B, D, F). 
+        - title: Multiple single sensor - single motor
+          src: "/assets/images/prototypes/prototype-1-multi-single.png"
+          description: There can be more than one single sensor single motor pairs. If the system detects more than one sensor and more than one motor it pairs the adjacent sensor and motor (A and B, C and D, E and F).
+        - title: Single sensor - multi motor
+          src: "/assets/images/prototypes/prototype-1-multi-sensor-motor.png"
+          description: One sensor can control multiple motors at the same time. If the system detects a single sensor with more than one motor it enables this configuration. The motors can be programmed to go to different positions for same sensor input.
 
     parts_needed:
       - name: "SPIKE Prime set"
@@ -43,17 +37,14 @@ prototypes:
 
 
     instructions:
-      title: "Flashing Wio Terminal with Smart Motors code"
+      title: "Uploading Smart SPIKE code to LEGO® Education SPIKE™ Prime"
       content: |
-        ## Smart WIO Build Guide
+        - Go to the Smart Motor update website by clicking the button below
+        - Connect LEGO® Education SPIKE™ Prime to the computer and turn it on
+        - Click the "Connect via USB" button
+        - Click the "Convert SPIKE to SMART SPIKE" button to upload the Smart SPIKE code
+      firmware: "https://mdahal01.pyscriptapps.com/smart-motor-update-portal-working/latest/"
 
-        - Download the firmware by clicking the button below
-        - Connect Wio Terminal to your computer
-        - Put Wio Terminal in bootloader mode - follow video below
-        - Drag and drop the downloaded firmware.uf2 file in the Arduino Drive
-      firmware: "/assets/instructions/firmware.uf2"
-      note: The wiring on hobby servos and Grove servos are slightly different. If you happen to have one of the M5Stack Servos or a generic servo then use the firmware below
-      firmware2: "/assets/instructions/firmware_general.uf2"
 
     video:
       - title: "Setting up Smart SPIKE"
@@ -62,7 +53,7 @@ prototypes:
         description: "Video demonstration of how to set up Smart SPIKE."
       - title: "Using Smart SPIKE"
         thumbnail: "/assets/images/prototypes/using_SPIKE.jpg"
-        url: "https://youtu.be/iqT2T89iBuA"
+        url: "https://www.youtube.com/watch?v=4nb_QLR5294"
         description: "Video demonstration of how to use Smart SPIKE."
 
     previous:
