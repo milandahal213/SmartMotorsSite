@@ -144,40 +144,7 @@ prototypes:
       url: /resources/other-prototypes/smart-microbit/
       name: "Smart micro:bit"
 
-  - id: "prototype-3"
-    title: "Smart micro:bit (Work in Progress)"
-    subtitle: "Micro:bit based Smart Motor"
-    short_description: "Alternative form factor exploration focusing on different interaction modalities and programming approaches for educational settings."
-    permalink: "/resources/other-prototypes/smart-microbit/"
-
-    images:
-      icon: "/assets/images/prototypes/prototype-3-icon.png"
-      hero: "/assets/images/prototypes/prototype-3-main.png"
-
-    previous:
-      url: "/resources/other-prototypes/"
-      name: "Back"
-    next: 
-      url: /resources/other-prototypes/smart-arduino/
-      name: "Smart Arduino"
-
-  - id: "prototype-4"
-    title: "Smart Arduino (Work in Progress)"
-    subtitle: "Arduino Uno based Smart Motor"
-    short_description: "Specialized version designed for educational research studies, featuring enhanced data collection and analysis capabilities."
-    permalink: "/resources/other-prototypes/smart-arduino/"
-
-
-    images:
-      icon: "/assets/images/prototypes/prototype-4-icon.png"
-      hero: "/assets/images/prototypes/prototype-4-main.png"
-
-    previous:
-      url: "/resources/other-prototypes/"
-      name: "Back"
-    next: 
-      url: /resources/other-prototypes/smart-spike/
-      name: "Smart SPIKE"
+  
 
 # Configuration for prototype display
 display_settings:
