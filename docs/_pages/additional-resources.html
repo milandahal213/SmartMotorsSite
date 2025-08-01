@@ -1,0 +1,40 @@
+---
+layout: page
+title: How to use Smart Motors
+permalink: /resources/additional-resources/
+---
+{% assign resource = site.data.resources.resources | where: "id", page.resource_id | first %}
+ <!-- Video -->
+<div class="page-content">
+  <div class="container">
+        {% if resource.video %}
+        <div class="prototype-parts">
+            <h2>Videos</h2>
+            <div class="parts-grid">
+            {% for video in resource.video %}
+            <div class="part-item">
+                <a href="{{ video.url }}" class="part-link" target="_blank" rel="noopener noreferrer">
+                <div class="part-image">
+                    <img src="{{ video.thumbnail | relative_url }}" alt="{{ part.name }}" loading="lazy">
+                </div>
+                <div class="part-info">
+                    <h4 class="part-name">{{ video.title }}</h4>
+                    <p class="part-description">{{ video.description }}</p>
+                    <div class="part-action">
+                    <div class="video-thumbnail">
+                        <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <span>Watch Video</span>
+                    </div>
+                    </div>
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+

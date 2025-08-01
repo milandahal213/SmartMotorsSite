@@ -1,0 +1,78 @@
+resources:
+  - id: "resource-1"
+    title: "Standalone Instruction"
+    subtitle: "Instruction on how to use the Standalone version"
+    short_description: "Find resources on how to use the Smart Motors on Standalone mode. "
+    permalink: "/_pages/additional-resources/"
+
+    images:
+      icon: "/assets/images/prototypes/prototype-1-icon.png"
+      hero: "/assets/images/prototypes/prototype-1-main.png"
+      description: 
+        - title: Implementation
+          content: Smart SPIKE uses LEGO® Education SPIKE™ Prime set to implement the Smart Motor concept. It uses ports on the left (A,C,E) for sensors (Force, Distance and Color) and ports on the right (B, D, F) for motors (both medium and large). There can be a single sensor to single motor (1 to 3 pairs at a time) configuration or single to multi motor pairing configuration. The LED matrix shows the configuration of the input and output. Users use the left and right buttons to navigate.
+        - title: Navigation
+          content: The system starts up in configuration mode. In this mode, the users can plug in the sensors and motors. The lines on the LED matrix show how the sensors and motors are related. Pressing the right button locks the configration. Now for each configuration the user takes data using the left button. Right button press takes the system to play mode. 
+        - title: Training and Operation
+          content:  In the train mode, user creates sensor-motor associations by positioning the motor at desired locations and pressing the left button while the sensor registered specific readings like holding the distance sensor at a certain distance for that motor position. Each successful pairing is indicated by a beep, confirming data storage. After taking data for the confuration, pressing the right button either goes to training mode for another configuration (if there are multiple sensor- motor pairs) or goes to Play Mode, where the motor responds automatically based on trained sensor-motor relationships. Right button press will exit the play mode. 
+      gallery:
+        - title: Single sensor - single motor
+          src: "/assets/images/prototypes/prototype-1-main.png"
+          description: This is a typical configuration with a single sensor on port A and motor on port B. The sensor can be plugged in any one of the three ports on the left (A,C,E) and the motor can be plugged into any of the ports in the right (B, D, F). 
+        - title: Multiple single sensor - single motor
+          src: "/assets/images/prototypes/prototype-1-multi-single.png"
+          description: There can be more than one single sensor single motor pairs. If the system detects more than one sensor and more than one motor it pairs the adjacent sensor and motor (A and B, C and D, E and F).
+        - title: Single sensor - multi motor
+          src: "/assets/images/prototypes/prototype-1-multi-sensor-motor.png"
+          description: One sensor can control multiple motors at the same time. If the system detects a single sensor with more than one motor it enables this configuration. The motors can be programmed to go to different positions for same sensor input.
+
+    parts_needed:
+      - name: "SPIKE Prime set"
+        image: "/assets/images/parts/spike-prime.png"
+        link: "https://education.lego.com/en-us/products/lego-education-spike-prime-set/45678/"
+        description: "LEGO® Education SPIKE™ Prime Set"
+
+
+
+
+
+    instructions:
+      title: "Uploading Smart SPIKE code to LEGO® Education SPIKE™ Prime"
+      content: |
+        - Go to the Smart Motor update website by clicking the button below
+        - Connect LEGO® Education SPIKE™ Prime to the computer and turn it on
+        - Click the "Connect via USB" button
+        - Click the "Convert SPIKE to SMART SPIKE" button to upload the Smart SPIKE code
+      firmware: "https://mdahal01.pyscriptapps.com/smart-motor-update-portal-working/latest/"
+
+
+    video:
+      - title: "Using Smart Motors Standalone version"
+        thumbnail: "/assets/images/resources/standalone.jpg"
+        url: "https://www.youtube.com/watch?v=N4I_KDdEUsk"
+        description: "Video demonstration of how to use Smart Motor in Standalone mode."
+      - title: "Using Smart Motors Webapp version"
+        thumbnail: "/assets/images/resources/webapp.png"
+        url: "https://youtu.be/DWK-w15US1o"
+        description: "Video demonstration of how to use Smart Motor in Webapp mode."
+
+    previous:
+      url: "/resources/other-prototypes/"
+      name: "Back"
+    next: 
+      url: /resources/other-prototypes/smart-wio/
+      name: "Smart Wio"
+
+ 
+  
+
+# Configuration for prototype display
+display_settings:
+  items_per_row: 4
+  show_all_items: true
+  enable_modal_details: true
+
+# Navigation settings
+navigation:
+  back_to_prototypes_text: "← Back to All Prototypes"
+
