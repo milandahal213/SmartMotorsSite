@@ -243,7 +243,7 @@ Order the following components to complete the assembly.
         <li>Secure it with the bolt from the servo motor packet (not the screw)</li>
       </ul>
       <div class ="image-single">
-        <img src="/assets/build_instructions/V4/ServoHub.png" alt="Servo Horn connection">
+        <img src="/assets/build_instructions/V4/servohub.png" alt="Servo Horn connection">
       </div>
     </li>
   </ol>
