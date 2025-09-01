@@ -260,7 +260,7 @@ Order the following components to complete the assembly.
         <li>Use cutter to cut the extra leads from the PCB.</li>
       </ul>
       <div class ="image-row-4">
-        <a><img src="/assets/build_instructions/V4/Batterycase1.png" alt="Step 1" title="Step 1" ></a>
+        <a><img src="/assets/build_instructions/V4/batterycase1.png" alt="Step 1" title="Step 1" ></a>
         <a><img src="/assets/build_instructions/V4/Batterycase2.png" alt="Step 2" title="Step 2"></a>
         <a><img src="/assets/build_instructions/V4/Batterycase3.png" alt="Step 3" title="Step 3"></a>
         <a><img src="/assets/build_instructions/V4/Batterycase4.png" alt="Step 4" title="Step 4"></a>
