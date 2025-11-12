@@ -1,0 +1,44 @@
+---
+layout: page
+title: Lesson Plans
+permalink: /resources/lesson-plans/
+---
+
+<div class="lesson-plans-section">
+  <div class="container">
+    <div class="prototypes-header">
+      <p class="prototypes-intro">
+        Comprehensive lesson plans organized by subject area. Each lesson includes standards alignment, 
+        rubrics, and detailed instructions for integrating Smart Motors into your curriculum.
+      </p>
+    </div>
+
+    <div class="prototypes-grid">
+      {% for plan in site.data.lessons.lesson_plans %}
+        <div class="prototype-item" data-category-id="{{ plan.id }}">
+          <a href="{{ plan.permalink }}">
+            <div class="prototype-image">
+              <img src="{{ plan.images| relative_url }}" alt="{{ plan.title }}">                 
+              <div class="prototype-title">
+                <h3>{{ plan.title }}</h3>
+              </div>
+            </div>
+            <div class="prototype-description">
+              <p>{{ plan.sub_plans.size }} lesson plan{% if plan.sub_plans.size != 1 %}s{% endif %}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="prototypes-footer">
+      <div class="prototype-note">
+        <h3>Need Custom Lesson Plans?</h3>
+        <p>
+          Have a specific curriculum need? <a href="{{ site.baseurl }}/contact/">Contact us</a> 
+          to discuss custom lesson plan development for your classroom or district.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

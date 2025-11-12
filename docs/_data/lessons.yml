@@ -1,0 +1,244 @@
+lesson_plans:
+  # Introduction
+  - id: introduction
+    title: "Introduction"
+    author: ""
+    permalink: "/resources/lesson-plans/introduction/"
+    images: "/assets/images/lesson-plans/introduction-icon.png"
+    sub_plans:
+      - sub_id: meet-the-smart-motor
+        sub_title: "Meet the Smart Motor"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/introduction/meet-the-smart-motor/"
+        images: ""
+        content:
+          - title: "Intro to Smart Motors Placemat"
+            file: "/assets/lesson-plans/introduction/meet-the-smart-motor/Intro to Smart Motors Placemat.pdf"
+          - title: "Meet the Smart Motor Rubric"
+            file: "/assets/lesson-plans/introduction/meet-the-smart-motor/Meet the Smart Motor Rubric.pdf"
+          - title: "Meet the Smart Motor Standards"
+            file: "/assets/lesson-plans/introduction/meet-the-smart-motor/Meet the Smart Motor Standards.pdf"
+
+  # Novel Engineering
+  - id: novel-engineering
+    title: "Novel Engineering"
+    subtitle: "Novel Engineering is an innovative educational approach that combines literacy and engineering by having students solve problems faced by characters in books they're reading. Developed by Tufts University, this method transforms story characters into 'clients' who need engineering solutions, allowing students to identify problems from the text and design real solutions through hands-on building and iteration. This approach makes engineering accessible and exciting while simultaneously strengthening both literacy comprehension and engineering design skills across elementary and middle school classrooms."
+    author: ""
+    permalink: "/resources/lesson-plans/novel-engineering/"
+    images: "/assets/images/lesson-plans/novel-engineering-icon.png"
+    sub_plans:
+      - sub_id: bunny-proof-breakthrough
+        sub_title: "Bunny Proof Breakthrough"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/novel-engineering/bunny-proof-breakthrough/"
+        images: ""
+        content:
+          - title: "Bunny Proof-Breakthrough Placemat"
+            file: "/assets/lesson-plans/novel-engineering/bunny-proof-breakthrough/Bunny Proof-Breakthrough Placemat.pdf"
+          - title: "Bunny Proof Breakthrough Rubric"
+            file: "/assets/lesson-plans/novel-engineering/bunny-proof-breakthrough/Bunny Proof Breakthrough Rubric.pdf"
+          - title: "Bunny Proof Breakthrough Standards"
+            file: "/assets/lesson-plans/novel-engineering/bunny-proof-breakthrough/Bunny Proof Breakthrough Standards.pdf"
+      
+      - sub_id: dont-ever-look-behind-door-32
+        sub_title: "Don't Ever Look Behind Door 32!"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/novel-engineering/dont-ever-look-behind-door-32/"
+        images: ""
+        content:
+          - title: "Don't Ever Look Behind Door 32! Placemat"
+            file: "/assets/lesson-plans/novel-engineering/dont-ever-look-behind-door-32/Don_t Ever Look Behind Door 32! Placemat.pdf"
+          - title: "Don't Ever Look Behind Door 32! Rubric"
+            file: "/assets/lesson-plans/novel-engineering/dont-ever-look-behind-door-32/Don_t Ever Look Behind Door 32! Rubric.pdf"
+          - title: "Don't Ever Look Behind Door 32! Standards"
+            file: "/assets/lesson-plans/novel-engineering/dont-ever-look-behind-door-32/Don_t Ever Look Behind Door 32! Standards.pdf"
+      
+      - sub_id: how-to-catch-a-mermaid
+        sub_title: "How to Catch a Mermaid"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/novel-engineering/how-to-catch-a-mermaid/"
+        images: ""
+        content:
+          - title: "How to Catch a Mermaid Placemat"
+            file: "/assets/lesson-plans/novel-engineering/how-to-catch-a-mermaid/How to Catch a Mermaid Placemat.pdf"
+          - title: "Catch a Mermaid Rubric"
+            file: "/assets/lesson-plans/novel-engineering/how-to-catch-a-mermaid/Catch a Mermaid Rubric.pdf"
+          - title: "How to Catch a Mermaid Standards"
+            file: "/assets/lesson-plans/novel-engineering/how-to-catch-a-mermaid/How to Catch a Mermaid Standards.pdf"
+      
+      - sub_id: nature-makers
+        sub_title: "Nature Makers"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/novel-engineering/nature-makers/"
+        images: ""
+        content:
+          - title: "Nature Makers Placemat"
+            file: "/assets/lesson-plans/novel-engineering/nature-makers/Nature Makers Placemat .pdf"
+          - title: "Nature Makers Rubric"
+            file: "/assets/lesson-plans/novel-engineering/nature-makers/Nature Makers Rubric.pdf"
+          - title: "Nature Makers Standards"
+            file: "/assets/lesson-plans/novel-engineering/nature-makers/Nature Makers Standards.pdf"
+      
+      - sub_id: spring-showers-bring-spring-flowers
+        sub_title: "Spring Showers Bring Spring Flowers"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/novel-engineering/spring-showers-bring-spring-flowers/"
+        images: ""
+        content:
+          - title: "Spring Showers Bring Spring Flowers Placemat"
+            file: "/assets/lesson-plans/novel-engineering/spring-showers-bring-spring-flowers/Spring Showers Bring Spring Flowers Placemat.pdf"
+          - title: "Spring Showers Bring More Spring Flowers Rubric"
+            file: "/assets/lesson-plans/novel-engineering/spring-showers-bring-spring-flowers/Spring Showers Bring More Spring Flowers Rubric.pdf"
+          - title: "Spring Showers Bring More Spring Flowers Standards"
+            file: "/assets/lesson-plans/novel-engineering/spring-showers-bring-spring-flowers/Spring Showers Bring More Spring Flowers Standards.pdf"
+
+  # Physical Science
+  - id: physical-science
+    title: "Physical Science"
+    author: ""
+    permalink: "/resources/lesson-plans/physical-science/"
+    images: "/assets/images/lesson-plans/physical-science-icon.png"
+    sub_plans:
+      - sub_id: build-a-battle-bot
+        sub_title: "Build A Battle Bot"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/physical-science/build-a-battle-bot/"
+        images: ""
+        content:
+          - title: "Build A Battle Bot Placemat"
+            file: "/assets/lesson-plans/physical-science/build-a-battle-bot/Build A Battle Bot Placemat.pdf"
+          - title: "Build A Battle Bot Rubric"
+            file: "/assets/lesson-plans/physical-science/build-a-battle-bot/Build A Battle Bot Rubric.pdf"
+          - title: "Build A Battle Bot Standards"
+            file: "/assets/lesson-plans/physical-science/build-a-battle-bot/Build A Battle Bot Standards.pdf"
+      
+      - sub_id: bust-a-move
+        sub_title: "Bust A Move"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/physical-science/bust-a-move/"
+        images: ""
+        content:
+          - title: "Bust a Move Placemat"
+            file: "/assets/lesson-plans/physical-science/bust-a-move/Bust a Move Placemat.pdf"
+          - title: "Bust a Move Rubric"
+            file: "/assets/lesson-plans/physical-science/bust-a-move/Bust a Move Rubric.pdf"
+          - title: "Bust a Move Standards"
+            file: "/assets/lesson-plans/physical-science/bust-a-move/Bust a Move Standards.pdf"
+      
+      - sub_id: caines-arcade
+        sub_title: "Caine's Arcade"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/physical-science/caines-arcade/"
+        images: ""
+        content:
+          - title: "Caine's Arcade Placemat"
+            file: "/assets/lesson-plans/physical-science/caines-arcade/Caine_s Arcade Placemat.pdf"
+          - title: "Caine's Arcade Rubric"
+            file: "/assets/lesson-plans/physical-science/caines-arcade/Caine_s Arcade Rubric.pdf"
+          - title: "Caine's Arcade Standards"
+            file: "/assets/lesson-plans/physical-science/caines-arcade/Caine_s Arcade Standards.pdf"
+      
+      - sub_id: chain-reaction
+        sub_title: "Chain Reaction"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/physical-science/chain-reaction/"
+        images: ""
+        content:
+          - title: "Chain Reaction Placemat"
+            file: "/assets/lesson-plans/physical-science/chain-reaction/Chain Reaction Placemat .pdf"
+          - title: "Chain Reaction Rubric"
+            file: "/assets/lesson-plans/physical-science/chain-reaction/Chain Reaction Rubric.pdf"
+          - title: "Chain Reaction Standards"
+            file: "/assets/lesson-plans/physical-science/chain-reaction/Chain Reaction Standards.pdf"
+      
+      - sub_id: cup-pick-up
+        sub_title: "Cup Pick Up"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/physical-science/cup-pick-up/"
+        images: ""
+        content:
+          - title: "Cup Pickup Placemat"
+            file: "/assets/lesson-plans/physical-science/cup-pick-up/Cup Pickup Placemat.pdf"
+          - title: "Cup Pick Up Rubric"
+            file: "/assets/lesson-plans/physical-science/cup-pick-up/Cup Pick Up Rubric.pdf"
+          - title: "Cup Pick Up Standards"
+            file: "/assets/lesson-plans/physical-science/cup-pick-up/Cup Pick Up Standards.pdf"
+      
+      - sub_id: tantrum-baby
+        sub_title: "Tantrum Baby"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/physical-science/tantrum-baby/"
+        images: ""
+        content:
+          - title: "Tantrum Baby Placemat"
+            file: "/assets/lesson-plans/physical-science/tantrum-baby/Tantrum Baby Placemat.pdf"
+          - title: "Tantrum Baby Rubric"
+            file: "/assets/lesson-plans/physical-science/tantrum-baby/Tantrum Baby Rubric.pdf"
+          - title: "Tantrum Baby Standards"
+            file: "/assets/lesson-plans/physical-science/tantrum-baby/Tantrum Baby Standards.pdf"
+      
+      - sub_id: tower-block-remover
+        sub_title: "Tower Block Remover"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/physical-science/tower-block-remover/"
+        images: ""
+        content:
+          - title: "Tower Block Remover Placemat"
+            file: "/assets/lesson-plans/physical-science/tower-block-remover/Tower Block Remover Placemat.pdf"
+          - title: "Tower Block Remover Rubric"
+            file: "/assets/lesson-plans/physical-science/tower-block-remover/Tower Block Remover Rubric.pdf"
+          - title: "Tower Block Remover Standards"
+            file: "/assets/lesson-plans/physical-science/tower-block-remover/Tower Block Remover Standards.pdf"
+
+  # Earth and Space Science
+  - id: earth-and-space-science
+    title: "Earth and Space Science"
+    author: ""
+    permalink: "/resources/lesson-plans/earth-and-space-science/"
+    images: "/assets/images/lesson-plans/earth-and-space-science-icon.png"
+    sub_plans:
+      - sub_id: layers-of-the-atmosphere
+        sub_title: "Layers of the Atmosphere"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/earth-and-space-science/layers-of-the-atmosphere/"
+        images: ""
+        content:
+          - title: "Layers of the Atmosphere Placemat"
+            file: "/assets/lesson-plans/earth-and-space-science/layers-of-the-atmosphere/Layers of the Atmosphere Placemat.pdf"
+          - title: "Layers of the Atmosphere Rubric"
+            file: "/assets/lesson-plans/earth-and-space-science/layers-of-the-atmosphere/Layers of the Atmosphere Rubric.pdf"
+          - title: "Layers of the Atmosphere Standards"
+            file: "/assets/lesson-plans/earth-and-space-science/layers-of-the-atmosphere/Layers of the Atmosphere Standards.pdf"
+      
+      - sub_id: sun-rise-and-set
+        sub_title: "Sun Rise and Set"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/earth-and-space-science/sun-rise-and-set/"
+        images: ""
+        content:
+          - title: "Sun Rise and Set Placemat"
+            file: "/assets/lesson-plans/earth-and-space-science/sun-rise-and-set/Sun Rise and Set Placemat.pdf"
+          - title: "Sun Rise and Set Rubric"
+            file: "/assets/lesson-plans/earth-and-space-science/sun-rise-and-set/Sun Rise and Set Rubric.pdf"
+          - title: "Sun Rise and Set Standards"
+            file: "/assets/lesson-plans/earth-and-space-science/sun-rise-and-set/Sun Rise and Set Standards.pdf"
+
+  # Life Science
+  - id: life-science
+    title: "Life Science"
+    author: ""
+    permalink: "/resources/lesson-plans/life-science/"
+    images: "/assets/images/lesson-plans/life-science-icon.png"
+    sub_plans:
+      - sub_id: mammal-madness
+        sub_title: "Mammal Madness"
+        sub_author: ""
+        sub_permalink: "/resources/lesson-plans/life-science/mammal-madness/"
+        images: ""
+        content:
+          - title: "Mammal Madness Placement"
+            file: "/assets/lesson-plans/life-science/mammal-madness/Mammal Madness Placement.pdf"
+          - title: "Mammal Madness Rubric"
+            file: "/assets/lesson-plans/life-science/mammal-madness/Mammal Madness Rubric.pdf"
+          - title: "Mammal Madness Standards"
+            file: "/assets/lesson-plans/life-science/mammal-madness/Mammal Madness Standards.pdf"

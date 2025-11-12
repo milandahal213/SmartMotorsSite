@@ -6,6 +6,7 @@ description: >-
 baseurl: "" # Empty for custom domain
 url: "https://smartmotors.ai" # Your .ai domain
 
+
 include:
   - _pages
 

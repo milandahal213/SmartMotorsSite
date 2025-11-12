@@ -1,0 +1,58 @@
+---
+layout: page
+title: Lesson Plans
+permalink: /resources/lesson-plans/introduction/
+---
+<link rel="stylesheet" href="{{ '/assets/css/lesson-plans.css' | relative_url }}">
+<div class="lesson-category-page">
+  <div class="container">
+    
+    <!-- Page Header -->
+    <div class="page-header">
+      {% assign category = site.data.lessons.lesson_plans | where: "id", "introduction" | first %}
+      <h1>{{ category.title }}</h1>
+      <p class="page-intro">
+        Introduction lesson plans that provide foundational knowledge and skills for students new to Smart Motors.
+      </p>
+    </div>
+
+    <!-- Get the specific category data -->
+    {% assign category = site.data.lessons.lesson_plans | where: "id", "introduction" | first %}
+    
+    <!-- Loop through all sub-plans in this category -->
+    {% for sub_plan in category.sub_plans %}
+    
+    <section class="lesson-plan-section">
+      <!-- Sub-plan Title -->
+      <h2>{{ sub_plan.sub_title }}</h2>
+      
+      <!-- Three PDF boxes in a row -->
+      <div class="pdf-grid">
+        {% for document in sub_plan.content %}
+        <div class="pdf-box">
+          <a href="{{ document.file | relative_url }}" target="_blank">
+            <div class="pdf-preview">
+              <!-- Placeholder for PDF preview/thumbnail -->
+              <div class="pdf-icon">📄</div>
+            </div>
+            <div class="pdf-title">
+              <h3>{{ document.title }}</h3>
+            </div>
+            <div class="pdf-actions">
+              <span class="download-link">Download PDF</span>
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+    
+    {% endfor %}
+    
+    <!-- Back Link -->
+    <div class="back-link">
+      <a href="{{ site.baseurl }}/resources/lesson-plans/">← Back to All Lesson Plans</a>
+    </div>
+    
+  </div>
+</div>
