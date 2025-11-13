@@ -1,286 +1,89 @@
 ---
-layout: default
-title: Smart SPIKE Prototype
-permalink: /resources/lesson-plans/life-science
-prototype_id: introduction
+layout: page
+title: Life Science Lesson Plans
+permalink: /resources/lesson-plans/life-science/
 ---
-
-{% assign prototype = site.data.lessons.prototypes | where: "id", page.prototype_id | first %}
-
-<div class="page-header">
+<link rel="stylesheet" href="{{ '/assets/css/lesson-plans.css' | relative_url }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="/assets/js/lesson-plans.js"></script>
+<div class="lesson-category-page">
   <div class="container">
-    <h1>{{ prototype.title | default: "Smart SPIKE" }}</h1>
-  </div>
-</div>
 
-<div class="page-content">
-  <div class="container">
-    {% if prototype %}
-    <div class="prototype-detail">
-      <div class="prototype-hero">
-        <div class="prototype-hero-content">
-          <h1>{{ prototype.title }}</h1>
-          <p class="prototype-subtitle">{{ prototype.subtitle }}</p>
-          <p>{{ prototype.short_description }}</p>
-        </div>
-        <div class="prototype-hero-image">
-          <img src="{{ prototype.images.hero | relative_url }}" alt="{{ prototype.title }}">
-        </div>
-      </div>
-      <!--
-        <div class="prototype-content">
-          <!-- Overview
-          <div class="prototype-overview">
-            <h2>Overview</h2>
-            <p>{{ prototype.short_description }}</p>
-          </div>
--->
+    <!-- Page Header -->
+    <div class="page-header">
+      {% assign category = site.data.lessons.lesson_plans | where: "id", "life-science" | first %}
 
-      <!-- Parts Needed -->
-      {% if prototype.parts_needed %}
-      <div class="prototype-parts">
-        <h2>Parts Needed</h2>
-        <div class="parts-grid">
-          {% for part in prototype.parts_needed %}
-          <div class="part-item">
-            <a href="{{ part.link }}" class="part-link" target="_blank" rel="noopener noreferrer">
-              <div class="part-image">
-                <img src="{{ part.image | relative_url }}" alt="{{ part.name }}" loading="lazy">
-                {% if part.quantity %}
-                <div class="part-quantity">{{ part.quantity }}x</div>
-                {% endif %}
-              </div>
-              <div class="part-info">
-                <h4 class="part-name">{{ part.name }}</h4>
-                <p class="part-description">{{ part.description }}</p>
-                <div class="part-action">
-                  <span class="buy-button">View Product</span>
-                </div>
-              </div>
-            </a>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
+      {% if category.subtitle %}
+      <p class="page-subtitle">{{ category.subtitle }}</p>
       {% endif %}
-      {% if prototype.images.gallery %}
-      <div class="prototype-gallery-carousel">
-        <h2>Description</h2>
+    </div>
 
-        {% for description in prototype.images.description %}
-        <h3>{{description.title}}</h3>
-        <p>{{description.content}}</p>
-        {% endfor %}
+    <!-- Get the specific category data -->
+    {% assign category = site.data.lessons.lesson_plans | where: "id", "life-science" | first %}
 
+    <!-- Loop through all sub-plans in this category -->
+    {% for sub_plan in category.sub_plans %}
 
-        <div class="prototype-carousel-container">
-          <!-- Fixed: Changed class name to match the next button -->
-          <button class="carousel-nav carousel-prev" aria-label="Previous image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
+    <section class="lesson-plan-section">
+      <!-- Sub-plan Title -->
+      <h2>{{ sub_plan.sub_title }}</h2>
 
-          <div class="prototype-carousel">
-            <div class="carousel-content">
-              {% for gallery_image in prototype.images.gallery %}
-              <div class="carousel-slide{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}">
-                <div class="carousel-image">
-                  <img src="{{ gallery_image.src | relative_url }}"
-                    alt="{{ prototype.title }} - Image {{ forloop.index }}">
-                </div>
-                <div class="carousel-description">
-                  <h3>{{gallery_image.title}}</h3>
-                  <p>{{gallery_image.description}}</p>
-                </div>
-              </div>
-              {% endfor %}
-            </div>
-          </div>
-
-          <!-- Fixed: Changed to consistent carousel-nav class and proper ID -->
-          <button class="carousel-nav carousel-next" id="carousel-next" aria-label="Next image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
-
-          <div class="carousel-indicators">
-            {% for gallery_image in prototype.images.gallery %}
-            <button class="carousel-indicator{% if forloop.first %} active{% endif %}" data-slide="{{ forloop.index0 }}"
-              aria-label="Go to slide {{ forloop.index }}">
-              <img src="{{ gallery_image.src | relative_url }}" alt="Thumbnail {{ forloop.index }}">
-            </button>
-            {% endfor %}
-          </div>
-        </div>
+      <div class="lesson-preview-layout">
+  <!-- Main Preview -->
+  <div class="lesson-preview-main">
+    <div class="preview-box" data-lesson="{{ sub_plan.sub_id }}">
+      <canvas id="pdf-canvas-{{ sub_plan.sub_id }}" class="pdf-canvas"></canvas>
+      <div class="pdf-controls">
+        <button class="pdf-nav-btn" id="prev-{{ sub_plan.sub_id }}">◄ Previous</button>
+        <span class="pdf-page-info">
+          <span id="page-num-{{ sub_plan.sub_id }}">1</span> / 
+          <span id="page-count-{{ sub_plan.sub_id }}">-</span>
+        </span>
+        <button class="pdf-nav-btn" id="next-{{ sub_plan.sub_id }}">Next ►</button>
+      </div>
+      <div class="preview-label">
+        <h3 id="preview-label-{{ sub_plan.sub_id }}">{{ sub_plan.content[0].title }}</h3>
       </div>
     </div>
-    {% endif %}
-
-
-
-    <!-- GitHub Repository -->
-    {% if prototype.github %}
-    <div class="prototype-github">
-      <h2>Code Repository</h2>
-      <div class="github-container">
-        <div class="github-icon">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-          </svg>
-        </div>
-        <div class="github-content">
-          <h3>{{ prototype.title }} Repository</h3>
-          <p class="github-description">{{ prototype.github.description }}</p>
-          <div class="github-details">
-            <span class="github-branch">Branch: {{ prototype.github.branch }}</span>
-          </div>
-          <a href="{{ prototype.github.url }}" class="github-button" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-            View on GitHub
-          </a>
-        </div>
+  </div>
+  
+  <!-- Thumbnails with Download Buttons -->
+  <div class="lesson-thumbnails">
+    {% for document in sub_plan.content %}
+    <div class="thumbnail-item" 
+         data-pdf-url="{{ document.file | relative_url }}"
+         data-preview-target="{{ sub_plan.sub_id }}"
+         data-title="{{ document.title }}">
+      <div class="thumbnail-preview">
+        <canvas class="thumbnail-canvas" data-thumbnail-for="{{ sub_plan.sub_id }}-{{ forloop.index }}"></canvas>
       </div>
-    </div>
-    {% endif %}
-
-    <!-- Instructions -->
-    {% if prototype.instructions %}
-    <div class="prototype-instructions">
-      <h2>{{ prototype.instructions.title }}</h2>
-      <div class="instructions-content">
-        {{ prototype.instructions.content | markdownify }}
-      </div>
-      {% if prototype.instructions.firmware %}
-      <div class="instructions-download">
-        <a href="{{ prototype.instructions.firmware | relative_url }}" class="pdf-download-btn" target="_blank">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <!-- Browser window frame -->
-            <rect x="2" y="3" width="20" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
-            
-            <!-- Browser top bar -->
-            <rect x="2" y="3" width="20" height="4" rx="2" ry="2" fill="currentColor"/>
-            
-            <!-- Browser dots/controls -->
-            <circle cx="5" cy="5" r="0.5" fill="white" opacity="0.8"/>
-            <circle cx="7" cy="5" r="0.5" fill="white" opacity="0.8"/>
-            <circle cx="9" cy="5" r="0.5" fill="white" opacity="0.8"/>
-            
-            <!-- Address bar -->
-            <rect x="12" y="4" width="8" height="2" rx="1" fill="white" opacity="0.3"/>
-            
-            <!-- Website content area with grid pattern -->
-            <rect x="4" y="9" width="16" height="2" fill="currentColor" opacity="0.3"/>
-            <rect x="4" y="12" width="12" height="1" fill="currentColor" opacity="0.3"/>
-            <rect x="4" y="14" width="14" height="1" fill="currentColor" opacity="0.3"/>
-            <rect x="4" y="16" width="10" height="1" fill="currentColor" opacity="0.3"/>
-            
-            <!-- Small squares representing images/content blocks -->
-            <rect x="17" y="12" width="2" height="2" fill="currentColor" opacity="0.4"/>
-            <rect x="17" y="15" width="2" height="2" fill="currentColor" opacity="0.4"/>
+      <div class="thumbnail-info">
+        <div class="thumbnail-label">
+          <span>{{ document.title }}</span>
+        </div>
+        <a href="{{ document.file | relative_url }}" 
+           class="thumbnail-download-btn" 
+           download
+           title="Download {{ document.title }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
           </svg>
-          Smart Motors update portal
         </a>
       </div>
-
-      {% if prototype.instructions.note %}
-      <p class="video-description"> {{ prototype.instructions.note }}</p>
-      {% if prototype.instructions.firmware2 %}
-      <div class="instructions-download"></div>
-
-      <a href="{{ prototype.instructions.firmware2 | relative_url }}" class="pdf-download-btn" target="_blank">
-        <svg viewBox="0 0 24 24" fill=#AAAAAA>
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-        </svg>
-        Smart Wio with a M5Stack Servo
-      </a>
-      {% endif %}
-      {% endif %}
-      {% endif %}
     </div>
-    {% endif %}
-
-
-    <!-- Video -->
-
-    {% if prototype.video %}
-    <div class="prototype-parts">
-      <h2>Videos</h2>
-      <div class="parts-grid">
-        {% for video in prototype.video %}
-        <div class="part-item">
-          <a href="{{ video.url }}" class="part-link" target="_blank" rel="noopener noreferrer">
-            <div class="part-image">
-              <img src="{{ video.thumbnail | relative_url }}" alt="{{ part.name }}" loading="lazy">
-            </div>
-            <div class="part-info">
-              <h4 class="part-name">{{ video.title }}</h4>
-              <p class="part-description">{{ video.description }}</p>
-              <div class="part-action">
-                <div class="video-thumbnail">
-                  <svg class="play-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  <span>Watch Video</span>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
-    {% endif %}
-
-
-
-
-
-   
-
-    <div class="prototype-navigation">
-      {% if prototype.previous %}
-      <a href="{{ prototype.previous.url | relative_url }}" class="btn-back">
-        ← {{ prototype.previous.name }}
-      </a>
-      {% endif %}
-      {% if prototype.next %}
-      <a href="{{ prototype.next.url | relative_url }}" class="btn-next">
-        {{ prototype.next.name }} →
-      </a>
-      {% endif %}
-    </div>
+    {% endfor %}
   </div>
 </div>
-{% else %}
-<div style="text-align: center; padding: 50px;">
-  <h2>Prototype data not found</h2>
-  <p>Could not load data for prototype ID: {{ page.prototype_id }}</p>
-  <p><a href="{{ '/resources/other-prototypes/' | relative_url }}">← Back to All Prototypes</a></p>
+    </section>
 
-  <!-- Debug info -->
-  <details>
-    <summary>Debug Information</summary>
-    <p>Looking for prototype with ID: <code>{{ page.prototype_id }}</code></p>
-    <p>Available prototypes:</p>
-    <ul>
-      {% for p in site.data.prototypes.prototypes %}
-      <li>{{ p.id }} - {{ p.title }}</li>
-      {% endfor %}
-    </ul>
-  </details>
-</div>
-{% endif %}
-</div>
-</div>
+    {% endfor %}
 
-<script>
-  document.title = "{{ prototype.title | default: 'Smart SPIKE' }} - {{ site.title }}";
-</script>
+    <!-- Back Link -->
+    <div class="back-link">
+      <a href="{{ site.baseurl }}/resources/lesson-plans/">← Back to All Lesson Plans</a>
+    </div>
+
+  </div>
+</div>

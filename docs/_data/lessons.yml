@@ -2,6 +2,7 @@ lesson_plans:
   # Introduction
   - id: introduction
     title: "Introduction"
+    subtitle: "Get started with the basics of Smart Motors! This introductory lesson plan is designed to familiarize students with the fundamental concepts and components of Smart Motors, setting the stage for more advanced exploration in robotics and engineering. Through hands-on activities and engaging challenges, students will learn how Smart Motors work, their applications, and how to integrate them into simple projects. Perfect for beginners, this lesson plan provides a solid foundation for young engineers to build upon as they delve deeper into the world of robotics."
     author: ""
     permalink: "/resources/lesson-plans/introduction/"
     images: "/assets/images/lesson-plans/introduction-icon.png"
@@ -95,6 +96,7 @@ lesson_plans:
   # Physical Science
   - id: physical-science
     title: "Physical Science"
+    subtitle: "Explore the fascinating world of Physical Science with our engaging lesson plans! Designed to ignite curiosity and foster hands-on learning, these plans cover essential topics such as forces, motion, energy, and matter. Each lesson is crafted to provide students with a solid understanding of physical science concepts through interactive activities, experiments, and real-world applications. Perfect for educators looking to inspire the next generation of scientists and engineers, our Physical Science lesson plans make learning both fun and impactful."
     author: ""
     permalink: "/resources/lesson-plans/physical-science/"
     images: "/assets/images/lesson-plans/physical-science-icon.png"
@@ -193,6 +195,7 @@ lesson_plans:
   # Earth and Space Science
   - id: earth-and-space-science
     title: "Earth and Space Science"
+    subtitle: "Learn how to use Smart Motors to explore the concepts of earth and space science. These two examples show how Smart Motors can be used to achor discussions about atmosphere and motion of earh around the sun."
     author: ""
     permalink: "/resources/lesson-plans/earth-and-space-science/"
     images: "/assets/images/lesson-plans/earth-and-space-science-icon.png"
@@ -226,6 +229,7 @@ lesson_plans:
   # Life Science
   - id: life-science
     title: "Life Science"
+    subtitle: "Use this sample lesson plan to think about how Smart Motors can be used to explore the life science concepts including biomimicry."
     author: ""
     permalink: "/resources/lesson-plans/life-science/"
     images: "/assets/images/lesson-plans/life-science-icon.png"
