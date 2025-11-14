@@ -1098,15 +1098,15 @@ body.modal-open {
   position: relative;
   height: 250px;
   overflow: hidden;
-  background-color: #fffbeb;
+  background-color: #d5eefa;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .resource-image img {
-  max-width: 140px;
-  max-height: 140px;
+  max-width: 160px;
+  max-height: 160px;
   width: auto;
   height: auto;
   object-fit: contain;
