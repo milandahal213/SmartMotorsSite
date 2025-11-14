@@ -1,8 +1,16 @@
+
 {
   "categories": [
     {
       "name": "Conference Papers",
       "items": [
+        {
+          "title": "Conducting the Pilot Study of Integrating AI: An Experience Integrating Machine Learning into Upper Elementary Robotics Learning (Work in Progress).",
+          "authors": "Xu, G. and Zabner, D. and Cross, J. and Nadler, D. and Coxon, S. and Engelkenjohn, K.",
+          "year": "2023",
+          "venue": "2023 ASEE Annual Conference & Exposition",
+          "url": "https://peer.asee.org/42500"
+        },
         {
           "title": "Introductory Activities for Teaching Robotics with SmartMotors",
           "authors": "Dahal, M., Kresin, L., & Rogers, C.",
@@ -20,6 +28,13 @@
           "pages": "1-5",
           "publisher": "IEEE",
           "url": "https://ieeexplore.ieee.org/abstract/document/10343494/"
+        },
+        {
+          "title": "Exploring K-12 Teachers’ Confidence in Using Machine Learning Emerging Technologies through Co-design Workshop (RTP).",
+          "authors": "Xu, Geling, Milan Dahal, and Brian Gravel",
+          "year": "2024",
+          "venue": "2024 ASEE Annual Conference & Exposition",
+          "url": "https://peer.asee.org/47419"
         },
         {
           "title": "Playful Learning in Robotics: A Case Study with Smart Motors Workshops",
@@ -41,25 +56,17 @@
           "url": "https://ojs.aaai.org/index.php/AAAI/article/view/35185"
         },
         {
-          "title": "Conducting the Pilot Study of Integrating AI: An Experience Integrating Machine Learning into Upper Elementary Robotics Learning (Work in Progress).",
-          "authors": "Xu, G. and Zabner, D. and Cross, J. and Nadler, D. and Coxon, S. and Engelkenjohn, K.",
-          "year": "2023",
-          "venue": "2023 ASEE Annual Conference & Exposition",
-          "url": "https://peer.asee.org/42500"
-        },
-        {
-          "title": "Exploring K-12 Teachers’ Confidence in Using Machine Learning Emerging Technologies through Co-design Workshop (RTP).",
-          "authors": "Xu, Geling, Milan Dahal, and Brian Gravel",
-          "year": "2024",
-          "venue": "2024 ASEE Annual Conference & Exposition",
-          "url": "https://peer.asee.org/47419"
-        },
-        {
           "title": "Balancing Act: Mastering Beam-and-Ball Control with Reinforcement Learning",
           "authors": "Tanushree Burman, Jevon Coney, Chris Rogers, Jennifer Cross and Jivko Sinapov",
           "year": "2025",
           "venue": "International Conference on Robotics in Education (RiE)",
           "url": ""
+        },
+        {
+          "title": "A Novel Approach to AI for Elementary Students.",
+          "authors": "Nadler, D. R., Coxon, S. V., Cross, J., & Xu, G.",
+          "year": "2025, November",
+          "venue": "International Technology and Engineering Educators Association (ITEEA) conference, St. Louis, MO.",
         }
       ]
     },
@@ -73,6 +80,18 @@
           "venue": "Onshape Research Symposium",
           "url": "https://www.onshape.com/academic/edu-web-content/research-symposium-posters/2023/Dahal,_M._-_Using_Onshape_to_design_Smart_Motors.pdf",
           "pdfUrl": "/assets/papers/onshape.pdf"
+        }
+      ]
+    },
+    {
+    "name": "Workshops",
+      "items": [
+        {
+          "title": "Introducing AI & Machine Learning to Elementary Students through Teacher Designed Programming.",
+          "authors": "Nadler, D. R. & Coxon, S. V.",
+          "year": "2025, November",
+          "venue": "National Science Teachers Association (NTSA) National Conference, Minneapolis, MN.",
+
         }
       ]
     },
