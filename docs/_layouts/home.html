@@ -67,84 +67,147 @@ layout: default
   <div class="container">
     <h2>How It Works</h2>
 
-    <div class="steps-carousel">
-      <!-- Step navigation buttons -->
-      <button id="prev-step" class="step-nav-btn" aria-label="Previous step">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-      </button>
+    <div class="hiw" data-step="setup">
+      <div class="hiw-card">
+        <div class="hiw-stage">
+          <svg viewBox="128 -2 452 340" role="img" aria-labelledby="hiw-svg-title">
+            <title id="hiw-svg-title">Animated Smart Motor</title>
+            <g transform="translate(0 20)">
 
-      <!-- Steps container -->
-      <div class="steps-container">
-        <!-- Step 1 -->
-        <div class="step-item active" data-step="1">
-          <div class="step-content">
-            <div class="step-image">
-              <img src="{{ '/assets/images/step-1.gif' | relative_url }}" alt="Step 1 demonstration">
-            </div>
-            <div class="step-text">
-              <h3>Setup</h3>
-              <p>{{ site.data.steps.step1_description }}</p>
-            </div>
-          </div>
+            <!-- ground shadows -->
+            <ellipse cx="240" cy="306" rx="112" ry="10" fill="#1c2433" opacity=".08"/>
+            <ellipse cx="501" cy="300" rx="62" ry="7" fill="#1c2433" opacity=".08"/>
+
+            <!-- Build step: a doorway behind the hub (door hangs on the hub) -->
+            <g id="hiw-build" opacity="0">
+              <rect x="236" y="20" width="80" height="92" fill="#fff4d6"/>
+              <rect x="228" y="20" width="9" height="92" fill="#8a5a33" stroke="#333" stroke-width="2.5"/>
+              <rect x="315" y="20" width="9" height="92" fill="#8a5a33" stroke="#333" stroke-width="2.5"/>
+            </g>
+
+            <!-- Motor: a round hub on the top face that spins around a vertical axis -->
+            <g id="hiw-hub">
+              <path d="M190 90 v16 a50 13 0 0 0 100 0 v-16" fill="#24507d" stroke="#333" stroke-width="3" stroke-linejoin="round"/>
+              <ellipse cx="240" cy="90" rx="50" ry="13" fill="#4a7fb5" stroke="#333" stroke-width="3"/>
+              <g id="hiw-hub-marker">
+                <line id="hiw-hub-line" x1="240" y1="90" x2="240" y2="103" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+                <circle id="hiw-hub-dot" cx="240" cy="103" r="5" fill="#fd8706" stroke="#333" stroke-width="2"/>
+              </g>
+              <circle cx="240" cy="90" r="4" fill="#333"/>
+            </g>
+
+            <!-- Build step: the door, hinged on the hub's center -->
+            <g id="hiw-door" opacity="0">
+              <polygon id="hiw-door-panel" fill="#c98b4f" stroke="#333" stroke-width="3" stroke-linejoin="round"/>
+              <circle id="hiw-door-knob" r="4" fill="#fd8706" stroke="#333" stroke-width="2"/>
+              <!-- lintel in front: the door swings back behind it -->
+              <rect x="226" y="0" width="100" height="24" fill="#f7f9fc"/>
+              <rect x="228" y="14" width="96" height="10" rx="3" fill="#8a5a33" stroke="#333" stroke-width="2.5"/>
+            </g>
+
+            <!-- Device body (hides the bottom of the hub, so it sits on top) -->
+            <rect x="150" y="112" width="180" height="180" rx="24" fill="#fd8706" stroke="#333" stroke-width="3"/>
+            <rect x="160" y="122" width="160" height="160" rx="18" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
+
+            <!-- Screen -->
+            <rect x="168" y="130" width="108" height="78" rx="8" fill="#14233a" stroke="#333" stroke-width="2.5"/>
+            <g id="hiw-screen-splash" opacity="0">
+              <circle cx="210" cy="160" r="4" fill="#fd8706"/>
+              <circle cx="222" cy="160" r="4" fill="#fd8706"/>
+              <circle cx="234" cy="160" r="4" fill="#fd8706"/>
+              <text x="222" y="186" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#dce6f2" letter-spacing=".5">SMART MOTOR</text>
+            </g>
+            <g id="hiw-screen-plot" opacity="0">
+              <polyline points="180,138 180,198 268,198" fill="none" stroke="#6b7fa0" stroke-width="1.5"/>
+              <line id="hiw-scan" x1="0" y1="138" x2="0" y2="198" stroke="#fd8706" stroke-width="1.5" stroke-dasharray="3 3" opacity="0"/>
+              <g id="hiw-points"></g>
+              <circle id="hiw-near" r="7" fill="none" stroke="#fd8706" stroke-width="2" opacity="0"/>
+              <rect id="hiw-cursor" width="8" height="8" fill="none" stroke="#fff" stroke-width="1.5" opacity="0"/>
+            </g>
+
+            <!-- Knob (sets motor position while training) -->
+            <g transform="translate(302 148)">
+              <circle r="14" fill="#fff" stroke="#333" stroke-width="3"/>
+              <line id="hiw-knob" x1="0" y1="0" x2="0" y2="-9" stroke="#333" stroke-width="3" stroke-linecap="round"/>
+            </g>
+
+            <!-- Save button -->
+            <circle id="hiw-ripple" cx="302" cy="192" r="18" fill="none" stroke="#336699" stroke-width="3" opacity="0"/>
+            <g id="hiw-btn" style="transform-box: fill-box; transform-origin: center">
+              <circle cx="302" cy="192" r="18" fill="#336699" stroke="#333" stroke-width="3"/>
+            </g>
+
+            <!-- Power switch -->
+            <rect id="hiw-switch-track" x="168" y="240" width="18" height="38" rx="9" fill="#c9d1dc" stroke="#333" stroke-width="2.5"/>
+            <circle id="hiw-switch-thumb" cx="177" cy="269" r="6" fill="#fff" stroke="#333" stroke-width="2"/>
+            <text x="194" y="264" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333" id="hiw-switch-label">OFF</text>
+
+            <!-- Sensor port -->
+            <circle id="hiw-port-flash" cx="330" cy="256" r="10" fill="#fff" opacity="0"/>
+            <rect x="322" y="248" width="12" height="16" rx="3" fill="#333"/>
+
+            <!-- Cable (drawn from the sensor toward the port) -->
+            <path id="hiw-cable" d="M446 256 C410 256 380 256 334 256" fill="none" stroke="#333" stroke-width="6" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+
+            <!-- Sensor module -->
+            <rect x="446" y="228" width="110" height="56" rx="12" fill="#fff" stroke="#333" stroke-width="3"/>
+            <text id="hiw-sensor-label" x="501" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#333">Sensor</text>
+            <rect x="456" y="206" width="90" height="12" rx="6" fill="#fff" stroke="#333" stroke-width="2"/>
+            <rect id="hiw-gauge" x="458" y="208" width="43" height="8" rx="4" fill="#fd8706"/>
+
+            <!-- Build step: a hand moving toward the distance sensor -->
+            <g id="hiw-hand" opacity="0">
+              <path d="M-14 0 a6 6 0 0 1 12 0 v-6 a6 6 0 0 1 12 0 v4 a6 6 0 0 1 12 0 v22 a18 18 0 0 1 -18 18 h-4 a18 18 0 0 1 -18 -18 v-8 l-8 -10 a5 5 0 0 1 8 -6 l4 4 z"
+                    fill="#f6c9a0" stroke="#333" stroke-width="2.5" stroke-linejoin="round"/>
+            </g>
+
+            <!-- Callout: a short label + leader line pointing at the part in use -->
+            <g id="hiw-callout" opacity="0">
+              <line id="hiw-callout-line" stroke="#336699" stroke-width="2.5"/>
+              <circle id="hiw-callout-dot" r="4" fill="#336699"/>
+              <rect id="hiw-callout-box" y="0" height="30" rx="15" fill="#336699"/>
+              <text id="hiw-callout-text" y="0" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#fff"></text>
+            </g>
+            </g>
+          </svg>
         </div>
 
-        <!-- Step 2 -->
-        <div class="step-item" data-step="2">
-          <div class="step-content">
-            <div class="step-image">
-              <img src="{{ '/assets/images/step-2.gif' | relative_url }}" alt="Step 2 demonstration">
-            </div>
-            <div class="step-text">
-              <h3>Train</h3>
-              <p>{{ site.data.steps.step2_description }}</p>
-            </div>
+        <div class="hiw-copy" aria-live="polite">
+          <p class="hiw-eyebrow">Step <span id="hiw-num">1</span> of 4</p>
+          <h3 id="hiw-heading">Setup</h3>
+          <p id="hiw-text"></p>
+          <div class="hiw-readout" aria-hidden="true">
+            <span class="hiw-chip hiw-chip-sensor">Sensor <b id="hiw-s">50</b></span>
+            <span class="hiw-chip">Motor <b id="hiw-m">0°</b></span>
           </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="step-item" data-step="3">
-          <div class="step-content">
-            <div class="step-image">
-              <img src="{{ '/assets/images/step-3.gif' | relative_url }}" alt="Step 3 demonstration">
-            </div>
-            <div class="step-text">
-              <h3>Play</h3>
-              <p>{{ site.data.steps.step3_description }}</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="step-item" data-step="4">
-          <div class="step-content">
-            <div class="step-image">
-              <img src="{{ '/assets/images/step-4.gif' | relative_url }}" alt="Step 4 demonstration">
-            </div>
-            <div class="step-text">
-              <h3>Build</h3>
-              <p>{{ site.data.steps.step4_description }}</p>
-            </div>
+          <div class="hiw-try">
+            <label for="hiw-slider">Try it: drag to change the sensor reading</label>
+            <input id="hiw-slider" type="range" min="0" max="100" value="50">
           </div>
         </div>
       </div>
 
-      <!-- Step navigation buttons -->
-      <button id="next-step" class="step-nav-btn" aria-label="Next step">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
+      <div class="hiw-controls">
+        <button class="hiw-icon-btn" id="hiw-prev" type="button" aria-label="Previous step">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <ol class="hiw-tabs" role="tablist" aria-label="How it works steps">
+          <li><button class="hiw-tab" role="tab" type="button" data-i="0" data-key="setup" data-title="Setup" data-text="{{ site.data.steps.step1_description | strip | escape }}"><span class="hiw-tab-dot"></span><span class="hiw-tab-label">Setup</span></button></li>
+          <li><button class="hiw-tab" role="tab" type="button" data-i="1" data-key="train" data-title="Train" data-text="{{ site.data.steps.step2_description | strip | escape }}"><span class="hiw-tab-dot"></span><span class="hiw-tab-label">Train</span></button></li>
+          <li><button class="hiw-tab" role="tab" type="button" data-i="2" data-key="play" data-title="Play" data-text="{{ site.data.steps.step3_description | strip | escape }}"><span class="hiw-tab-dot"></span><span class="hiw-tab-label">Play</span></button></li>
+          <li><button class="hiw-tab" role="tab" type="button" data-i="3" data-key="build" data-title="Build" data-text="{{ site.data.steps.step4_description | strip | escape }}"><span class="hiw-tab-dot"></span><span class="hiw-tab-label">Build</span></button></li>
+        </ol>
+        <button class="hiw-icon-btn" id="hiw-next" type="button" aria-label="Next step">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <button class="hiw-icon-btn" id="hiw-pause" type="button" aria-label="Pause auto-play">
+          <svg class="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></svg>
+          <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></svg>
+        </button>
+      </div>
     </div>
 
-    <!-- Step indicators -->
-    <div class="step-indicators">
-      <span class="step-dot active" data-step="1"></span>
-      <span class="step-dot" data-step="2"></span>
-      <span class="step-dot" data-step="3"></span>
-      <span class="step-dot" data-step="4"></span>
-    </div>
+    <script src="{{ '/assets/js/how-it-works.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
   </div>
 </section>
 

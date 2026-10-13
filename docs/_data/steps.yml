@@ -1,13 +1,14 @@
 # _data/steps.yml
+# Text for the "How It Works" animation on the home page (one entry per step).
 
 step1_description: >-
-  Connect your preferred sensor to the sensor port. If you wish to use the built-in accelerometer, leave the sensor port empty. Then, turn the Smart Motor ON!
+  Plug a sensor into the sensor port, or leave it empty to use the built-in accelerometer. Then switch the Smart Motor on.
 
 step2_description: >-
-  Navigate to + mode using the side buttons. Add motor position and sensor reading pairings to create data for the Smart Motor.
+  Teach it by example. Set the sensor, turn the knob to put the motor where you want it, then press the button to save that pair. Each saved pair becomes a dot on the screen.
 
 step3_description: >-
-  Enter play mode and observe how the motor moves according your sensor inputs.
+  In Play mode the motor watches the sensor and moves to the position you saved for the closest reading.
 
 step4_description: >-
-  Build something and Have Fun!!
+  Now build something and have fun! Here the hub swings a door: when a hand comes close to the distance sensor, the door opens.
