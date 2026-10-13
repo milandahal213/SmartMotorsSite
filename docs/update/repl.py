@@ -31,10 +31,7 @@ def listdir(directory):
 fred = listdir('/')
 '''
 
-try:
-    window.navigator.serial.requestPort
-except:
-    window.alert('you have to use Chrome to talk over serial')
+# Browser support is checked on the page itself (see #notSupported in index.html)
 
 class uRepl():
     def __init__(self, baudrate = 115200, buffer_size = 512):

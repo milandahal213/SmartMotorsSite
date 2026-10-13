@@ -2,7 +2,7 @@
 layout: page
 title: Smart Motor Update Portal
 permalink: /update/
-description: Update the software on your Smart Motor, or reinstall its firmware, straight from Chrome.
+description: Update the software on your Smart Motor, or reinstall its firmware.
 ---
 
 <!-- Page assets (layout has no per-page <head> slot; these work fine in <body>) -->
@@ -37,7 +37,16 @@ description: Update the software on your Smart Motor, or reinstall its firmware,
     <select class="visually-hidden" name="list_files" id="list_files" aria-hidden="true" tabindex="-1"></select>
     <input class="visually-hidden" id="title" maxlength="50" type="text" value="" aria-hidden="true" tabindex="-1">
 
-    <p class="intro">Keep your Smart Motor on the latest software, right from Chrome.</p>
+    <!-- Browser check: shown by the script at the bottom when Web Serial is missing.
+         esptool.js also adds .hidden to it when Web Serial is available. -->
+    <div id="notSupported" class="banner banner-browser hidden" data-tone="danger" role="alert">
+      <svg class="icon banner-icon icon-danger"><use href="#i-alert"/></svg>
+      <p class="banner-text">
+        <strong>Please open this page in Google Chrome.</strong>
+        Updating a Smart Motor needs Chrome (or Microsoft Edge) on a laptop or desktop computer.
+        This browser can't connect to USB devices.
+      </p>
+    </div>
 
     <!-- ============ Main flow: update code on the motor ============ -->
     <section class="card" aria-labelledby="update-heading">
@@ -114,11 +123,6 @@ description: Update the software on your Smart Motor, or reinstall its firmware,
 
       <p class="muted">Only needed if the motor won't connect above, or a teacher asked you to. This replaces MicroPython on the ESP32-C3 chip.</p>
 
-      <div id="notSupported" class="banner" data-tone="danger">
-        <svg class="icon banner-icon icon-danger"><use href="#i-alert"/></svg>
-        <p class="banner-text"><strong>Web Serial</strong> isn't supported in this browser. Use Chrome or Edge 89 or later.</p>
-      </div>
-
       <div class="actions actions-start">
         <button id="butConnect" class="btn btn-secondary" type="button">
           <svg class="icon"><use href="#i-chip"/></svg><span class="btn-label">Connect for firmware</span>
@@ -169,6 +173,12 @@ description: Update the software on your Smart Motor, or reinstall its firmware,
 </div>
 
 <script>
+  // Browser check: connecting needs Web Serial (Chrome/Edge on desktop)
+  if (!('serial' in navigator)) {
+    document.getElementById('notSupported').classList.remove('hidden');
+    ['connect', 'butConnect'].forEach((id) => { document.getElementById(id).disabled = true; });
+  }
+
   // Console disclosure (pure UI, no device logic)
   document.querySelector('.sm-portal .disclosure-toggle').addEventListener('click', (e) => {
     const btn = e.currentTarget;

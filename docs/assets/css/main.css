@@ -82,6 +82,83 @@ body {
   padding: 30px 0;
 }
 
+.hero .container {
+  position: relative;
+}
+
+/* Floating "Update Smart Motors" circle over the hero (links to /update/).
+   Navy + orange ring = same colors as the update portal's buttons. */
+.update-badge {
+  position: absolute;
+  top: -14px;
+  right: 36px;
+  z-index: 2;
+  width: 124px;
+  height: 124px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background-color: #336699;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2;
+  border: 4px solid #fd8706;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  animation: update-badge-float 3s ease-in-out infinite;
+  transition: background-color 0.3s;
+}
+
+.update-badge:hover,
+.update-badge:focus-visible {
+  background-color: #24507d;
+  animation-play-state: paused;
+}
+
+.update-badge:focus-visible {
+  outline: 3px solid #fd8706;
+  outline-offset: 3px;
+}
+
+.update-badge-icon {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes update-badge-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 768px) {
+  .update-badge {
+    width: 96px;
+    height: 96px;
+    right: 28px;
+    font-size: 12px;
+    border-width: 3px;
+  }
+
+  .update-badge-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .update-badge { animation: none; }
+}
+
 .hero-image {
   width: 100%;
   height: 300px;
