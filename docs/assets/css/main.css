@@ -368,18 +368,24 @@ model-viewer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-y: auto;
 }
+
 
 .step-text h3 {
   margin: 0 0 10px 0;
   font-size: 20px;
   color: #333;
+  flex-shrink: 0;
 }
 
 .step-text p {
   margin: 0;
   color: #666;
-  line-height: 1.5;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .step-indicators {

@@ -294,7 +294,7 @@ Order the following components to complete the assembly.
   </table>
 
   <h2 id="programming-your-smart-motor">Programming Your Smart Motor</h2>
-      Use the <a href="https://mdahal01.pyscriptapps.com/esp32c3-firmware-setup-copy/latest/" target="_blank">Smart Motor Update Portal</a> to flash micropython firmware and to upload the code on your Smart Motor.
+      Use the <a href="{{ '/update/' | relative_url }}">Smart Motor Update Portal</a> to flash micropython firmware and to upload the code on your Smart Motor.
   <hr>
 
   <p><small>This guide is maintained by the Smart Motors team. For questions or support, please email us. Find our contact info in our <a href="/contact/" target="self">Contact Us</a> page.</small></p>

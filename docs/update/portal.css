@@ -1,0 +1,525 @@
+/* ==========================================================================
+   Smart Motor Update Portal (/update/)
+   Visual language is taken from the logo: orange gear, navy wordmark, and
+   the "connecting dots" motif (used for the stepper and busy states).
+   Everything is scoped under .sm-portal so it can't collide with main.css.
+   ========================================================================== */
+
+.sm-portal {
+    /* Brand: site orange (main.css) + logo wordmark navy */
+    --brand-orange: #fd8706;
+    --brand-orange-soft: #FFF3E0;
+    --brand-navy: #336699;
+    --brand-navy-strong: #24507D;
+    --brand-navy-soft: #EAF1F8;
+
+    /* Neutrals */
+    --ink: #333;
+    --muted: #666;
+    --line: #E3E7ED;
+    --canvas: #F5F7FA;
+    --surface: #FFFFFF;
+
+    /* Semantic */
+    --success: #2E8540;
+    --success-soft: #E8F4EB;
+    --warning: #B86E00;          /* orange darkened for readable text */
+    --warning-soft: var(--brand-orange-soft);
+    --danger: #C23B2B;
+    --danger-soft: #FBECEA;
+
+    /* Terminal */
+    --term-bg: #14233A;
+    --term-fg: #DCE6F2;
+
+    /* Shape & type */
+    --radius: 10px;
+    --radius-sm: 6px;
+    --radius-pill: 999px;
+    --shadow: 0 1px 2px rgba(28, 36, 51, .06), 0 4px 16px rgba(28, 36, 51, .06);
+    --font: inherit;             /* match the rest of the site */
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+    --focus: 0 0 0 3px rgba(51, 102, 153, .35);
+}
+
+/* ---------- Base ---------- */
+
+.sm-portal code { font-family: var(--mono); font-size: .875em; }
+
+.sm-portal .muted { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+
+.sm-portal .hidden { display: none !important; }
+
+.sm-portal .visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.sm-portal .icon {
+    width: 20px; height: 20px;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ---------- Layout ---------- */
+
+.sm-portal {
+    display: grid;
+    gap: 16px;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 0 56px;
+    font-family: var(--font);
+    color: var(--ink);
+    line-height: 1.5;
+}
+
+.sm-portal .intro { text-align: center; color: var(--muted); margin-bottom: 8px; }
+
+/* ---------- Card ---------- */
+
+.sm-portal .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+}
+
+.sm-portal .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.sm-portal .card-title {
+    display: block;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.sm-portal .eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.sm-portal .lead { color: var(--muted); }
+
+/* Advanced card as a disclosure */
+.sm-portal .card-advanced { padding: 0; }
+.sm-portal .card-advanced > :not(summary) { margin-left: 24px; margin-right: 24px; }
+.sm-portal .card-advanced > :last-child { margin-bottom: 24px; }
+.sm-portal .summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 20px 24px;
+    margin: 0;
+    border-radius: var(--radius);
+}
+.sm-portal .summary::-webkit-details-marker { display: none; }
+.sm-portal .summary:focus-visible { outline: none; box-shadow: var(--focus); }
+.sm-portal .card-advanced[open] .summary { margin-bottom: 4px; }
+.sm-portal .card-advanced[open] .summary .disclosure-chevron { transform: rotate(180deg); }
+
+/* ---------- Chips ---------- */
+
+.sm-portal .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+
+.sm-portal .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.sm-portal .chip:empty { display: none; }
+.sm-portal .chip-neutral { background: var(--brand-navy-soft); color: var(--brand-navy-strong); }
+
+/* ---------- Stepper (the logo's three dots) ---------- */
+
+.sm-portal .stepper {
+    display: flex;
+    list-style: none;
+    margin: 0 0 24px;
+    padding: 0;
+}
+
+.sm-portal .step {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    text-align: center;
+}
+
+/* dotted connector between dots */
+.sm-portal .step + .step::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    right: calc(50% + 14px);
+    width: calc(100% - 28px);
+    border-top: 2px dotted var(--line);
+}
+
+.sm-portal .step-dot {
+    margin: 0;                   /* reset main.css gallery .step-dot */
+    cursor: default;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    background: var(--surface);
+    transition: background .2s, border-color .2s, transform .2s;
+}
+
+@keyframes sm-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(.7); opacity: .6; }
+}
+
+/* State → step mapping: orange = current, navy = done, green/red = result */
+.sm-portal:is([data-state="loading"], [data-state="idle"], [data-state="connecting"]) .step[data-step="connect"] { color: var(--ink); font-weight: 500; }
+.sm-portal:is([data-state="loading"], [data-state="idle"], [data-state="connecting"]) .step[data-step="connect"] .step-dot { border-color: var(--brand-orange); background: var(--brand-orange); }
+.sm-portal[data-state="connecting"] .step[data-step="connect"] .step-dot { animation: sm-pulse 1s ease-in-out infinite; }
+
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="done"], [data-state="error"]) :is(.step[data-step="connect"], .step[data-step="check"]) .step-dot { border-color: var(--brand-navy); background: var(--brand-navy); }
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="done"], [data-state="error"]) :is(.step[data-step="check"], .step[data-step="update"])::before { border-top-color: var(--brand-navy); }
+
+.sm-portal:is([data-state="connected"], [data-state="uploading"]) .step[data-step="update"] { color: var(--ink); font-weight: 500; }
+.sm-portal:is([data-state="connected"], [data-state="uploading"]) .step[data-step="update"] .step-dot { border-color: var(--brand-orange); background: var(--brand-orange); }
+.sm-portal[data-state="uploading"] .step[data-step="update"] .step-dot { animation: sm-pulse 1s ease-in-out infinite; }
+.sm-portal[data-state="done"] .step[data-step="update"] .step-dot { border-color: var(--success); background: var(--success); }
+.sm-portal[data-state="error"] .step[data-step="update"] { color: var(--danger); }
+.sm-portal[data-state="error"] .step[data-step="update"] .step-dot { border-color: var(--danger); background: var(--danger); }
+
+/* ---------- Panels (shown per state) ---------- */
+
+/* .card prefix outranks .banner / .btn display rules declared later */
+.sm-portal .card :is(.panel, .banner-result, .action-upload) { display: none; }
+
+.sm-portal:is([data-state="connected"], [data-state="uploading"]) .panel-update { display: block; }
+.sm-portal:is([data-state="done"], [data-state="error"]) .banner-result { display: flex; }
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="error"]) .action-upload { display: inline-flex; }
+
+/* Hide the (empty) update actions row until a board is attached */
+.sm-portal:is([data-state="loading"], [data-state="idle"], [data-state="connecting"]) .actions-update { display: none; }
+
+/* ---------- Connect bar (step 1, always at the top) ---------- */
+
+.sm-portal .connect-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding: 16px;
+    border-radius: var(--radius);
+    background: var(--brand-orange-soft);
+    border: 1px solid #FFD9A0;
+}
+.sm-portal .connect-text { flex: 1; font-size: 15px; }
+.sm-portal .connect-text > span { display: none; }
+.sm-portal .status-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 0 3px var(--success-soft);
+}
+
+.sm-portal:is([data-state="loading"], [data-state="idle"]) .when-idle,
+.sm-portal[data-state="connecting"] .when-connecting { display: inline; }
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="done"], [data-state="error"]) .when-connected {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+/* Once attached the bar calms down to a neutral status row */
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="done"], [data-state="error"]) .connect-bar {
+    padding: 10px 10px 10px 16px;
+    background: var(--canvas);
+    border-color: var(--line);
+}
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="done"], [data-state="error"]) #connect {
+    height: 40px;
+    padding: 0 16px;
+    font-size: 15px;
+}
+
+/* Secondary styling for Connect once a board is attached (it becomes "Disconnect") */
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="error"]) #connect {
+    background: var(--surface);
+    color: var(--brand-navy-strong);
+    border-color: var(--brand-navy);
+}
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="error"]) #connect:hover:not(:disabled) {
+    background: var(--brand-navy-soft);
+}
+.sm-portal #connect .icon-disconnect { display: none; }
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="error"]) #connect .icon-connect { display: none; }
+.sm-portal:is([data-state="connected"], [data-state="uploading"], [data-state="error"]) #connect .icon-disconnect { display: block; }
+
+/* ---------- Banners ---------- */
+
+.sm-portal .banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
+    font-size: 15px;
+}
+.sm-portal .banner-text { flex: 1; }
+.sm-portal .banner-text:empty { display: none; }
+.sm-portal .banner-icon { margin-top: 2px; display: none; }
+
+.sm-portal .banner[data-tone="warning"] { background: var(--warning-soft); color: var(--warning); border-color: #FFD9A0; }
+.sm-portal .banner[data-tone="success"] { background: var(--success-soft); color: var(--success); border-color: #BFDFC6; }
+.sm-portal .banner[data-tone="danger"] { background: var(--danger-soft);  color: var(--danger);  border-color: #F1C4BE; }
+.sm-portal .banner[data-tone="warning"] .icon-warning,
+.sm-portal .banner[data-tone="success"] .icon-success,
+.sm-portal .banner[data-tone="danger"]  .icon-danger { display: block; }
+
+.sm-portal .banner-result { margin-bottom: 4px; font-weight: 500; }
+.sm-portal #notSupported { margin-bottom: 16px; }
+
+/* ---------- Buttons ---------- */
+
+.sm-portal .actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0 0;
+}
+.sm-portal .actions-start { justify-content: flex-start; margin: 0 0 16px; }
+
+.sm-portal .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid transparent;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s, color .15s, box-shadow .15s;
+}
+.sm-portal .btn:focus-visible { outline: none; box-shadow: var(--focus); }
+.sm-portal .btn:disabled { opacity: .5; cursor: not-allowed; }
+.sm-portal .btn-lg { height: 48px; padding: 0 24px; font-size: 16px; }
+.sm-portal .btn-sm { height: 32px; padding: 0 12px; font-size: 13px; }
+.sm-portal .btn-sm .icon { width: 16px; height: 16px; }
+
+.sm-portal .btn-primary { background: var(--brand-navy); color: #fff; }
+.sm-portal .btn-primary:hover:not(:disabled) { background: var(--brand-navy-strong); }
+
+.sm-portal .btn-secondary { background: var(--surface); color: var(--brand-navy-strong); border-color: var(--brand-navy); }
+.sm-portal .btn-secondary:hover:not(:disabled) { background: var(--brand-navy-soft); }
+
+.sm-portal .btn-danger { background: var(--surface); color: var(--danger); border-color: var(--danger); }
+.sm-portal .btn-danger:hover:not(:disabled) { background: var(--danger-soft); }
+
+.sm-portal .btn-ghost { background: transparent; color: var(--term-fg); }
+.sm-portal .btn-ghost:hover:not(:disabled) { background: rgba(255, 255, 255, .08); }
+
+/* Busy state: the logo's three dots fill in, left to right */
+.sm-portal .btn.is-busy { cursor: progress; }
+.sm-portal .btn.is-busy:disabled { opacity: 1; }
+.sm-portal .btn.is-busy .icon { display: none; }
+.sm-portal .btn.is-busy::before {
+    content: "";
+    width: 6px; height: 6px;
+    margin-right: 20px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: sm-dots 1.2s infinite;
+}
+@keyframes sm-dots {
+    0%       { box-shadow: 10px 0 transparent, 20px 0 transparent; }
+    33%      { box-shadow: 10px 0 currentColor, 20px 0 transparent; }
+    66%, 100% { box-shadow: 10px 0 currentColor, 20px 0 currentColor; }
+}
+
+/* ---------- Disclosure (device console) ---------- */
+
+.sm-portal .disclosure { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 12px; }
+
+.sm-portal .disclosure-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    margin-left: -8px;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    font: inherit;
+    font-size: 14px;
+    color: var(--muted);
+    cursor: pointer;
+}
+.sm-portal .disclosure-toggle:hover { color: var(--ink); background: var(--canvas); }
+.sm-portal .disclosure-toggle:focus-visible { outline: none; box-shadow: var(--focus); }
+.sm-portal .disclosure-toggle .icon { width: 18px; height: 18px; }
+.sm-portal .disclosure-chevron { transition: transform .2s; color: var(--muted); }
+.sm-portal .disclosure.is-open .disclosure-chevron { transform: rotate(180deg); }
+
+/* Collapsed with height (not display:none) so xterm can measure itself on connect */
+.sm-portal .disclosure-body { height: 0; overflow: hidden; transition: height .2s; }
+.sm-portal .disclosure.is-open .disclosure-body { height: 232px; padding-top: 12px; }
+
+/* ---------- Terminals (one style for both) ---------- */
+
+.sm-portal .terminal {
+    background: var(--term-bg);
+    color: var(--term-fg);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+}
+
+.sm-portal #repl { height: 220px; width: 100%; overflow: hidden; }
+.sm-portal #repl .xterm { height: 100%; }
+.sm-portal #repl .xterm-viewport { background: var(--term-bg) !important; }
+
+.sm-portal .log-wrap { display: none; }
+.sm-portal .log-wrap:has(.log-container.show) { display: block; }
+
+.sm-portal .log-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 8px 6px 12px;
+    background: var(--term-bg);
+    color: var(--term-fg);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    font-size: 13px;
+}
+.sm-portal .log-title { display: inline-flex; align-items: center; gap: 8px; margin-right: auto; font-weight: 500; }
+.sm-portal .log-title .icon { width: 16px; height: 16px; }
+
+.sm-portal .log-container {
+    height: 260px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+
+.sm-portal .error-message { color: #FF8A7A; font-weight: 500; }
+
+/* ---------- Switch ---------- */
+
+.sm-portal .switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.sm-portal .switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.sm-portal .switch-track {
+    position: relative;
+    width: 32px; height: 18px;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, .2);
+    transition: background .2s;
+}
+.sm-portal .switch-track::after {
+    content: "";
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform .2s;
+}
+.sm-portal .switch input:checked + .switch-track { background: var(--brand-orange); }
+.sm-portal .switch input:checked + .switch-track::after { transform: translateX(14px); }
+.sm-portal .switch input:focus-visible + .switch-track { box-shadow: var(--focus); }
+
+/* ---------- Firmware panel ---------- */
+
+.sm-portal .esp-controls { display: none; }
+.sm-portal .esp-controls.show { display: block; }
+
+.sm-portal .meta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 0 16px;
+    padding: 12px 14px;
+    background: var(--canvas);
+    border-radius: var(--radius-sm);
+}
+.sm-portal .meta dt { font-size: 12px; color: var(--muted); }
+.sm-portal .meta dd { margin: 2px 0 0; font-weight: 500; }
+.sm-portal .meta-input {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.sm-portal .progress {
+    height: 8px;
+    margin: 0 0 16px;
+    border-radius: var(--radius-pill);
+    background: var(--line);
+    overflow: hidden;
+}
+.sm-portal .progress div {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: var(--brand-orange);
+    transition: width .3s ease;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 560px) {
+    .sm-portal .card { padding: 18px; }
+    .sm-portal .card-advanced > :not(summary) { margin-left: 18px; margin-right: 18px; }
+    .sm-portal .summary { padding: 16px 18px; }
+    .sm-portal .card-head { flex-wrap: wrap; }
+    .sm-portal .step-label { font-size: 12px; }
+    .sm-portal .actions .btn { width: 100%; }
+    .sm-portal .connect-bar { flex-direction: column; align-items: stretch; text-align: center; }
+    .sm-portal .connect-bar .btn { width: 100%; }
+    .sm-portal .meta { grid-template-columns: 1fr 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sm-portal *, .sm-portal *::before, .sm-portal *::after { animation: none !important; transition: none !important; }
+}

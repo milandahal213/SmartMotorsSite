@@ -1,0 +1,60 @@
+# Keeps the update portal (smartmotors.ai/update) in step with tuftsceeo/SmartMotors.
+# Every hour it rebuilds docs/update/V3.py from SmartMotors V3/ and commits it
+# only if something changed; the commit then republishes GitHub Pages.
+name: Sync Smart Motor code
+
+on:
+  schedule:
+    - cron: "17 * * * *"   # hourly, off the top of the hour when Actions is busiest
+  workflow_dispatch:        # "Run workflow" button for an immediate sync
+
+permissions:
+  contents: write           # commit the regenerated bundle
+  pages: write              # request a Pages rebuild
+
+concurrency:
+  group: sync-motor-code
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website
+        uses: actions/checkout@v4
+
+      - name: Check out SmartMotors
+        uses: actions/checkout@v4
+        with:
+          repository: tuftsceeo/SmartMotors
+          ref: master
+          path: .motor-src
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build bundle
+        run: python scripts/build_motor_bundle.py --src .motor-src/V3
+
+      - name: Commit if changed
+        id: commit
+        run: |
+          if git diff --quiet -- docs/update/V3.py; then
+            echo "Motor code unchanged."
+            exit 0
+          fi
+          sha=$(git -C .motor-src rev-parse --short HEAD)
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add docs/update/V3.py
+          git commit -m "Sync motor code from tuftsceeo/SmartMotors@${sha}"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # Pushes made with GITHUB_TOKEN may not start a Pages build on their own.
+      - name: Rebuild GitHub Pages
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

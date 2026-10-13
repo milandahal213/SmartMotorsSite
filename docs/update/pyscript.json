@@ -1,0 +1,16 @@
+{
+    "name": "Smart Motor Update Portal",
+    "export": true,
+    "files": {
+        "./repl.py": "",
+        "./V3.py": "",
+        "./SPIKE.py": "",
+        "./js/esptool.js": ""
+    },
+    "js_modules": {
+        "main": {
+            "https://cdn.jsdelivr.net/npm/micro-repl@0.8.2/serial.js": "micro_repl",
+            "./req.js": "Req"
+        }
+    }
+}

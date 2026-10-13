@@ -1,0 +1,179 @@
+---
+layout: page
+title: Smart Motor Update Portal
+permalink: /update/
+description: Update the software on your Smart Motor, or reinstall its firmware, straight from Chrome.
+---
+
+<!-- Page assets (layout has no per-page <head> slot; these work fine in <body>) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.8.2/core.css">
+<link rel="stylesheet" href="{{ '/update/portal.css' | relative_url }}">
+<script type="module" src="https://pyscript.net/releases/2024.8.2/core.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
+<script type="module" src="{{ '/update/js/esptool.js' | relative_url }}"></script>
+
+<div class="sm-portal" id="sm-portal" data-state="loading">
+
+    <!-- Reusable icons (24px grid, 2px rounded stroke — same weight everywhere) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="i-usb" viewBox="0 0 24 24"><path d="M12 2v14M8 6l4-4 4 4M7 11v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2"/><circle cx="12" cy="19" r="3"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></symbol>
+      <symbol id="i-unplug" viewBox="0 0 24 24"><path d="M9 7V3M15 7V3M6 7h12v4a6 6 0 0 1-12 0V7zM12 17v4"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5.5M12 16.5v.01"/></symbol>
+      <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+      <symbol id="i-erase" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
+      <symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9l3 3-3 3M13 15h4"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+      <symbol id="i-clear" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5L5 19"/></symbol>
+    </svg>
+
+    <!-- Runs main.py on the main thread (no cross-origin isolation needed on GitHub Pages) -->
+    <script type="mpy" src="{{ '/update/main.py' | relative_url }}" config="{{ '/update/pyscript.json' | relative_url }}"></script>
+    <select class="visually-hidden" name="list_files" id="list_files" aria-hidden="true" tabindex="-1"></select>
+    <input class="visually-hidden" id="title" maxlength="50" type="text" value="" aria-hidden="true" tabindex="-1">
+
+    <p class="intro">Keep your Smart Motor on the latest software, right from Chrome.</p>
+
+    <!-- ============ Main flow: update code on the motor ============ -->
+    <section class="card" aria-labelledby="update-heading">
+      <div class="card-head">
+        <h2 id="update-heading" class="card-title">Update your Smart Motor</h2>
+        <span class="chip chip-neutral" id="version_pyscript">Loading…</span>
+      </div>
+
+      <!-- Step 1 lives at the top: connecting is always the first thing to do -->
+      <div class="connect-bar">
+        <p class="connect-text">
+          <span class="when-idle">Plug your Smart Motor into this computer with a USB cable, then connect.</span>
+          <span class="when-connecting">Pick your Smart Motor in the browser pop-up…</span>
+          <span class="when-connected"><span class="status-dot"></span>Smart Motor connected</span>
+        </p>
+        <button id="connect" class="btn btn-primary btn-lg" type="button">
+          <svg class="icon icon-connect"><use href="#i-usb"/></svg><svg class="icon icon-disconnect"><use href="#i-unplug"/></svg><span class="btn-label">Connect Smart Motor</span>
+        </button>
+      </div>
+
+      <ol class="stepper" aria-label="Progress">
+        <li class="step" data-step="connect"><span class="step-dot"></span><span class="step-label">Connect</span></li>
+        <li class="step" data-step="check"><span class="step-dot"></span><span class="step-label">Check version</span></li>
+        <li class="step" data-step="update"><span class="step-dot"></span><span class="step-label">Update</span></li>
+      </ol>
+
+      <!-- Connected: version info + update action -->
+      <div class="panel panel-update" id="update_class">
+        <div class="chip-row">
+          <span class="chip chip-neutral" id="version_board"></span>
+        </div>
+        <div class="banner" id="update_message_div" data-tone="warning">
+          <svg class="icon banner-icon icon-warning"><use href="#i-alert"/></svg>
+          <svg class="icon banner-icon icon-success"><use href="#i-check"/></svg>
+          <p class="banner-text" id="update_message"></p>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="banner banner-result" id="success_message_div" data-tone="success" role="status">
+        <svg class="icon banner-icon icon-success"><use href="#i-check"/></svg>
+        <svg class="icon banner-icon icon-danger"><use href="#i-alert"/></svg>
+        <p class="banner-text" id="success_message_text"></p>
+      </div>
+
+      <div class="actions actions-update">
+        <button id="upload" class="btn btn-primary btn-lg action-upload" type="button">
+          <svg class="icon"><use href="#i-upload"/></svg><span class="btn-label">Update Smart Motor</span>
+        </button>
+      </div>
+
+      <!-- Device console: always laid out so the terminal can size itself; collapsed by default -->
+      <div class="disclosure" id="console_disclosure">
+        <button class="disclosure-toggle" type="button" aria-expanded="false" aria-controls="console_body">
+          <svg class="icon"><use href="#i-terminal"/></svg>
+          <span>Device console</span>
+          <svg class="icon disclosure-chevron"><use href="#i-chevron"/></svg>
+        </button>
+        <div class="disclosure-body" id="console_body">
+          <div id="repl" class="terminal"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ Advanced: reinstall firmware ============ -->
+    <details class="card card-advanced">
+      <summary class="card-head summary">
+        <span>
+          <span class="eyebrow">Advanced</span>
+          <span class="card-title">Reinstall firmware</span>
+        </span>
+        <svg class="icon disclosure-chevron"><use href="#i-chevron"/></svg>
+      </summary>
+
+      <p class="muted">Only needed if the motor won't connect above, or a teacher asked you to. This replaces MicroPython on the ESP32-C3 chip.</p>
+
+      <div id="notSupported" class="banner" data-tone="danger">
+        <svg class="icon banner-icon icon-danger"><use href="#i-alert"/></svg>
+        <p class="banner-text"><strong>Web Serial</strong> isn't supported in this browser. Use Chrome or Edge 89 or later.</p>
+      </div>
+
+      <div class="actions actions-start">
+        <button id="butConnect" class="btn btn-secondary" type="button">
+          <svg class="icon"><use href="#i-chip"/></svg><span class="btn-label">Connect for firmware</span>
+        </button>
+      </div>
+
+      <div id="app">
+        <div class="esp-controls">
+          <dl class="meta">
+            <div><dt>Firmware file</dt><dd><code>firmware.bin</code></dd></div>
+            <div><dt>Address</dt><dd><code>0x0000</code></dd></div>
+            <div><dt>Baud rate</dt><dd><input id="baudRate" class="meta-input" type="text" value="460800" readonly></dd></div>
+          </dl>
+
+          <div id="progressBar" class="progress hidden" role="progressbar" aria-label="Flashing progress">
+            <div></div>
+          </div>
+
+          <div class="actions actions-start">
+            <button id="butProgram" class="btn btn-primary" type="button" disabled>
+              <svg class="icon"><use href="#i-bolt"/></svg><span class="btn-label">Flash firmware</span>
+            </button>
+            <button id="butErase" class="btn btn-danger" type="button" disabled>
+              <svg class="icon"><use href="#i-erase"/></svg><span class="btn-label">Erase flash</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="log-wrap">
+          <div class="log-toolbar">
+            <span class="log-title"><svg class="icon"><use href="#i-terminal"/></svg>Flash log</span>
+            <label class="switch">
+              <input type="checkbox" name="autoscroll" id="autoscroll" checked>
+              <span class="switch-track"></span>
+              <span>Auto-scroll</span>
+            </label>
+            <button id="butClear" type="button" class="btn btn-ghost btn-sm" title="Clear log">
+              <svg class="icon"><use href="#i-clear"/></svg><span class="btn-label">Clear</span>
+            </button>
+          </div>
+          <div id="log" class="terminal log-container"></div>
+        </div>
+      </div>
+    </details>
+
+
+    <p class="muted intro">Web flashing powered by esptool-js (Adafruit / Espressif).</p>
+</div>
+
+<script>
+  // Console disclosure (pure UI, no device logic)
+  document.querySelector('.sm-portal .disclosure-toggle').addEventListener('click', (e) => {
+    const btn = e.currentTarget;
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', open);
+    document.getElementById('console_disclosure').classList.toggle('is-open', open);
+  });
+</script>

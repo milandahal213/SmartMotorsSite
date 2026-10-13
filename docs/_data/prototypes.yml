@@ -39,11 +39,11 @@ prototypes:
     instructions:
       title: "Uploading Smart SPIKE code to LEGO® Education SPIKE™ Prime"
       content: |
-        - Go to the Smart Motor update website by clicking the button below
+        - Go to the Smart Motor update website by clicking the button below (use Chrome or Edge)
         - Connect LEGO® Education SPIKE™ Prime to the computer and turn it on
-        - Click the "Connect via USB" button
-        - Click the "Convert SPIKE to SMART SPIKE" button to upload the Smart SPIKE code
-      firmware: "https://mdahal01.pyscriptapps.com/smart-motor-update-portal-working/latest/"
+        - Click the "Connect Smart Motor" button and pick the hub in the pop-up
+        - Click the "Install Smart Motor on SPIKE" button to upload the Smart SPIKE code
+      firmware: "/update/"
 
 
     video:
