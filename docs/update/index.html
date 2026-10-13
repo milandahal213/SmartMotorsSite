@@ -10,7 +10,7 @@ description: Update the software on your Smart Motor, or reinstall its firmware.
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://pyscript.net/releases/2024.8.2/core.css">
-<link rel="stylesheet" href="{{ '/update/portal.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/update/portal.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <script type="module" src="https://pyscript.net/releases/2024.8.2/core.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
 <script type="module" src="{{ '/update/js/esptool.js' | relative_url }}"></script>
